@@ -8,6 +8,16 @@ Construir un editor visual donde se puedan combinar y guardar capas compatibles:
 
 La prioridad inicial no es inventar arte desde cero: es localizar recursos disponibles en la web, revisar sus licencias y formatos, probar qué combinaciones son realmente compatibles y registrar su procedencia.
 
+## Meta ampliada: generador anime propio y ligero
+
+El proyecto apunta a evolucionar hacia un generador centrado en un estilo anime controlado: variar cabello, rostro, ropa, silueta, piernas y accesorios; aceptar fondos transparentes o fondos simples/estilizados; y, en el futuro, evaluar un LoRA propio con un conjunto de imágenes de entrenamiento autorizado.
+
+**Objetivo de ingeniería:** mantener la interfaz, el ensamblador gráfico y la composición de capas dentro de un presupuesto de referencia de aproximadamente 2 GB de RAM del sistema. Ese límite no se debe atribuir automáticamente a la inferencia de un modelo generativo: entrenamiento, pesos, VRAM, memoria del navegador y procesamiento de imágenes deben medirse por separado. La primera versión ligera debe funcionar con PNG/SVG y piezas locales; un modelo generativo podrá ser un complemento offline/remoto si no cabe en el presupuesto.
+
+El conjunto LoRA de unas 100 imágenes queda como experimento posterior, no como una cantidad que garantice buen resultado. Cada imagen necesita procedencia y autorización específica para entrenamiento; permiso para usar un dibujo en un juego o editar una capa no significa permiso para incluirlo en un conjunto de entrenamiento. Por ejemplo, la página de *Thin Girl* declara que sus recursos no están autorizados para datasets de IA, así que no se usarán para entrenar nuestro LoRA sin permiso independiente explícito.
+
+La prioridad inmediata sigue siendo **conseguir, inspeccionar y probar piezas gráficas compatibles**, no acumular archivos ni subir arte ajeno al repositorio. El informe [de descubrimiento de recursos y arquitectura ligera](docs/RESOURCE_DISCOVERY_AND_LOW_MEMORY_ROADMAP.md) registra los mejores candidatos, los riesgos de licencia, los límites de memoria y las pruebas de entrada antes de considerar una pieza integrada.
+
 ## Enfoque por etapas
 
 1. **Investigar y verificar recursos:** buscar paquetes, repositorios, herramientas y aplicaciones que ofrezcan piezas separadas.

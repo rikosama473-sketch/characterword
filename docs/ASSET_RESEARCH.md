@@ -263,3 +263,16 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 La prioridad visual es **FBFFFM001 y HFFF001** (ZIP base inspeccionados). La próxima prueba de origen debe ser **Dorathy** por la variedad de prendas y posiciones de brazos; Pung Lone Wolf es una alternativa de pago. Los candidatos chibi y andróginos permanecen pendientes de revisión de licencia y compatibilidad.
 
 Los archivos descargables de terceros no se incluyen en el repositorio. Los ZIP base de FBFFFM001/HFFF001 ya se inspeccionaron; los archivos de Thin Girl se descargaron pero su contenido y dimensiones aún necesitan verificación. Los demás nuevos candidatos siguen pendientes de archivo real/licencia/compatibilidad según indique cada entrada.
+
+
+## Addendum — fuentes nuevas verificadas el 2026-10-18
+
+### Prioridad de recursos y herramientas
+
+- **Thin Girl (ani mosity):** https://queenofzan.itch.io/modular-character-sprite-thin-girl. La ficha describe PNG por elemento y PSD, lienzos alineados y licencia CC BY 4.0. La misma página dice explícitamente que no autoriza el uso de esos recursos en conjuntos de datos de IA; para el proyecto, no usarla en el dataset LoRA sin permiso separado. Aun falta inspeccionar localmente el ZIP y probar el ciclo importar/guardar/volver a abrir.
+- **PSRC Human Mk2 and Ultimate Devkit:** https://opengameart.org/content/psrc-human-mk2-and-ultimate-devkit. La ficha OpenGameArt anuncia CC0 y piezas modulares de torso, extremidades, cabeza, manos, pies, rasgos y ropa. No es visualmente anime; candidato para validar la arquitectura de piezas y el sistema de pivotes, pendiente de revisar el ZIP.
+- **See-through:** https://github.com/shitagaki-lab/see-through. Herramienta de investigación de descomposición de ilustraciones anime a hasta 23 capas semánticas y PSD. El código figura como Apache-2.0, pero los pesos, datasets, dependencias y obras de entrada deben verificarse aparte. El README oficial informa aproximadamente 12–16 GB de VRAM en el pipeline por defecto y alrededor de 8 GB de VRAM con cuantización NF4 a 1280 px; su entrenamiento utilizó 8 GPU NVIDIA H200. No es parte del runtime de 2 GB; solo se evaluaría como proceso externo opcional.
+- **Stretchy Studio:** https://github.com/MangoLion/stretchystudio. Código MIT para rigging, pivotes, deformación de malla y animación de personajes por capas. No incluye por sí mismo un catálogo autorizado de ilustraciones; es una referencia de animación futura.
+- **Anime Avatar:** https://github.com/konard/anime-avatar. El repositorio anuncia un avatar anime SVG procedural con componentes separados para rostro, ojos, cabello, cuerpo, piernas y fondo; el código muestra una licencia Unlicense. Es una referencia para estudiar generación vectorial con bajo coste, no un paquete de sprites. La licencia de código no debe extenderse por suposición a imágenes de referencia, dependencias ni modelos externos.
+
+Para más detalle sobre los candidatos anteriores, las etapas de verificación y el diseño de bajo consumo, consultar [RESOURCE_DISCOVERY_AND_LOW_MEMORY_ROADMAP.md](RESOURCE_DISCOVERY_AND_LOW_MEMORY_ROADMAP.md).
