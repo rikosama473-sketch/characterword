@@ -1,78 +1,70 @@
-# Recursos gráficos de waifus, femboys andróginos y chibi en CharacterWord
+# Recursos gráficos de waifus, femboys andróginos y chibi para CharacterWord
 
-**Revisión de fuentes:** 18 de octubre de 2026  
-**Proyecto:** CharacterWord, independiente de WordWaifu  
-**Estado:** los ZIP base de FBFFFM001 y HFFF001 fueron descargados e inspeccionados anteriormente. La página oficial de HMLF001 fue revisada y se agregó un perfil de importación para su lienzo anunciado de 600 × 800; sus ZIP aún no se han extraído e inspeccionado localmente. CharacterWord no incorpora ni redistribuye los ZIP de terceros.
+**Proyecto:** CharacterWord; es independiente de WordWaifu.  
+**Revisión:** 18 de octubre de 2026.  
+**Enfoque:** personajes femeninos/waifus, presentación femboy o andrógina y estética chibi/loli no sexual. Se excluyen perfiles de modelos masculinos convencionales.
 
-## Resultado importante
+## Estado de verificación
 
-Ambos paquetes son recursos anime útiles para personalizar un sprite completo, pero **no contienen cabeza, torso y brazos recortados como piezas anatómicas independientes**. Sus imágenes de cuerpo base y los detalles faciales se superponen dentro de un lienzo transparente de dimensiones fijas. Por eso, CharacterWord ahora ofrece un modo de “Base anime / waifu” que conserva la alineación de las capas y lo mantiene separado del modo provisional articulable.
+Los ZIP base de FBFFFM001 y HFFF001 se descargaron e inspeccionaron localmente. Los perfiles de Dorathy y Pung Lone Wolf están configurados con las dimensiones publicadas, pero sus PSD/KRA todavía no se han exportado ni probado de extremo a extremo. Ningún archivo gráfico de terceros está incluido en el repositorio.
+
+Los ZIP base de FBFFFM001 y HFFF001 son imágenes de personaje completo con capas de expresión, no esqueletos con cabeza, torso y brazos recortados por separado. El editor no abre PSD/KRA directamente. Es necesario exportar las capas seleccionadas desde Krita, GIMP o Photoshop como PNG transparente y conservar el lienzo original.
 
 ## 1. FBFFFM001 — Customizable Full-body Girl
 
-- Página original: https://linxuelian.itch.io/customchar-fbfffm001-fullbodyfemale
-- Autora: LinXueLian
-- Licencia indicada en la ficha pública: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
-- Atribución solicitada por la autora: enlazar la página del paquete o linxuelian.itch.io.
-- ZIP inspeccionado: `FBFFFM001_000_BASE_BODY.zip`, 582,585 bytes (aprox. 568 kB).
-- Estructura: 30 entradas ZIP: 27 PNG y `INFO.txt`, organizados en tres carpetas numeradas.
-- Formato visual: PNG RGBA con transparencia, todas las imágenes revisadas de 800 × 1200 píxeles.
-- Contenido comprobado:
-  - `00_BODYBASE`: 9 variaciones — Chocolate, Light y Mocha, cada una en versión plain, Blush y Darken.
-  - `01_MOUTHS`: 5 variantes de boca — Blah, Laugh, Smile, Talk y Upturned.
-  - `03_BROWS`: 12 variantes de cejas — Angry, Normal y Sad, en Black, Blonde, Brown y Grey.
-- El `INFO.txt` confirma el orden de capas: el número de carpeta menor queda debajo de los números mayores.
-- **Nota de conteo:** el resumen de inspección reportó 27 PNG en total, pero los recuentos identificados por carpeta suman 26 (9 + 5 + 12). También hay una diferencia de una entrada al sumar el total ZIP reportado. No asigno el PNG restante a ninguna categoría sin revisar su ruta exacta. El importador ZIP en CharacterWord enumera los archivos reales al cargar el archivo.
-- **No hay recortes independientes de cabeza, torso, brazo superior o antebrazo** en este ZIP. Es una base de cuerpo completo y expresiones superpuestas.
-- El conjunto que aparece en la página también ofrece paquetes separados de cabello, ojos, prendas y accesorios. Cada paquete adicional debe descargarse de la página original y validarse con el importador de dimensiones antes de usarlo.
+- Fuente: https://linxuelian.itch.io/customchar-fbfffm001-fullbodyfemale
+- Autora: LinXueLian.
+- Licencia indicada: CC BY-SA 4.0. La autora pide enlazar la página del paquete o su perfil.
+- ZIP base inspeccionado: FBFFFM001_000_BASE_BODY.zip, 582,585 bytes (aprox. 568 kB), PNG RGBA transparentes de 800 × 1200.
+- Contenido verificado: 00_BODYBASE (9 variantes de cuerpo/efecto), 01_MOUTHS (5 bocas), 03_BROWS (12 cejas) e INFO.txt.
+- Nota de conteo: el informe archivado indica 27 PNG, mientras que los recuentos de carpeta descritos suman 26. No se inventa una categoría para el archivo restante; el importador enumera las entradas reales.
+- ZIP adicionales listados en la página: FBFFFM001_001_YuelanMaiden.zip (8.4 MB), 002_TaiyakinaHair.zip (808 kB), 003_ChunkyChoker.zip (69 kB), 004_MaryJaneSlippers.zip (104 kB), 005_ModernaSet.zip (3.7 MB), 006_TaiyakinaEyes.zip (55 kB), 007_Baeseek_LowrisePants.zip (1.9 MB), 008_Adora_Hair.zip (594 kB), 009_Megarin_Eyes.zip (307 kB), 010_Frankenstein_Monster_Skintone.zip (210 kB) y 011_Back_Hairbow.zip (267 kB).
+- Los ZIP adicionales están anunciados para la misma base, pero todavía no se inspeccionaron uno por uno. Cada PNG que se use debe conservar el lienzo de 800 × 1200.
 
-## 2. HFFF001 — Customizable Oujou Portraits / Oujousama
+## 2. HFFF001 — Oujousama
 
-- Página original: https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama
-- Autora: LinXueLian
-- Licencia indicada en la ficha pública: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
-- Atribución solicitada por la autora: enlazar la página del paquete o linxuelian.itch.io.
-- ZIP inspeccionado: `HFFF001_OJOU_00_BASE_ESSENTIALS.zip`, 349,370 bytes (aprox. 341 kB).
-- Estructura: 19 entradas ZIP: 16 PNG y `INFO.txt`, organizados en tres carpetas numeradas.
-- Formato visual: PNG RGBA con transparencia, todas las imágenes revisadas de 537 × 700 píxeles.
-- Contenido comprobado:
-  - `00_BASE_BODY`: 5 variaciones de cuerpo — Damphir, Olive, Peachy, Sunny y Wheat.
-  - `01_FACE_AND_MAKEUP`: 2 capas — Blush Deep Pink y Sweatdrop.
-  - `02_MOUTH`: 8 capas — variantes Closed, Laugh, Smile y Speaking, incluidas variantes Redlipped.
-- El `INFO.txt` confirma el apilado por carpetas numeradas, con número menor debajo.
-- **Nota de conteo:** el resumen de inspección reportó 16 PNG en total, pero los recuentos identificados por carpeta suman 15 (5 + 2 + 8). También hay una diferencia de una entrada al sumar el total ZIP reportado. No asigno el PNG restante a ninguna categoría sin revisar su ruta exacta. El importador ZIP en CharacterWord enumera los archivos reales al cargar el archivo.
-- **No hay recortes independientes de cabeza, torso o brazos** en este ZIP. El contenido es una base completa con overlays faciales.
-- La página ofrece paquetes adicionales de cabello, ropa y accesorios para esa misma base; deben mantenerse separados de FBFFFM001.
+- Fuente: https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama
+- Autora: LinXueLian.
+- La ficha pública actual indica CC BY 4.0 (no CC BY-SA 4.0). Enlace de licencia: https://creativecommons.org/licenses/by/4.0/. La autora solicita enlace a la fuente.
+- ZIP base inspeccionado: HFFF001_OJOU_00_BASE_ESSENTIALS.zip, 349,370 bytes (aprox. 341 kB), PNG RGBA transparentes de 537 × 700.
+- Contenido verificado: 00_BASE_BODY (5 variantes), 01_FACE_AND_MAKEUP (2 capas), 02_MOUTH (8 bocas) e INFO.txt.
+- Nota de conteo: el informe archivado indica 16 PNG, pero los recuentos de carpeta descritos suman 15. El importador enumera los archivos reales.
+- ZIP adicionales listados: HFFF001_OJOU_01_DASHINGTON.zip (4.1 MB), 02_DARLINGTON.zip (3.1 MB), 03_Melina_Hair.zip (1.1 MB), 04_Crisscross_Blouse.zip (979 kB) y 05_ButterflyHairclip.zip (665 kB).
+- La autora dice que los paquetes diseñados para esta base pueden mezclarse si encajan visualmente. Los ZIP adicionales aún no se inspeccionaron por separado; usa solo PNG compatibles con 537 × 700.
 
-## 3. HMLF001 — Customizable Anime Boy (busto masculino)
+## 3. Dorathy — Customizable Visual Novel Girl Sprite (Basics Pack)
 
-- Página original: https://linxuelian.itch.io/customchar-hmlf001-malebust
-- Autoría: LinXueLian.
-- Licencia indicada en la ficha pública: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0); la autora pide enlazar la página del recurso o su perfil.
-- Dimensiones anunciadas por la página: 600 × 800 px. Esto se registró desde la descripción publicada, no mediante inspección local de todos los ZIP.
-- La página anuncia sprites PNG transparentes en carpetas numeradas; el número de carpeta menor queda debajo del mayor. Indica que algunas piezas de cabello, ropa, ojos y accesorios de los distintos paquetes HMLF001 se pueden combinar cuando encajan visualmente.
-- ZIPs que aparecen en la página: `HMLF001_BASE_BODY.zip` (358 kB), `HMLF001_WARLOCK.zip` (3.9 MB), `HMLF001_SHOPKEEPER.zip` (2.3 MB), `HMLF001_HeavyScarf.zip` (1.7 MB), `HMLF001_Kawamuru_Hair.zip` (3.8 MB) y `HMLF001_VAMPIRE_CONFIG.zip` (202 kB). La bitácora de la página describe tres tonos de piel y nueve archivos para la adición de base; no se cuenta aquí como una inspección independiente del ZIP.
-- **Alcance visual:** es una base masculina vertical de busto/retrato; no se anuncia ni se ha comprobado que entregue cabeza, torso, brazos y antebrazos como piezas anatómicas independientes. No se debe describir como un cuerpo completo articulado.
-- **Estado técnico:** CharacterWord ahora ofrece un perfil HMLF001 separado y exige 600 × 800 píxeles para sus imágenes. Esto es una configuración por metadatos públicos; todavía falta importar en una sesión real el ZIP base, añadir una capa de un segundo ZIP, exportar y volver a abrir un proyecto para comprobar el flujo completo.
-- **No mezclar capas HMLF001 con FBFFFM001 (800 × 1200) ni HFFF001 (537 × 700)**. Cada base tiene su propio lienzo y proporciones.
+- Fuente: https://dorathy.itch.io/customizable-visual-novel-girl-sprite-basics-pack
+- Precio publicado: USD 3 o más; KRA de Krita y PSD; lienzo anunciado 820 × 1080.
+- La página lista 13 peinados, 7 variantes de flequillo, ojos/expresiones, varias prendas y 5 posiciones de brazo con mangas correspondientes.
+- Términos propios del autor, no una licencia Creative Commons identificada: uso personal/comercial y modificaciones permitidos, pero no re-subir ni revender sprites originales o modificados; se exige crédito.
+- Perfil configurado a 820 × 1080. Las capas reales todavía deben exportarse a PNG y probarse. No copies el PSD/KRA al repositorio ni compartas proyectos JSON con sus píxeles.
 
-## Uso en CharacterWord
+## 4. Pung Lone Wolf — Layered Female Character Sprite (PSD)
+
+- Fuente: https://punglonewolf.itch.io/girl-sprite-psd-1
+- Precio publicado: USD 7.99 o más; PSD por capas de 1504 × 2409.
+- La página lista cuerpo base, cabello, 3 variantes de ojos, 7 formas de boca, rubor y 4 conjuntos.
+- Términos propios, no una licencia Creative Commons identificada: permite uso comercial y modificación, pero prohíbe redistribuir o revender archivos fuente; crédito opcional.
+- Perfil configurado a 1504 × 2409, pendiente de exportación y prueba con capas reales. Mantén privados los JSON que incluyan sus píxeles.
+
+## Otras fuentes descubiertas (pendientes)
+
+- **blackbunney — FREE Anime Girl Character Sprite:** https://blackbunney.itch.io/free-anime-girl-character-sprite. PSD 1680 × 1050, 5 peinados, 6 conjuntos, 10 expresiones y pupilas separadas. Uso personal/comercial permitido, pero no se puede revender el sprite por sí solo. Lienzo horizontal y compatibilidad pendientes.
+- **TinyClownGames — Customizable Female VN Sprite:** https://tinyclowngames.itch.io/magnoliamoths-customizable-female-vn-sprites. PSD 1750 × 1750, 8 estilos/colores de cabello, 8 conjuntos, 9 bocas y 7 expresiones oculares. Uso personal/comercial, no revender sprites ni usarlos en NFT.
+- **monapdx — Modular Pixel Character Creator (Female Sprites):** https://monapdx.itch.io/modular-pixel-character-creator-female-sprites. ZIP con PNG femeninos alineados. La página no declara licencia ni dimensiones claramente; revisar README y medir archivos antes de reutilizarlo.
+- **Chibi Pixel Bundle — Modular Female Character Assets:** https://constantreject13.itch.io/chibi-pixel-bundle-modular-female-character-assets. USD 2.50 o más; PNG de 32 × 48, 80 cabellos, 54 ojos, 40 bocas y 4 tonos. La licencia se encuentra en el README del ZIP y aún no está comprobada. Candidato para estilo chibi/loli no sexual.
+- **Kuniko — femboy VN sprite:** https://demonr-kun.itch.io/5-kuniko-asset-pack. USD 15 o más; sprite completo de 500 × 720 y ocho expresiones. Los términos permiten uso tras comprarlo, pero solo dejan modificar las expresiones faciales; no rediseñar cuerpo/ropa y dar crédito. No es un kit libre de partes.
+- **Char_0084 Androgynous — studentspub:** https://studentspub.itch.io/anime-character-asset-char-0084. 22 imágenes, 11 poses y 9 emociones; descrito como andrógino y de proporciones adultas. Uso/edición en proyectos permitido, pero no redistribuir originales o cambios mínimos como assets sueltos; crédito obligatorio y gráficos asistidos por IA declarados. Útil como referencia de poses, no como kit modular.
+
+## Uso
 
 1. Abre https://rikosama473-sketch.github.io/characterword/.
-2. En **Base anime / waifu**, selecciona FBFFFM001, HFFF001 o HMLF001 según el ZIP que vas a importar. No mezcles archivos entre conjuntos.
-3. Descarga el ZIP base desde la página original y pulsa **Importar ZIP original**; el editor lo abre localmente sin que tengas que extraerlo. El lector ZIP está incluido en CharacterWord y no sube nada al servidor.
-4. En la biblioteca, elige **una sola** variante de cuerpo base:
-   - FBFFFM001: una opción de `00_BODYBASE`, 800 × 1200.
-   - HFFF001: una opción de `00_BASE_BODY`, 537 × 700.
-5. En la misma biblioteca, pulsa **Añadir capa** en una boca, ceja o capa facial que quieras. En HMLF001, después de seleccionar la base, puedes importar otros ZIP de HMLF001 uno por uno y añadir las capas que coincidan con 600 × 800. En FBFFFM001/HFFF001, usa solo archivos de la misma base y dimensiones.
-5. Las capas importadas aparecen en la lista: puedes ocultarlas, reordenarlas, eliminarlas y conservar el proyecto JSON. La herramienta rechaza imágenes con otras dimensiones para evitar desalinearlas.
-6. Para usar cabello, ropa u otros paquetes adicionales que se descarguen de la página original, aplica la misma regla: sólo si sus PNG mantienen el lienzo y las coordenadas de la base seleccionada.
+2. Selecciona el perfil que coincide con tu fuente: FBFFFM001 (800 × 1200), HFFF001 (537 × 700), Dorathy (820 × 1080) o Pung Lone Wolf (1504 × 2409).
+3. En FBFFFM001/HFFF001, importa el ZIP original. En Dorathy/Pung, exporta primero las capas a PNG transparente conservando el lienzo y añade después una base y overlays.
+4. Usa un único cuerpo base y capas de la misma base. No combines perfiles de distintas dimensiones.
+5. Las imágenes se leen localmente y no se incluyen en el repositorio. El JSON de proyecto incluye los píxeles elegidos en base64; respeta los términos y no compartas proyectos si eso redistribuye recursos contra las condiciones de su autor.
 
-Las imágenes extraídas del ZIP se mantienen en la memoria del navegador mientras exploras la biblioteca; solo el cuerpo base y las capas que eliges pasan al proyecto local. El ZIP original no se sube a un servidor ni se copia al repositorio. El proyecto guardado conserva la composición y una nota de atribución CC BY-SA 4.0.
+## Limitación de articulación
 
-## Modos separados
-
-- **Muñeca provisional por piezas:** permite mover el dibujo de muestra y experimentar con cabeza, torso, brazos y antebrazos por separado.
-- **Base anime / waifu:** combina PNG de lienzo completo o de busto con overlays del mismo modelo. FBFFFM001, HFFF001 y HMLF001 conservan sus capas de apariencia, pero no habilitan movimiento anatómico individual si la fuente no entrega piezas recortadas.
-
-Para conseguir el siguiente nivel de articulación se necesitará un paquete de arte que proporcione extremidades separadas, o un flujo de segmentación/corte local de una ilustración cuya licencia permita realizar esas modificaciones. La segmentación automática no puede considerarse perfecta sin inspección manual.
+Componer capas permite variar apariencia, pero no convierte automáticamente un sprite completo en muñeco articulado. Para rotar hombros, codos o muñecas hacen falta partes anatómicas separadas con pivotes y uniones compatibles, confirmadas en la fuente o preparadas localmente cuando la licencia lo permita.
