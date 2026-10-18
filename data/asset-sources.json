@@ -19,7 +19,17 @@
     "runtimeMemoryTargetMB": 2048,
     "runtimeMemoryTargetNote": "Target the editor/renderer for a low-memory runtime of about 2 GB system RAM. Model training and optional external inference are separate and must not be counted as fitting this budget until benchmarked.",
     "aiTrainingRequiresSeparatePermissionAudit": true,
-    "distinguishAssetReuseFromAiTraining": true
+    "distinguishAssetReuseFromAiTraining": true,
+    "ownModelStrategy": "train-from-random-initialization",
+    "allowPretrainedImageGenerationCheckpoints": false,
+    "allowLoraAsStandaloneGenerator": false,
+    "allowDmd2OrTeacherDistillationAsCoreStrategy": false,
+    "initialTrainingImageTarget": 100,
+    "modelTrainingNote": "The 100 images are a starting dataset for a standalone small model trained from random initialization, not a LoRA. Do not base the project's generator on Haruka v2, SDXL, Stable Diffusion, DMD2 distillation, or another pretrained image-generation checkpoint. Evaluate a small conditional GAN and/or convolutional VAE at low resolution. Training may need more memory/time than inference and must be benchmarked separately; 100 images are only a feasibility prototype and may overfit.",
+    "initialOutputResolution": "64x96; evaluate up to 128x192 only after memory and quality benchmarks",
+    "outputAlpha": true,
+    "modelRuntimeBudgetMB": 2048,
+    "independentVariationRequiresLabeledParts": true
   },
   "sources": [
     {
