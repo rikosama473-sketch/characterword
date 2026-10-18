@@ -22,6 +22,7 @@ Ambos paquetes son recursos anime útiles para personalizar un sprite completo, 
   - `01_MOUTHS`: 5 variantes de boca — Blah, Laugh, Smile, Talk y Upturned.
   - `03_BROWS`: 12 variantes de cejas — Angry, Normal y Sad, en Black, Blonde, Brown y Grey.
 - El `INFO.txt` confirma el orden de capas: el número de carpeta menor queda debajo de los números mayores.
+- **Nota de conteo:** el resumen de inspección reportó 27 PNG en total, pero los recuentos identificados por carpeta suman 26 (9 + 5 + 12). También hay una diferencia de una entrada al sumar el total ZIP reportado. No asigno el PNG restante a ninguna categoría sin revisar su ruta exacta. El importador ZIP en CharacterWord enumera los archivos reales al cargar el archivo.
 - **No hay recortes independientes de cabeza, torso, brazo superior o antebrazo** en este ZIP. Es una base de cuerpo completo y expresiones superpuestas.
 - El conjunto que aparece en la página también ofrece paquetes separados de cabello, ojos, prendas y accesorios. Cada paquete adicional debe descargarse de la página original y validarse con el importador de dimensiones antes de usarlo.
 
@@ -39,6 +40,7 @@ Ambos paquetes son recursos anime útiles para personalizar un sprite completo, 
   - `01_FACE_AND_MAKEUP`: 2 capas — Blush Deep Pink y Sweatdrop.
   - `02_MOUTH`: 8 capas — variantes Closed, Laugh, Smile y Speaking, incluidas variantes Redlipped.
 - El `INFO.txt` confirma el apilado por carpetas numeradas, con número menor debajo.
+- **Nota de conteo:** el resumen de inspección reportó 16 PNG en total, pero los recuentos identificados por carpeta suman 15 (5 + 2 + 8). También hay una diferencia de una entrada al sumar el total ZIP reportado. No asigno el PNG restante a ninguna categoría sin revisar su ruta exacta. El importador ZIP en CharacterWord enumera los archivos reales al cargar el archivo.
 - **No hay recortes independientes de cabeza, torso o brazos** en este ZIP. El contenido es una base completa con overlays faciales.
 - La página ofrece paquetes adicionales de cabello, ropa y accesorios para esa misma base; deben mantenerse separados de FBFFFM001.
 
