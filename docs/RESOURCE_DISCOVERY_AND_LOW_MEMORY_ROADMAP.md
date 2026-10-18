@@ -96,3 +96,8 @@ No usar Thin Girl para LoRA sin permiso independiente porque su página dice exp
 ## Criterio de éxito inmediato
 
 No es “tener cientos de enlaces”, sino demostrar una primera combinación visual útil con piezas separadas y términos compatibles. La próxima prueba más valiosa es inspeccionar localmente **ThinGirlSprite.zip** y **PSDFiles.zip**; si no se pueden acceder en el entorno de trabajo, pedir que se adjunten antes de afirmar que el perfil fue probado. Después, probar un kit CC0 modular (PSRC/Kenney) para aprender de pivotes y extremidades sin comprometer el estilo anime final.
+
+
+## Aprender de proyectos ya implementados
+
+Revisar [LEARN_FROM_COMPLETED_GENERATORS.md](LEARN_FROM_COMPLETED_GENERATORS.md), que compara generadores de sprites, modelos anime de baja resolución, ejemplos de entrenamiento desde cero, problemas de sobreajuste y técnicas relevantes. Las referencias no autorizan reutilizar sus pesos, código o ilustraciones.
