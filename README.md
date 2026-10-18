@@ -18,7 +18,7 @@ El objetivo a largo plazo es entrenar **un generador propio desde inicializació
 
 La prioridad inmediata sigue siendo **conseguir, inspeccionar y probar piezas gráficas compatibles**. Cada activo y cada imagen de entrenamiento deben tener procedencia y autorización separada. Descargar un recurso gratis o poder modificar su PSD no lo autoriza automáticamente para entrenar IA. Por ejemplo, Thin Girl queda excluido del dataset porque su autora declara que no autoriza usarlo en conjuntos de datos de IA generativa, a menos que exista permiso independiente explícito.
 
-El informe [de descubrimiento de recursos y arquitectura ligera](docs/RESOURCE_DISCOVERY_AND_LOW_MEMORY_ROADMAP.md) y la [especificación del modelo propio](docs/OWN_MODEL_FROM_SCRATCH.md) describen fuentes, límites de memoria, criterios de licencia y pruebas antes de considerar una pieza o un modelo como listo.
+El informe [de descubrimiento de recursos y arquitectura ligera](docs/RESOURCE_DISCOVERY_AND_LOW_MEMORY_ROADMAP.md) y la [especificación del modelo propio](docs/OWN_MODEL_FROM_SCRATCH.md) describen fuentes, límites de memoria, criterios de licencia y pruebas antes de considerar una pieza o un modelo como listo. Consulta también [lecciones de generadores implementados por otros autores](docs/LEARN_FROM_COMPLETED_GENERATORS.md) antes de elegir la arquitectura.
 
 ## Enfoque por etapas
 
