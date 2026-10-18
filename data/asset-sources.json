@@ -967,6 +967,149 @@
         "agePresentation": "young adult / adult proportions",
         "aiAssisted": true
       }
+    },
+    {
+      "id": "pixelspriteshop-modular-female-64",
+      "name": "Modular Female Character Creator (64px)",
+      "kind": "modular-art-pack",
+      "sourceUrl": "https://pixelspriteshop.itch.io/64-pixel-female-character-creator",
+      "author": "Pixel Sprite Shop",
+      "style": [
+        "female-character",
+        "pixel-art",
+        "modular",
+        "animation-ready"
+      ],
+      "formats": [
+        "PNG",
+        "KRA"
+      ],
+      "sourcePageDimensions": "64x64 template (actual layer artboards pending local inspection)",
+      "layering": "Female modular 64-pixel system: body types, heads, facial details, hairstyles, clothing, accessories, arm/hand/leg poses and 4-direction animations.",
+      "license": "custom-author-terms",
+      "licenseUrl": "https://pixelspriteshop.itch.io/64-pixel-female-character-creator",
+      "sourceLicenseLabel": "Commercial/non-commercial project use and modification permitted; no re-upload, redistribution, resale or standalone repackaging of the original assets.",
+      "price": "USD 3+",
+      "availability": "paid-download",
+      "creditRequired": "optional",
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "priority-female-modular-candidate-license-reviewed-archive-inspection-pending",
+      "notes": "Page lists 145 eyes, 100 eyebrows, 147 mouths, 65 head shapes, 126 hairstyles, 3 body types, 14 arm positions, 14 hand pairs, 7 leg stances, 8 tops, 8 bottoms, 10 footwear options and walk/breathing/blinking animations. The pack has an optional male-head preview; CharacterWord must omit that preview and expose only female assets. Actual KRA/PNG files, exact layer dimensions and pivots have not been inspected.",
+      "contentCounts": {
+        "eyes": 145,
+        "eyebrows": 100,
+        "mouths": 147,
+        "headShapes": 65,
+        "hairstyles": 126,
+        "bodyTypes": 3,
+        "armPositions": 14,
+        "handPairs": 14,
+        "legStances": 7,
+        "tops": 8,
+        "bottoms": 8,
+        "footwear": 10,
+        "animations": [
+          "walk",
+          "breathing",
+          "blinking"
+        ]
+      }
+    },
+    {
+      "id": "lofi-kier-swappable-chibi-portraits",
+      "name": "Swappable Chibi Portraits (64x64 - Layers)",
+      "kind": "modular-art-pack",
+      "sourceUrl": "https://lofi-kier.itch.io/swappable-chibi-portraits-64x64-layers",
+      "author": "lofi_kier",
+      "style": [
+        "chibi",
+        "anime",
+        "pixel-art",
+        "portrait",
+        "cute"
+      ],
+      "formats": [
+        "ZIP",
+        "layered assets"
+      ],
+      "sourcePageDimensions": "64x64 advertised; verify PNG artboards",
+      "layering": "Separate slots for extras, blush, eyebrows, eyes, mouth, hair, clothes, head, torso and background; 13 presets and more than 50 layers.",
+      "license": "custom-author-terms",
+      "licenseUrl": "https://lofi-kier.itch.io/swappable-chibi-portraits-64x64-layers",
+      "sourceLicenseLabel": "Commercial/non-commercial use and modification allowed; redistribution/resale (including NFTs) prohibited; attribution appreciated but not required.",
+      "price": "USD 10+",
+      "availability": "paid-download",
+      "creditRequired": "optional",
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "priority-chibi-portrait-candidate-ZIP-inspection-pending",
+      "notes": "Strong visual match for cute chibi portraits; page lists 13 presets and 50+ layers. Downloaded ZIP has not been inspected, and no profile should be enabled until canvas sizes and female/androgynous variants are confirmed.",
+      "contentCounts": {
+        "presets": 13,
+        "layers": "50+",
+        "slots": [
+          "extra",
+          "blush",
+          "eyebrow",
+          "eyes",
+          "mouth",
+          "hair",
+          "clothes",
+          "head",
+          "torso",
+          "background"
+        ]
+      }
+    },
+    {
+      "id": "thespriteshop-female-chibi-base-hair-eyes",
+      "name": "Female Chibi Character — Base, Hair, & Eyes (7 Skin Tones)",
+      "kind": "chibi-art-pack",
+      "sourceUrl": "https://thespriteshop.itch.io/female-chibi-character-base-hair-eyes",
+      "author": "TheSpriteShop",
+      "style": [
+        "female-character",
+        "chibi",
+        "pixel-art",
+        "top-down"
+      ],
+      "formats": [
+        "ZIP",
+        "PNG"
+      ],
+      "license": "pending-terms-review",
+      "licenseUrl": "https://thespriteshop.itch.io/female-chibi-character-base-hair-eyes",
+      "sourceLicenseLabel": "The public page text reviewed does not disclose licence terms; inspect files/terms before use.",
+      "price": "USD 6.99+",
+      "availability": "paid-download",
+      "creditRequired": "unknown",
+      "shareAlike": "unknown",
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "female-chibi-candidate-dimensions-and-license-pending",
+      "layering": "Advertises a base plus multiple hair styles/colors, eye styles/colors and eye makeup, with seven skin tones.",
+      "notes": "Page lists Female.zip (276 kB). Canvas dimensions and licence terms were not visible in the text reviewed, so do not add a selectable profile until the ZIP is inspected and terms are verified.",
+      "contentCounts": {
+        "skinTones": 7,
+        "hairStyles": [
+          "wavy",
+          "hime",
+          "ponytail",
+          "rebel",
+          "bob"
+        ],
+        "eyeStyles": [
+          "hooded",
+          "bright",
+          "mystic",
+          "almond"
+        ],
+        "downloadZip": "Female.zip",
+        "approximateCompressedSize": "276 kB"
+      }
     }
   ]
 }
