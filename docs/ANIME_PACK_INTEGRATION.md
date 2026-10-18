@@ -1,4 +1,4 @@
-# Integración de los paquetes anime FBFFFM001, HFFF001 y HMLF001
+# Recursos gráficos de waifus, femboys andróginos y chibi en CharacterWord
 
 **Revisión de fuentes:** 18 de octubre de 2026  
 **Proyecto:** CharacterWord, independiente de WordWaifu  
