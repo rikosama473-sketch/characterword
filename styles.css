@@ -91,6 +91,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .character-part:focus { outline: none; }
 .character-part.is-hidden { display: none; }
 #character-svg image { pointer-events: none; }
+#character-svg image.imported-art { pointer-events: visiblePainted; }
 .stage-bottomline { color: #9e95b2; font-size: 9px; flex-wrap: wrap; }
 .drag-hint { display: inline-flex; align-items: center; gap: 6px; }
 .drag-symbol { color: #cbb0ee; font-size: 15px; }
