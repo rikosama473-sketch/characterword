@@ -39,7 +39,14 @@
       "notes": "Closest visual fit to anime full-body layer customization. Layered facial, skin, hair, clothing and accessories do not prove independent movable arm/leg joints.",
       "availability": "free-download-as-presented-on-source-page",
       "layerFolderSystem": "numbered folders; lower number is lower draw order",
-      "pageNotes": "Page says it contains 124 files in current listing; separate ZIPs include base body, hair, eyes, clothing and accessories. Exact independent arm/forearm cutouts remain unverified."
+      "pageNotes": "Page says it contains 124 files in current listing; separate ZIPs include base body, hair, eyes, clothing and accessories. Exact independent arm/forearm cutouts remain unverified.",
+      "pageDownloadTest": {
+        "checkedAt": "2026-10-18",
+        "package": "FBFFFM001_000_BASE_BODY.zip",
+        "size": "568 kB",
+        "outcome": "official button triggered a download confirmation without login or payment",
+        "extractedAndInspectedLocally": false
+      }
     },
     {
       "id": "linxuelian-hfff001-oujousama",
@@ -220,7 +227,18 @@
       "articulatedLimbsVerified": true,
       "testedInCharacterWord": false,
       "status": "purchase-option-review-required",
-      "notes": "The page announces a paid package and personal/light commercial use; do not bundle or redistribute source files until the complete license grants those rights."
+      "notes": "The page explicitly names Head, Torso, Arms, Eyes and Mouth layers and lists six views, ten lip-sync mouth shapes and expressions. Verify whether Arms means independently movable upper/lower arms; paid source files must not be committed to this public repository without explicit redistribution permission.",
+      "price": "USD 3 or more",
+      "sourcePageSaysLayers": [
+        "Head",
+        "Torso",
+        "Arms",
+        "Eyes",
+        "Mouth"
+      ],
+      "viewsListed": 6,
+      "mouthShapesListed": 10,
+      "pageTerms": "personal and limited commercial use announced; verify full terms for source redistribution/app bundling"
     },
     {
       "id": "character-nanka-toka-and-booth-packs",
