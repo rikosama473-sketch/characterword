@@ -16,6 +16,16 @@ La prioridad inicial no es inventar arte desde cero: es localizar recursos dispo
 4. **Construir el editor 2D:** capas intercambiables, orden visual, recoloración cuando sea viable, selección/movimiento, poses y guardado local.
 5. **Ampliar la biblioteca:** incorporar nuevos paquetes solo después de comprobar las licencias y la compatibilidad.
 
+## Prototipo ejecutable
+
+El primer editor está disponible como página estática: abre `index.html` directamente en el navegador o publícala con GitHub Pages.
+
+- Ensambla una muñeca anime provisional con cabeza, torso, brazos superiores y antebrazos separados.
+- Selecciona y arrastra las piezas; ajusta rotación, escala, posición y visibilidad.
+- Importa PNG/WebP transparentes por ranura, prueba paletas y poses, exporta a PNG y guarda/carga proyectos JSON.
+- Los archivos importados permanecen en el navegador. No hay backend ni envío de imágenes a un servidor.
+- El dibujo vectorial incorporado es solo una base de prueba; el catálogo de fuentes registra qué paquetes externos podrían sustituirlo. Aún no es un rig anatómico jerárquico: las piezas se mueven de forma independiente.
+
 ## Investigación actual
 
 - [Catálogo de recursos y licencias](docs/ASSET_RESEARCH.md)
