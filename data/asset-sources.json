@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 1,
+  "project": "CharacterWord",
+  "reviewedAt": "2026-10-18",
+  "purpose": "Track reusable modular 2D character art, tools and implementation references before integration.",
+  "policy": {
+    "assetsBundledByDefault": false,
+    "requireSourceUrl": true,
+    "requirePerAssetLicenseReview": true,
+    "requireAttributionManifestWhenNeeded": true,
+    "neverInferRedistributionPermissionFromFreeDownload": true
+  },
+  "sources": [
+    {
+      "id": "linxuelian-fbfffm001-fullbody-girl",
+      "name": "Custom VN Character: FBFFFM001 Fullbody Girl 1200px",
+      "kind": "art-pack",
+      "sourceUrl": "https://linxuelian.itch.io/customchar-fbfffm001-fullbodyfemale",
+      "author": "LinXueLian",
+      "style": [
+        "anime",
+        "visual-novel",
+        "full-body"
+      ],
+      "formats": [
+        "PNG",
+        "transparent layered files"
+      ],
+      "layering": "separate numbered folders; body/face/eyes/hair/clothing/accessory variants per source description",
+      "license": "CC-BY-SA-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International",
+      "creditRequired": true,
+      "shareAlike": true,
+      "redistributionReviewed": "source declares CC BY-SA 4.0; retain author attribution and license; inspect contents and verify all files before bundling",
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "priority-pilot-candidate",
+      "notes": "Closest visual fit to anime full-body layer customization. Layered facial, skin, hair, clothing and accessories do not prove independent movable arm/leg joints.",
+      "availability": "free-download-as-presented-on-source-page",
+      "layerFolderSystem": "numbered folders; lower number is lower draw order",
+      "pageNotes": "Page says it contains 124 files in current listing; separate ZIPs include base body, hair, eyes, clothing and accessories. Exact independent arm/forearm cutouts remain unverified.",
+      "pageDownloadTest": {
+        "checkedAt": "2026-10-18",
+        "package": "FBFFFM001_000_BASE_BODY.zip",
+        "size": "568 kB",
+        "outcome": "official button triggered a download confirmation without login or payment",
+        "extractedAndInspectedLocally": false
+      }
+    },
+    {
+      "id": "linxuelian-hfff001-oujousama",
+      "name": "Custom VN Character: HFFF001 Oujousama 700px",
+      "kind": "art-pack",
+      "sourceUrl": "https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama",
+      "author": "LinXueLian",
+      "style": [
+        "anime",
+        "visual-novel",
+        "aristocratic"
+      ],
+      "formats": [
+        "transparent PNG",
+        "separate numbered layer folders"
+      ],
+      "layering": "base essentials plus separate clothing/hair/accessory packs",
+      "license": "CC-BY-SA-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0; page is categorized under itch.io's CC 4.0 BY-SA assets)",
+      "creditRequired": true,
+      "shareAlike": true,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "priority-pilot-candidate",
+      "notes": "Layered anime art with shared base across packs; only mix assets where the creator's base and alignment match.",
+      "availability": "free-download-as-presented-on-source-page",
+      "layerFolderSystem": "numbered folders; lower number is lower draw order",
+      "pageNotes": "Separate transparent-PNG ZIPs for base essentials, clothing, hair and accessories. Author notes corresponding packs share the same base and may be combined when they fit."
+    },
+    {
+      "id": "linxuelian-hmlf001-anime-boy",
+      "name": "Custom VN Character: HMLF001 Anime Boy 800px",
+      "kind": "art-pack",
+      "sourceUrl": "https://linxuelian.itch.io/customchar-hmlf001-malebust",
+      "author": "LinXueLian",
+      "style": [
+        "anime",
+        "visual-novel",
+        "male-character"
+      ],
+      "formats": [
+        "PNG",
+        "separate numbered layer folders"
+      ],
+      "layering": "base, expression, mouth, eyes, eyebrows, hair, ears, inner/outer garments, accessories",
+      "license": "CC-BY-SA-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International",
+      "creditRequired": true,
+      "shareAlike": true,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "priority-candidate",
+      "notes": "Confirm bust/full-body extent and keep compatibility within the same base."
+    },
+    {
+      "id": "universal-lpc-generator",
+      "name": "Universal LPC Spritesheet Generator",
+      "kind": "web-tool-and-art-library",
+      "sourceUrl": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/",
+      "repositoryUrl": "https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator",
+      "author": "Liberated Pixel Cup contributors",
+      "style": [
+        "pixel-art",
+        "RPG"
+      ],
+      "formats": [
+        "PNG spritesheets",
+        "split ZIP exports",
+        "CSV/TXT credit exports",
+        "JSON clipboard export"
+      ],
+      "layering": "body, head, hair, headwear, arms, torso, legs, feet, tools and weapons; animated sprite sheets",
+      "license": "mixed-per-asset",
+      "licenseUrl": "https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator",
+      "creditRequired": true,
+      "shareAlike": "depends-on-selected-art",
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "technical-reference",
+      "notes": "The demo identifies individual authors and licenses. Do not treat every sheet as one permissive license; retain/export exact credits for chosen parts."
+    },
+    {
+      "id": "lpc-unity-character-creator",
+      "name": "LPC Unity Character Creator",
+      "kind": "implementation-reference",
+      "sourceUrl": "https://github.com/TCLowe1982/LPC-Unity-Character-Creator",
+      "author": "TCLowe1982 and upstream LPC contributors",
+      "style": [
+        "pixel-art",
+        "rigged-layer-compositing",
+        "animation"
+      ],
+      "formats": [
+        "Unity C#",
+        "PNG layers",
+        "CSV credits"
+      ],
+      "license": "code-MIT-art-mixed",
+      "licenseUrl": "https://github.com/TCLowe1982/LPC-Unity-Character-Creator/blob/main/LICENSE-ART.txt",
+      "creditRequired": true,
+      "shareAlike": "depends-on-selected-art",
+      "articulatedLimbsVerified": true,
+      "testedInCharacterWord": false,
+      "status": "architecture-reference",
+      "notes": "Study layer sets, z-order, animation, palette recolor and selective import; its Unity code is not directly a web component and does not relicense its art."
+    },
+    {
+      "id": "kenney-roguelike-characters",
+      "name": "Kenney Roguelike Characters",
+      "kind": "art-pack",
+      "sourceUrl": "https://kenney.nl/assets/roguelike-characters",
+      "author": "Kenney",
+      "style": [
+        "pixel-art",
+        "RPG"
+      ],
+      "formats": [
+        "PNG"
+      ],
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceLicenseLabel": "Creative Commons CC0",
+      "creditRequired": false,
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "technical-test-candidate",
+      "notes": "Official page lists 450 files and CC0. Download and inspect piece structure and view directions before deciding whether it supports articulation."
+    },
+    {
+      "id": "opengameart-paper-doll-style-sprites",
+      "name": "Paper Doll Style Sprites",
+      "kind": "art-pack",
+      "sourceUrl": "https://opengameart.org/content/paper-doll-style-sprites",
+      "repositoryUrl": "https://github.com/cmotc/lairart",
+      "author": "Andrew Friend",
+      "style": [
+        "pixel-art",
+        "top-down",
+        "RPG",
+        "paper-doll"
+      ],
+      "formats": [
+        "ZIP",
+        "sprite images"
+      ],
+      "layering": "interchangeable clothing overlays; figures, pants, shoes and shirts listed separately",
+      "license": "CC-BY-SA-3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "creditRequired": true,
+      "shareAlike": true,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "paper-doll-concept-candidate",
+      "notes": "Source expressly describes interchangeable overlays. Verify current ZIP files, dimensions and exact attribution before use."
+    },
+    {
+      "id": "xg-animation-student-anime-character",
+      "name": "Student Anime Character, 6 Views, Lip-Sync, Layered",
+      "kind": "paid-art-pack",
+      "sourceUrl": "https://xg-animation.itch.io/student-anime-character",
+      "author": "xG Animation",
+      "style": [
+        "anime",
+        "multiple-view",
+        "character-rigging"
+      ],
+      "formats": [
+        "Adobe Illustrator layered file",
+        "PNG"
+      ],
+      "license": "personal-and-limited-commercial-use-announced",
+      "licenseUrl": "https://xg-animation.itch.io/student-anime-character",
+      "creditRequired": "check-full-terms",
+      "shareAlike": "unknown",
+      "articulatedLimbsVerified": true,
+      "testedInCharacterWord": false,
+      "status": "purchase-option-review-required",
+      "notes": "The page explicitly names Head, Torso, Arms, Eyes and Mouth layers and lists six views, ten lip-sync mouth shapes and expressions. Verify whether Arms means independently movable upper/lower arms; paid source files must not be committed to this public repository without explicit redistribution permission.",
+      "price": "USD 3 or more",
+      "sourcePageSaysLayers": [
+        "Head",
+        "Torso",
+        "Arms",
+        "Eyes",
+        "Mouth"
+      ],
+      "viewsListed": 6,
+      "mouthShapesListed": 10,
+      "pageTerms": "personal and limited commercial use announced; verify full terms for source redistribution/app bundling"
+    },
+    {
+      "id": "character-nanka-toka-and-booth-packs",
+      "name": "Character Nanka Toka Ki and BOOTH component packs",
+      "kind": "external-desktop-tool-and-art-packs",
+      "sourceUrl": "https://booth.pm/ja/items/712287",
+      "author": "#99cafe / seller terms apply",
+      "style": [
+        "anime",
+        "visual-novel",
+        "character-maker"
+      ],
+      "formats": [
+        "application-specific parts",
+        "PSD where supplied"
+      ],
+      "license": "per-pack-terms",
+      "licenseUrl": "https://booth.pm/ja/items/712287",
+      "creditRequired": "check-pack-terms",
+      "shareAlike": "unknown",
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "UX-reference-only-until-permission-verified",
+      "notes": "Useful proof of a Japanese part-based creator workflow, but never assume assets can be redistributed or recombined into another product."
+    },
+    {
+      "id": "opengameart-modular-animated-vector-characters-cc0",
+      "name": "Free CC0 Modular Animated Vector Characters 2D",
+      "kind": "art-pack",
+      "sourceUrl": "https://opengameart.org/content/free-cc0-modular-animated-vector-characters-2d",
+      "author": "rgsdev",
+      "style": [
+        "vector-cartoon",
+        "modular",
+        "animated"
+      ],
+      "formats": [
+        "ZIP",
+        "2D sprite assets"
+      ],
+      "layering": "page states body parts are separated and animated",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceLicenseLabel": "CC0",
+      "creditRequired": false,
+      "shareAlike": false,
+      "hasSeparatedAnimatedBodyParts": true,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "priority-articulation-test-candidate",
+      "notes": "Source lists idle, walk, roll, jump, hit and death animations plus face/hair/eye/mouth variations. White parts are intended for recoloring. Confirm if joints are freely adjustable versus predefined animations; 72.7 MB ZIP."
+    },
+    {
+      "id": "kenney-modular-characters",
+      "name": "Kenney Modular Characters",
+      "kind": "art-pack",
+      "sourceUrl": "https://kenney.nl/assets/modular-characters",
+      "author": "Kenney",
+      "style": [
+        "2D",
+        "modular-character"
+      ],
+      "formats": [
+        "PNG"
+      ],
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceLicenseLabel": "Creative Commons CC0",
+      "creditRequired": false,
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "inspect-download-candidate",
+      "notes": "Official asset page lists 425 files and CC0. Body-part separation and articulation need inspection from the actual pack."
+    },
+    {
+      "id": "pjanaya-2d-character-creator",
+      "name": "2D Character Creator",
+      "kind": "web-framework-reference",
+      "sourceUrl": "https://github.com/pjanaya/2d-character-creator",
+      "demoUrl": "https://pjanaya.github.io/2d-character-creator/",
+      "author": "pjanaya",
+      "style": [
+        "web-editor",
+        "modular-2D"
+      ],
+      "formats": [
+        "TypeScript",
+        "web app"
+      ],
+      "license": "MIT-code",
+      "licenseUrl": "https://github.com/pjanaya/2d-character-creator/blob/master/LICENSE",
+      "creditRequired": true,
+      "shareAlike": false,
+      "hasBundledArtLibrary": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "web-editor-architecture-reference",
+      "notes": "Uses external image parts and config files for colors, part types and combinations. Confirm dependencies and project status before adapting code."
+    },
+    {
+      "id": "uglycygnet-modular-character-prototype",
+      "name": "Modular Character Prototype",
+      "kind": "skeleton-architecture-reference",
+      "sourceUrl": "https://github.com/uglycygnet/character_creator",
+      "author": "uglycygnet",
+      "style": [
+        "cutout-2D",
+        "skeleton",
+        "animation"
+      ],
+      "formats": [
+        "Lua",
+        "LÖVE2D",
+        "transparent PNG parts expected"
+      ],
+      "license": "MIT-code",
+      "licenseUrl": "https://github.com/uglycygnet/character_creator/blob/main/LICENSE",
+      "creditRequired": true,
+      "shareAlike": false,
+      "hasBundledArtLibrary": false,
+      "articulatedLimbsVerified": true,
+      "testedInCharacterWord": false,
+      "status": "joint-and-pivot-reference",
+      "notes": "README documents hierarchical bones/joints and controls for shoulder/elbow rotation. Not a web app and not a finished art library."
+    },
+    {
+      "id": "rhedak-anime-character-creator",
+      "name": "Anime Character Creator",
+      "kind": "procedural-vector-generator-reference",
+      "sourceUrl": "https://github.com/rhedak/anime-character-creator",
+      "author": "rhedak",
+      "style": [
+        "anime-inspired",
+        "SVG",
+        "parametric"
+      ],
+      "formats": [
+        "TypeScript",
+        "Python",
+        "SVG"
+      ],
+      "license": "MIT-code-output-terms-unverified",
+      "licenseUrl": "https://github.com/rhedak/anime-character-creator/blob/main/LICENSE",
+      "creditRequired": "verify",
+      "shareAlike": "unknown-for-generated-output",
+      "hasBundledArtLibrary": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "procedural-alternative-review",
+      "notes": "Generates stylized characters from parametric vector shapes instead of pre-made images. Animation is out of scope; review source/reference and output terms separately."
+    },
+    {
+      "id": "anime-image-cutout-studio",
+      "name": "Anime Image Cutout Studio",
+      "kind": "desktop-preparation-tool",
+      "sourceUrl": "https://github.com/gino07172002/anime-image-cutout-studio",
+      "author": "gino07172002",
+      "style": [
+        "anime",
+        "image-segmentation",
+        "layer-extraction"
+      ],
+      "formats": [
+        "PNG transparent parts",
+        "layered PSD",
+        "skeleton tree"
+      ],
+      "license": "Apache-2.0-code",
+      "licenseUrl": "https://github.com/gino07172002/anime-image-cutout-studio/blob/main/LICENSE",
+      "creditRequired": "retain Apache license/notice for code if reused",
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "local-art-preparation-candidate",
+      "notes": "Use only on artwork the user owns or is licensed to modify. Inspect model weights/dependencies and source-image terms separately."
+    },
+    {
+      "id": "paper-doll-studio",
+      "name": "Paper Doll Studio",
+      "kind": "desktop-preparation-tool",
+      "sourceUrl": "https://github.com/KhurrumAli1997/paper-doll-studio",
+      "author": "KhurrumAli1997",
+      "style": [
+        "anime",
+        "visual-novel",
+        "wardrobe-layers",
+        "local-first"
+      ],
+      "formats": [
+        "PSD import",
+        "PNG import",
+        "RGBA layers",
+        "wardrobe slots",
+        "ZIP export"
+      ],
+      "license": "Apache-2.0-code",
+      "licenseUrl": "https://github.com/KhurrumAli1997/paper-doll-studio/blob/main/LICENSE",
+      "creditRequired": "retain Apache license/notice for code if reused",
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "tool-to-evaluate",
+      "notes": "Uses Python and optional vision/inpainting models; model and dependency licenses are distinct. Could prepare art locally but is too heavy to assume as the core lightweight web app."
+    },
+    {
+      "id": "spriteforge",
+      "name": "SpriteForge",
+      "kind": "browser-rigging-editor-reference",
+      "sourceUrl": "https://github.com/Wilson-Cheng/SpriteForge",
+      "author": "Wilson-Cheng and contributors",
+      "style": [
+        "2D-cutout",
+        "bones",
+        "timeline",
+        "browser"
+      ],
+      "formats": [
+        "PNG parts",
+        "bone hierarchy",
+        "Spine JSON"
+      ],
+      "license": "MIT-code",
+      "licenseUrl": "https://github.com/Wilson-Cheng/SpriteForge/blob/main/LICENSE",
+      "creditRequired": "include MIT license for reused code; check art credits separately",
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "high-value-rigging-reference",
+      "notes": "Useful for future articulated movement after CharacterWord has separate art parts and pivots. Not an anime art pack itself."
+    },
+    {
+      "id": "pinkcel-2d-rigging-online",
+      "name": "Pinkcel 2D Rigging Online",
+      "kind": "web-rigging-tool-reference",
+      "sourceUrl": "https://pinkcel.com/2d-rigging.html",
+      "author": "Pinkcel",
+      "style": [
+        "2D-rigging",
+        "bones",
+        "IK",
+        "mesh-deformation"
+      ],
+      "formats": [
+        "layered PSD or separate art layers according to product page"
+      ],
+      "license": "terms-unverified",
+      "licenseUrl": "https://pinkcel.com/2d-rigging.html",
+      "creditRequired": "verify",
+      "shareAlike": "unknown",
+      "testedInCharacterWord": false,
+      "status": "workflow-reference-only",
+      "notes": "Useful to study interaction and posing; do not reuse software/art or assume export rights before confirming terms."
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171521">
+  <meta name="description" content="Editor local de personajes anime por piezas para CharacterWord.">
+  <title>CharacterWord Studio — Anime Doll Lab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="CharacterWord Studio, inicio">
+        <span class="brand-mark">CW</span>
+        <span class="brand-copy"><strong>CharacterWord</strong><small>ANIME DOLL STUDIO</small></span>
+      </a>
+      <div class="topbar-center">
+        <span class="status-dot"></span>
+        <span>Editor local · tus imágenes no se suben a ningún servidor</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="button button-quiet" href="https://github.com/rikosama473-sketch/characterword/blob/work/asset-research-2026-10/docs/ASSET_RESEARCH.md" target="_blank" rel="noopener noreferrer">Fuentes de arte</a>
+        <button class="button button-quiet" id="reset-all" type="button">Restablecer</button>
+        <button class="button button-primary" id="export-project" type="button">Exportar proyecto</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar left-sidebar">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">01 / CONSTRUCTOR</p>
+            <h1>Tu personaje</h1>
+          </div>
+          <span class="counter" id="part-count">6 piezas</span>
+        </div>
+        <p class="panel-intro">Selecciona una pieza para moverla, girarla, ocultarla o sustituirla por un PNG transparente.</p>
+        <div class="section-label">PIEZAS DEL CUERPO</div>
+        <div class="parts-list" id="parts-list" aria-label="Piezas del personaje"></div>
+
+        <div class="panel-divider"></div>
+        <div class="section-label">COLORES DEL DISEÑO</div>
+        <div class="palette-list">
+          <label class="color-row" for="color-skin"><span class="color-swatch skin-swatch"></span><span>Piel</span><input id="color-skin" type="color" value="#f6c9c3"></label>
+          <label class="color-row" for="color-hair"><span class="color-swatch hair-swatch"></span><span>Cabello</span><input id="color-hair" type="color" value="#70458b"></label>
+          <label class="color-row" for="color-eyes"><span class="color-swatch eyes-swatch"></span><span>Ojos</span><input id="color-eyes" type="color" value="#6b64d8"></label>
+          <label class="color-row" for="color-outfit"><span class="color-swatch outfit-swatch"></span><span>Ropa</span><input id="color-outfit" type="color" value="#f1b4d6"></label>
+        </div>
+        <button class="button button-outline full-width" id="random-colors" type="button">✦ Variar colores</button>
+        <p class="sidebar-footnote">La ilustración de muestra está dibujada con formas vectoriales originales. Es una base provisional para comprobar el editor, no un paquete de arte final.</p>
+      </aside>
+
+      <section class="stage-column" aria-label="Lienzo del personaje">
+        <div class="stage-toolbar">
+          <div class="breadcrumb"><span>CHARACTER LAB</span><span class="breadcrumb-slash">/</span><strong>Nueva waifu</strong></div>
+          <div class="stage-tools">
+            <button class="icon-button" id="pose-random" type="button" title="Variar la pose" aria-label="Variar pose">↻</button>
+            <button class="icon-button" id="pose-reset" type="button" title="Restablecer pose" aria-label="Restablecer pose">⌂</button>
+          </div>
+        </div>
+        <div class="stage" id="stage">
+          <div class="stage-topline"><span class="live-pill"><span></span> VISTA PREVIA</span><span class="stage-size">Lienzo 440 × 620</span></div>
+          <div class="character-wrap">
+            <svg id="character-svg" viewBox="0 0 440 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Muñeca anime de muestra con cabeza, torso y brazos intercambiables">
+              <defs>
+                <linearGradient id="hair-shine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a58ac5"/><stop offset="0.58" stop-color="var(--hair)"/><stop offset="1" stop-color="#3d2a59"/></linearGradient>
+                <linearGradient id="skin-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#eeb3ac"/><stop offset="0.45" stop-color="var(--skin)"/><stop offset="1" stop-color="#fce0d8"/></linearGradient>
+                <linearGradient id="fabric-shine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0f7"/><stop offset="0.5" stop-color="var(--outfit)"/><stop offset="1" stop-color="#c77ba9"/></linearGradient>
+                <filter id="soft-shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#6e536f" flood-opacity=".13"/></filter>
+              </defs>
+              <ellipse cx="220" cy="300" rx="146" ry="224" fill="#e9dff5" opacity=".52"/>
+              <ellipse cx="220" cy="568" rx="112" ry="16" fill="#bba9d1" opacity=".18"/>
+
+              <g id="part-arm-left-upper" class="character-part" data-part="arm-left-upper">
+                <g class="fallback-art">
+                  <path d="M151 244 C133 243 124 256 128 278 L140 324 C144 338 160 337 164 324 L157 273 C156 258 156 249 151 244Z" fill="url(#skin-shine)" stroke="#ca8e92" stroke-width="1.8"/>
+                  <path d="M144 240 C128 242 120 256 126 274 L132 292 C142 298 154 291 159 280 L155 252Z" fill="url(#fabric-shine)" stroke="#b97ea7" stroke-width="2"/>
+                  <path d="M129 274 Q141 282 158 272" fill="none" stroke="#fff5fb" stroke-width="3" opacity=".9"/>
+                </g>
+              </g>
+
+              <g id="part-arm-right-upper" class="character-part" data-part="arm-right-upper">
+                <g class="fallback-art">
+                  <path d="M289 244 C307 243 316 256 312 278 L300 324 C296 338 280 337 276 324 L283 273 C284 258 284 249 289 244Z" fill="url(#skin-shine)" stroke="#ca8e92" stroke-width="1.8"/>
+                  <path d="M296 240 C312 242 320 256 314 274 L308 292 C298 298 286 291 281 280 L285 252Z" fill="url(#fabric-shine)" stroke="#b97ea7" stroke-width="2"/>
+                  <path d="M311 274 Q299 282 282 272" fill="none" stroke="#fff5fb" stroke-width="3" opacity=".9"/>
+                </g>
+              </g>
+
+              <g id="part-torso" class="character-part" data-part="torso">
+                <g class="fallback-art">
+                  <path d="M198 189 L198 229 Q220 246 242 229 L242 188Z" fill="url(#skin-shine)" stroke="#ca8e92" stroke-width="1.6"/>
+                  <path d="M185 218 Q200 207 213 216 L220 228 L227 216 Q240 207 255 218 L286 239 Q299 252 291 276 L278 332 L289 421 Q220 446 151 421 L162 332 L149 276 Q141 252 154 239Z" fill="url(#skin-shine)" stroke="#ca8e92" stroke-width="1.8"/>
+                  <path d="M179 220 Q194 215 207 226 L220 245 L233 226 Q246 215 261 220 L285 239 L268 279 L278 422 Q220 440 162 422 L172 279 L155 239Z" fill="url(#fabric-shine)" stroke="#bc79a6" stroke-width="2.2"/>
+                  <path d="M181 222 L205 221 L220 244 L235 221 L259 222 L246 253 L220 276 L194 253Z" fill="#fff0f7" stroke="#d2a0c5" stroke-width="1.7"/>
+                  <path d="M220 246 L220 406" stroke="#fff4fb" stroke-width="2" opacity=".7"/>
+                  <path d="M189 292 Q220 305 251 292" fill="none" stroke="#bd78a6" stroke-width="2" opacity=".7"/>
+                  <path d="M169 336 Q220 352 271 336" fill="none" stroke="#fff4fb" stroke-width="2" opacity=".8"/>
+                  <path d="M209 244 L220 261 L231 244 L226 282 L220 290 L214 282Z" fill="#8b5fbd" stroke="#f8d9ed" stroke-width="1.4"/>
+                  <circle cx="220" cy="302" r="3.2" fill="#fff4fb"/><circle cx="220" cy="326" r="3.2" fill="#fff4fb"/><circle cx="220" cy="350" r="3.2" fill="#fff4fb"/>
+                  <path d="M165 402 Q220 414 275 402 L278 422 Q220 442 162 422Z" fill="#ab76a5" opacity=".55"/>
+                </g>
+              </g>
+
+              <g id="part-arm-left-forearm" class="character-part" data-part="arm-left-forearm">
+                <g class="fallback-art">
+                  <path d="M140 319 C135 333 140 354 149 372 L158 399 C162 411 177 408 176 395 L167 361 C164 342 160 326 156 319Z" fill="url(#skin-shine)" stroke="#ca8e92" stroke-width="1.8"/>
+                  <path d="M155 390 Q166 384 176 393 L182 405 Q183 416 172 417 L159 412Z" fill="url(#skin-shine)" stroke="#ca8e92" stroke-width="1.6"/>
+                  <path d="M139 320 Q150 328 161 319 L166 340 Q153 348 145 342Z" fill="#fff0f7" stroke="#ca8e92" stroke-width="1.4"/>
+                </g>
+              </g>
+
+              <g id="part-arm-right-forearm" class="character-part" data-part="arm-right-forearm">
+                <g class="fallback-art">
+                  <path d="M300 319 C305 333 300 354 291 372 L282 399 C278 411 263 408 264 395 L273 361 C276 342 280 326 284 319Z" fill="url(#skin-shine)" stroke="#ca8e92" stroke-width="1.8"/>
+                  <path d="M285 390 Q274 384 264 393 L258 405 Q257 416 268 417 L281 412Z" fill="url(#skin-shine)" stroke="#ca8e92" stroke-width="1.6"/>
+                  <path d="M301 320 Q290 328 279 319 L274 340 Q287 348 295 342Z" fill="#fff0f7" stroke="#ca8e92" stroke-width="1.4"/>
+                </g>
+              </g>
+
+              <g id="part-head" class="character-part" data-part="head" filter="url(#soft-shadow)">
+                <g class="fallback-art">
+                  <path d="M158 128 C143 84 176 45 213 43 C259 38 292 75 284 123 L281 169 C280 193 262 215 239 222 L193 218 C170 203 158 175 158 128Z" fill="url(#hair-shine)" stroke="#4c3766" stroke-width="2.5"/>
+                  <path d="M169 102 C168 74 189 57 218 59 C253 56 272 79 270 111 L260 179 C253 199 238 213 220 216 C196 213 180 194 175 174Z" fill="url(#skin-shine)" stroke="#c98991" stroke-width="1.9"/>
+                  <path d="M166 119 C160 81 183 55 219 53 C251 53 279 77 274 114 C262 100 250 88 240 75 C226 91 198 101 166 119Z" fill="url(#hair-shine)" stroke="#4c3766" stroke-width="2"/>
+                  <path d="M174 111 C188 91 196 84 204 65 C205 88 219 93 235 94 C248 95 256 85 261 75 C270 91 270 107 266 120 L257 112 C246 107 239 101 233 96 C213 111 192 118 174 122Z" fill="var(--hair)" stroke="#4c3766" stroke-width="1.6"/>
+                  <path d="M176 126 Q191 114 205 128" fill="none" stroke="#553d69" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M231 128 Q246 114 260 126" fill="none" stroke="#553d69" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M177 139 Q190 126 204 139 Q199 157 190 157 Q180 154 177 139Z" fill="#fffafc" stroke="#7c5b81" stroke-width="1.5"/>
+                  <path d="M232 139 Q246 126 258 139 Q254 157 245 157 Q236 154 232 139Z" fill="#fffafc" stroke="#7c5b81" stroke-width="1.5"/>
+                  <ellipse cx="192" cy="143" rx="7.2" ry="11" fill="var(--eyes)"/><ellipse cx="245" cy="143" rx="7.2" ry="11" fill="var(--eyes)"/>
+                  <ellipse cx="192" cy="144" rx="3.1" ry="5.7" fill="#302544"/><ellipse cx="245" cy="144" rx="3.1" ry="5.7" fill="#302544"/>
+                  <circle cx="194" cy="139" r="3.1" fill="#fff"/><circle cx="247" cy="139" r="3.1" fill="#fff"/>
+                  <path d="M176 136 Q190 121 205 135" fill="none" stroke="#593e69" stroke-width="3.2" stroke-linecap="round"/>
+                  <path d="M231 135 Q246 121 259 135" fill="none" stroke="#593e69" stroke-width="3.2" stroke-linecap="round"/>
+                  <ellipse cx="174" cy="166" rx="8" ry="4" fill="#f09aa8" opacity=".43"/><ellipse cx="262" cy="166" rx="8" ry="4" fill="#f09aa8" opacity=".43"/>
+                  <path d="M219 150 L215 164 L221 166" fill="none" stroke="#d29a9a" stroke-width="1.7" stroke-linecap="round"/>
+                  <path d="M206 179 Q220 188 234 177 Q228 193 218 193 Q210 191 206 179Z" fill="#bb6685"/>
+                  <path d="M208 179 Q220 183 232 178" fill="none" stroke="#fff1f5" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M165 113 C152 140 164 177 181 190 L175 151Z" fill="var(--hair)" stroke="#4c3766" stroke-width="1.8"/>
+                  <path d="M271 105 C290 132 276 177 259 192 L265 147Z" fill="var(--hair)" stroke="#4c3766" stroke-width="1.8"/>
+                  <path d="M188 63 Q198 50 210 53" fill="none" stroke="#c5a8df" stroke-width="4" opacity=".8" stroke-linecap="round"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="stage-bottomline">
+            <span class="drag-hint"><span class="drag-symbol">✥</span> Arrastra una pieza para recolocarla</span>
+            <span id="save-status" class="save-status">Cambios en esta sesión</span>
+          </div>
+        </div>
+        <div class="stage-note"><span class="note-icon">i</span><p>Prototipo funcional: el dibujo de muestra usa formas vectoriales originales. Las piezas PNG que importes sustituyen la forma de muestra de cada ranura. Las uniones todavía no son un esqueleto anatómico automático.</p></div>
+      </section>
+
+      <aside class="sidebar right-sidebar">
+        <div class="panel-heading inspector-heading">
+          <div><p class="eyebrow">02 / INSPECTOR</p><h2>Editar pieza</h2></div>
+          <span class="selected-indicator" id="selected-indicator"></span>
+        </div>
+        <div class="selected-part-card">
+          <div class="selected-part-icon" id="selected-part-icon">◉</div>
+          <div><strong id="selected-part-name">Cabeza y rostro</strong><small id="selected-part-desc">Rostro, flequillo y cabello base</small></div>
+        </div>
+
+        <div class="section-label">REEMPLAZAR ILUSTRACIÓN</div>
+         <div class="upload-zone" id="upload-zone">
+          <div class="upload-icon">↑</div>
+          <strong>Añadir capa PNG/WebP</strong>
+          <span>Importa cabello, ojos, ropa u otras capas transparentes sobre la pieza seleccionada.</span>
+          <div class="file-mode-row">
+            <label for="image-mode">Formato de la imagen</label>
+            <select id="image-mode">
+              <option value="canvas" selected>Capa de lámina alineada</option>
+              <option value="cropped">Pieza recortada</option>
+            </select>
+          </div>
+          <button type="button" class="button button-outline" id="choose-image">Añadir capa</button>
+          <input id="part-image-input" type="file" accept="image/png,image/webp" hidden>
+          <button type="button" class="text-button" id="remove-image" hidden>Quitar todas las capas y restaurar muestra</button>
+        </div>
+        <div class="section-label layer-section-label">CAPAS DE ESTA PIEZA</div>
+        <div id="imported-layer-list" class="imported-layer-list" aria-live="polite"></div>
+        <label class="show-fallback-control" for="show-fallback">
+          <input id="show-fallback" type="checkbox" checked>
+          <span>Mostrar el dibujo de muestra debajo de las capas</span>
+        </label>
+        <p class="microcopy">Puedes apilar varias capas dentro de una misma pieza. Usa “Capa de lámina alineada” cuando las imágenes conservan el mismo lienzo y coordenadas de origen; usa “Pieza recortada” para un recorte independiente. Las capas se mueven juntas con la pieza anatómica seleccionada.</p>
+
+        <div class="panel-divider"></div>
+        <div class="control-group">
+          <div class="control-title"><label for="rotation">Rotación</label><output id="rotation-value">0°</output></div>
+          <input id="rotation" type="range" min="-180" max="180" value="0" step="1">
+          <div class="range-ends"><span>-180°</span><span>0°</span><span>180°</span></div>
+        </div>
+        <div class="control-group">
+          <div class="control-title"><label for="scale">Escala</label><output id="scale-value">100%</output></div>
+          <input id="scale" type="range" min="50" max="180" value="100" step="1">
+          <div class="range-ends"><span>50%</span><span>100%</span><span>180%</span></div>
+        </div>
+        <div class="control-group">
+          <div class="control-title"><label for="move-x">Posición horizontal</label><output id="move-x-value">0</output></div>
+          <input id="move-x" type="range" min="-120" max="120" value="0" step="1">
+        </div>
+        <div class="control-group">
+          <div class="control-title"><label for="move-y">Posición vertical</label><output id="move-y-value">0</output></div>
+          <input id="move-y" type="range" min="-120" max="120" value="0" step="1">
+        </div>
+
+        <div class="inspector-actions">
+          <label class="visibility-control"><input id="part-visible" type="checkbox" checked><span>Mostrar pieza</span></label>
+          <button class="button button-outline" id="reset-part" type="button">Restablecer pieza</button>
+        </div>
+        <div class="panel-divider"></div>
+        <div class="section-label">GUARDAR / EXPORTAR</div>
+        <div class="export-grid">
+          <button class="export-card" id="export-png" type="button"><span>▧</span><strong>Imagen PNG</strong><small>Descargar el diseño</small></button>
+          <button class="export-card" id="import-project" type="button"><span>↥</span><strong>Cargar proyecto</strong><small>JSON guardado</small></button>
+          <input id="project-input" type="file" accept="application/json,.json" hidden>
+        </div>
+        <p class="microcopy last-microcopy">Los cambios se guardan en el almacenamiento local de este navegador cuando es posible. Exporta el proyecto JSON para conservarlo o moverlo a otra PC.</p>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <span>CHARACTERWORD STUDIO <span class="footer-muted">· prototipo inicial de editor 2D</span></span>
+      <span>PRIVADO POR DISEÑO <span class="footer-muted">· imágenes locales</span></span>
+    </footer>
+  </div>
+</body>
+</html>
