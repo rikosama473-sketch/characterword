@@ -17,7 +17,7 @@
       label: "Muñeca provisional por piezas",
       description: "Modo articulable de prueba. Permite mover cabeza, torso, brazos y antebrazos por separado con el dibujo provisional.",
       instructions: "Selecciona un paquete anime para importar capas PNG de cuerpo completo, o vuelve a este modo para trabajar con las piezas provisionales.",
-      width: 0, height: 0, sourceUrl: "", author: "", license: ""
+      width: 0, height: 0, sourceUrl: "", author: "", license: "", licenseUrl: "", shareAlike: false
     },
     fbfffm001: {
       id: "fbfffm001",
@@ -27,7 +27,9 @@
       width: 800, height: 1200,
       sourceUrl: "https://linxuelian.itch.io/customchar-fbfffm001-fullbodyfemale",
       author: "LinXueLian",
-      license: "CC BY-SA 4.0"
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      shareAlike: true
     },
     hfff001: {
       id: "hfff001",
@@ -37,7 +39,9 @@
       width: 537, height: 700,
       sourceUrl: "https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama",
       author: "LinXueLian",
-      license: "CC BY-SA 4.0"
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+      shareAlike: false
     },
     hmlf001: {
       id: "hmlf001",
@@ -47,7 +51,9 @@
       width: 600, height: 800,
       sourceUrl: "https://linxuelian.itch.io/customchar-hmlf001-malebust",
       author: "LinXueLian",
-      license: "CC BY-SA 4.0"
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      shareAlike: true
     }
   });
   const STORAGE_KEY = "characterword.studio.project.v3";
@@ -634,15 +640,15 @@
     const credit = $("asset-pack-credit");
     credit.replaceChildren();
     if (pack.id === "manual") {
-      credit.textContent = "Paquetes anime de LinXueLian: CC BY-SA 4.0. La atribución se mantiene también en la documentación del proyecto.";
+      credit.textContent = "Los recursos externos no están incluidos. Selecciona un modelo para consultar su licencia y conservar la atribución correspondiente.";
     } else {
       const author = document.createElement("span");
-      author.textContent = "Arte: LinXueLian · Licencia ";
+      author.textContent = "Arte: " + pack.author + " · Licencia ";
       const licence = document.createElement("a");
-      licence.href = "https://creativecommons.org/licenses/by-sa/4.0/";
+      licence.href = pack.licenseUrl;
       licence.target = "_blank";
       licence.rel = "noopener noreferrer";
-      licence.textContent = "CC BY-SA 4.0";
+      licence.textContent = pack.license;
       const source = document.createElement("a");
       source.href = pack.sourceUrl;
       source.target = "_blank";
@@ -978,9 +984,9 @@
       author: pack.author,
       sourceUrl: pack.sourceUrl,
       license: pack.license,
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      licenseUrl: pack.licenseUrl,
       note: "Original transparent PNG layers were composed in CharacterWord. The selected base and visible layer order may have been changed; the imported source PNG files were not retouched by this editor.",
-      shareAlike: true
+      shareAlike: Boolean(pack.shareAlike)
     };
     const blob = new Blob([JSON.stringify(exportState, null, 2)], { type: "application/json;charset=utf-8" });
     downloadBlob(blob, "characterword-project.json");
