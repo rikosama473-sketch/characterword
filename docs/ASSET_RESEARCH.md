@@ -99,6 +99,41 @@ Las capas de ropa, ojos y cabello no garantizan que brazos y piernas sean articu
 - Condición: cada paquete tiene sus propios términos; algunos prohíben la redistribución o la mezcla de sus imágenes en otros personajes. El paquete del enlace es de pago y solicita revisar las condiciones incluidas.
 - Estado: **referencia de experiencia de usuario; no tratar las piezas como una biblioteca que se pueda importar libremente**.
 
+## Herramientas auxiliares para conseguir o preparar piezas anime
+
+Estas herramientas no sustituyen la comprobación de licencias del arte de entrada y salida. Se pueden usar para experimentar con imágenes propias o con recursos cuyos términos permitan modificarlos. **No se usarán capturas, ilustraciones o personajes de anime comercial como biblioteca redistribuible sin permiso.**
+
+### O. Anime Image Cutout Studio
+- Repositorio: https://github.com/gino07172002/anime-image-cutout-studio
+- Licencia del código: **Apache-2.0** según el archivo LICENSE del repositorio.
+- Tipo: aplicación de escritorio que separa personajes superpuestos y piezas como cabeza, torso, brazos y piernas; la descripción del proyecto anuncia exportación de PNG transparente, PSD por capas y estructura de esqueleto.
+- Utilidad: analizar como herramienta de preparación para ilustraciones propias/licenciadas que estén en una sola imagen.
+- Limitación: la licencia del código no autoriza el uso de las imágenes de entrada; revisar por separado licencias de pesos/modelos y dependencias, así como las condiciones de cada obra fuente.
+- Estado: **candidato para el flujo de preparación local**, aún no probado en CharacterWord.
+
+### P. Paper Doll Studio
+- Repositorio: https://github.com/KhurrumAli1997/paper-doll-studio
+- Licencia del código: **Apache-2.0** en el archivo LICENSE del repositorio.
+- Tipo: herramienta local para vestir personajes orientada a novelas visuales y juegos narrativos; documenta importación de PSD por capas y segmentación de un PNG para clasificar cabello, rostro, ojos y vestuario, además de exportar activos.
+- Utilidad: estudiar cómo transformar una ilustración autorizada en una estructura con ranuras de vestuario.
+- Limitación: requiere Python y dependencias/modelos de visión e inpainting de tamaño considerable; no es un widget web ligero y hay que verificar las licencias individuales de modelos/datasets.
+- Estado: **herramienta de laboratorio, no dependencia inmediata del editor**.
+
+### Q. SpriteForge
+- Repositorio: https://github.com/Wilson-Cheng/SpriteForge
+- Licencia del código: **MIT** en LICENSE.
+- Tipo: editor en navegador para importar PNG, construir jerarquías de huesos, posar personajes y exportar un paquete Spine JSON. La documentación indica que el trabajo puede hacerse localmente en el navegador.
+- Utilidad: referencia técnica para una fase posterior de articulación real, después de que tengamos partes recortadas con pivotes.
+- Limitación: no es una biblioteca de arte anime lista para utilizar; revisar el crédito/licencia de cada muestra de arte antes de reutilizarla.
+- Estado: **referencia técnica de alto valor**.
+
+### R. Pinkcel — 2D Rigging Online
+- Herramienta: https://pinkcel.com/2d-rigging.html
+- Tipo: editor de rigging en navegador con huesos, cinemática directa/inversa y deformación de malla; acepta capas separadas o PSD según su página.
+- Utilidad: referencia para el tipo de interacción de huesos y poses que podríamos añadir más adelante.
+- Limitación: antes de adoptar código, importar arte o depender del servicio, confirmar sus términos de uso y exportación; esta ficha no confirma licencia reutilizable.
+- Estado: **referencia funcional solamente**, pendiente de términos.
+
 ## Política de incorporación
 
 Antes de incorporar un paquete al repositorio o a una futura versión distribuible:
@@ -111,7 +146,7 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 6. Registrar autores, licencia, URL de origen, cambios hechos y aviso de licencia junto a cada paquete. En paquetes con créditos por recurso, conservar el archivo original de créditos y crear un manifiesto acotado con los elementos usados.
 7. Mantener los activos comerciales o con licencia incierta fuera del repositorio público hasta tener autorización clara. No basta con enlazar a una descarga gratuita para asumir permiso de redistribución.
 
-### H. OpenGameArt — Free CC0 Modular Animated Vector Characters 2D
+### J. OpenGameArt — Free CC0 Modular Animated Vector Characters 2D
 - Fuente: https://opengameart.org/content/free-cc0-modular-animated-vector-characters-2d
 - Autor indicado: rgsdev.
 - Licencia publicada: **CC0**; la página indica que no hace falta crédito.
@@ -121,7 +156,7 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 - Limitación: estilo cartoon/vectorial, no anime. La página afirma que las partes son separadas y animadas, pero aún no comprobamos si cada articulación puede moverse libremente o si las poses disponibles son animaciones predefinidas.
 - Estado: **prioridad para una prueba de articulación**, no estilo artístico final.
 
-### I. Kenney — Modular Characters
+### K. Kenney — Modular Characters
 - Fuente: https://kenney.nl/assets/modular-characters
 - Tipo: paquete de personajes 2D; la página oficial anuncia 425 archivos y licencia **CC0**.
 - Ventajas: opción de bajo riesgo de licencia para evaluar otro catálogo modular.
@@ -130,7 +165,7 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 
 ## Código de referencia para un editor propio
 
-### J. pjanaya — 2D Character Creator (web)
+### L. pjanaya — 2D Character Creator (web)
 - Demo: https://pjanaya.github.io/2d-character-creator/
 - Repositorio: https://github.com/pjanaya/2d-character-creator
 - Licencia de código publicada: MIT.
@@ -139,7 +174,7 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 - Limitaciones: no trae una biblioteca de ilustraciones propia y no demuestra por sí solo un sistema de huesos/articulaciones. Confirmar la versión, dependencias y estado actual antes de adoptar código.
 - Estado: **primera referencia para estudiar la interfaz web y el catálogo**.
 
-### K. uglycygnet — Modular Character Prototype
+### M. uglycygnet — Modular Character Prototype
 - Repositorio: https://github.com/uglycygnet/character_creator
 - Licencia de código publicada: MIT.
 - Tipo: prototipo LÖVE2D con esqueleto jerárquico, huesos, uniones, animación idle/walk y controles para rotar hombros y codos.
@@ -147,7 +182,7 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 - Limitaciones: es una app LÖVE2D/Lua, no una librería web lista para insertar y no aporta una colección de arte final.
 - Estado: **referencia conceptual para la articulación**.
 
-### L. rhedak — Anime Character Creator
+### N. rhedak — Anime Character Creator
 - Repositorio: https://github.com/rhedak/anime-character-creator
 - Licencia del código publicada: MIT.
 - Tipo: generador que dibuja personajes anime estilizados mediante formas SVG paramétricas, en lugar de componer piezas artísticas preexistentes.
