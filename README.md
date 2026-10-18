@@ -18,7 +18,7 @@ La prioridad inicial no es inventar arte desde cero: es localizar recursos dispo
 
 ## Prototipo ejecutable
 
-El primer editor está disponible como página estática: abre `index.html` directamente en el navegador o publícala con GitHub Pages.
+El editor puede abrirse localmente desde `index.html`. El workflow `.github/workflows/pages.yml` prepara y despliega una versión estática en GitHub Pages cada vez que se actualiza `main` (y también permite ejecución manual). La primera publicación requiere que el repositorio tenga Pages habilitado con la fuente **GitHub Actions** en Settings → Pages.
 
 - Ensambla una muñeca anime provisional con cabeza, torso, brazos superiores y antebrazos separados.
 - Selecciona y arrastra las piezas; ajusta rotación, escala, posición y visibilidad.
