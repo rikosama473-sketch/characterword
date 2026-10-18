@@ -29,7 +29,10 @@
     "initialOutputResolution": "64x96; evaluate up to 128x192 only after memory and quality benchmarks",
     "outputAlpha": true,
     "modelRuntimeBudgetMB": 2048,
-    "independentVariationRequiresLabeledParts": true
+    "independentVariationRequiresLabeledParts": true,
+    "researchReferencesDoNotAuthorizeAssetReuse": true,
+    "trainingDataNeedsIndependentLicenseReview": true,
+    "initialDatasetQuantityWarning": "100 images are only a pipeline/feasibility pilot. Practical completed sprite-generation examples use thousands of images or highly constrained tasks; no quality or variety guarantee for 100 full-body anime images."
   },
   "sources": [
     {
@@ -1393,6 +1396,96 @@
       "availability": "open-source-code",
       "importMode": "architecture-reference-only",
       "modelMemoryNote": "The SVG route is more aligned with low-memory rendering than embedding a diffusion model; 3D mode and full app dependencies are not part of the 2 GB target until measured."
+    },
+    {
+      "id": "spritegan-character-sprites-apache",
+      "name": "SpriteGAN — GAN para sprites de personajes",
+      "kind": "training-method-reference",
+      "sourceUrl": "https://github.com/thomasg8/SpriteGAN",
+      "author": "thomasg8",
+      "license": "Apache-2.0-code;dataset-CC0-as-described-by-paper",
+      "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
+      "status": "reference-studied-not-imported",
+      "testedInCharacterWord": false,
+      "notes": "Research implementation of a 32x32 RGB sprite GAN. Reports using 4,272 character images selected from 16,627 CC0 sprite images across 284 OpenGameArt collections; near-duplicate removal using SSIM and edge-guided cropping before downscaling. Useful curation lessons, not evidence that 100 images suffice. No data imported."
+    },
+    {
+      "id": "mdigan-character-pose-completion",
+      "name": "MDIGAN Characters — completar sprites entre distintas poses",
+      "kind": "training-method-reference",
+      "sourceUrl": "https://github.com/fegemo/mdigan-characters",
+      "author": "fegemo and paper authors",
+      "license": "code-license-not-found-reference-only;dataset-rights-unreviewed",
+      "status": "reference-studied-not-imported",
+      "testedInCharacterWord": false,
+      "notes": "SBGames 2024 research implementation. Learns view completion from aligned back/left/front/right poses; README describes 64x64 RGBA, batch 4, configurable L1/domain/SSIM losses. Useful for pose-conditioned completion, not free-form body generation. No top-level license was visible in the reviewed file list; don't copy code or bundled data without permission."
+    },
+    {
+      "id": "pokemon-sprite-conditional-aegan-reference",
+      "name": "Conditional Pokémon Sprite Generator — AAE/CAE/AEGAN hybrid",
+      "kind": "training-method-reference",
+      "sourceUrl": "https://github.com/lambders/pokemon-sprite-generator",
+      "author": "lambders",
+      "license": "not-declared-in-repository-reference-only",
+      "status": "reference-studied-not-imported",
+      "testedInCharacterWord": false,
+      "notes": "Author reports training from scratch in about nine days on RTX 2080. Reports reconstruction loss improved stability, Conv2D+upsampling reduced checkerboard artifacts compared with ConvTranspose2D, and palette/labels provided control. Repository uses Pokémon images and has no clearly declared license; do not reuse sprites, data, weights or code absent permission."
+    },
+    {
+      "id": "anime-face-dcgan-64-reference",
+      "name": "Anime Face Generation DCGAN — 64x64",
+      "kind": "training-method-reference",
+      "sourceUrl": "https://github.com/PD-Mera/Anime-Face-Generation-DCGAN",
+      "author": "PD-Mera",
+      "license": "code-license-and-dataset-terms-unverified-reference-only",
+      "status": "reference-studied-not-imported",
+      "testedInCharacterWord": false,
+      "notes": "DCGAN/LSGAN for anime faces at 64x64, not full-body sprites. README reports FID 88.75 for DCGAN at epoch 355 and 89.69 for LSGAN at epoch 128; treat as reproducibility data, not proof of high quality. Do not use the offered checkpoints as a base model. Dataset terms are separate and not approved by default."
+    },
+    {
+      "id": "tiny-diffusion-anime-faces-reference",
+      "name": "Tiny Diffusion — anime faces 64x64 from scratch",
+      "kind": "training-method-reference",
+      "sourceUrl": "https://github.com/imranpollob/tiny-diffusion",
+      "author": "imranpollob",
+      "license": "repository-license-unverified-reference-only",
+      "status": "reference-only-memory-requirement-not-compatible",
+      "testedInCharacterWord": false,
+      "notes": "Educational DDPM implementation for anime faces at 64x64. README recommends batch size 32-64 with 8 GB VRAM and gives hours-scale training times, so it is not evidence of fitting the 2 GB system-RAM/inference target. Not DMD2 and not our core model. No code, weights or art imported."
+    },
+    {
+      "id": "nvlabs-stylegan2-ada-limited-data-reference",
+      "name": "StyleGAN2-ADA — aprendizaje con conjuntos limitados",
+      "kind": "research-method-reference",
+      "sourceUrl": "https://github.com/NVlabs/stylegan2-ada-pytorch",
+      "author": "NVIDIA Research authors",
+      "license": "NVIDIA-Source-Code-License-noncommercial-research-evaluation",
+      "licenseUrl": "https://github.com/NVlabs/stylegan2-ada-pytorch/blob/main/LICENSE.txt",
+      "status": "paper-method-reference-only",
+      "testedInCharacterWord": false,
+      "notes": "Adaptive discriminator augmentation (ADA) reduces discriminator overfitting. Authors report strong results with a few thousand images, not 100. Source-code license restricts usage to non-commercial research/evaluation; use article for conceptual lessons only, do not transplant code or pretrained models."
+    },
+    {
+      "id": "pytorch-dcgan-tutorial-reference",
+      "name": "PyTorch DCGAN tutorial — generator/discriminator baseline",
+      "kind": "official-training-tutorial-reference",
+      "sourceUrl": "https://docs.pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html",
+      "author": "PyTorch Tutorials / Nathan Inkawhich",
+      "license": "tutorial-reference-review-upstream-terms-before-copying",
+      "status": "method-reference-only",
+      "testedInCharacterWord": false,
+      "notes": "Official walkthrough of a 64x64 image generator/discriminator and training loop. Warns about unstable GAN training and mode collapse. Use for experiment design and diagnostics, not as a pretrained model or approved art dataset."
+    },
+    {
+      "id": "mini-image-gen-synthetic-shapes-reference",
+      "name": "Mini Image Gen — diffusion from scratch on synthetic 16x16 shapes",
+      "kind": "training-method-reference",
+      "sourceUrl": "https://github.com/awaisshah228/mini-image-gen",
+      "author": "awaisshah228",
+      "license": "repository-license-not-verified-reference-only",
+      "status": "reference-only-synthetic-data-proof",
+      "testedInCharacterWord": false,
+      "notes": "Demonstrates a ~2M-parameter text-conditioned diffusion loop trained on synthetic 16x16 geometric shapes on CPU in minutes. It proves only the toy training pipeline, not anime/body quality or learning from 100 drawings. Reference only; no code/data imported."
     }
   ]
 }
