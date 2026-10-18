@@ -21,6 +21,8 @@ Las 100 imágenes que el usuario espera reunir serán **datos para entrenar desd
 
 ## Arquitectura inicial que vamos a comprobar
 
+No se decide calidad sin entrenar un prototipo. Antes de codificar, consultar [LEARN_FROM_COMPLETED_GENERATORS.md](LEARN_FROM_COMPLETED_GENERATORS.md) como referencia de métodos, errores y límites de memoria, sin adoptar pesos preentrenados ni copiar arte.
+
 No se decide calidad sin entrenar un prototipo. Comparar dos modelos modestos, ambos inicializados al azar:
 
 1. **GAN convolucional condicional pequeño:** propone generar una imagen de cuerpo de baja resolución a partir de un vector latente y controles discretos etiquetados (p. ej., pose/tipo de cuerpo/paleta). Ventaja: generación rápida tras entrenar. Riesgo: inestabilidad, colapso de modos y dificultad para aprender mucha variedad con solo 100 ejemplos.
