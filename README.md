@@ -35,6 +35,8 @@ Un flujo de GitHub Actions ejecuta `node --check app.js`, `node --check vendor/j
 
 ## Recursos anime integrados
 
+La prioridad de búsqueda más reciente es [Modular Character Sprite, Thin Girl](https://queenofzan.itch.io/modular-character-sprite-thin-girl): ya se descargaron sus ZIP gratuitos, pero falta verificar tamaños y contenido antes de habilitar el perfil en el editor. Se añadieron además fuentes femeninas/chibi de investigación al [catálogo de procedencia](data/asset-sources.json); los candidatos sin archivos o licencia verificados no se presentan como compatibles.
+
 - [Informe de inspección e instrucciones FBFFFM001 / HFFF001](docs/ANIME_PACK_INTEGRATION.md)
 - [Catálogo de fuentes y licencias](data/asset-sources.json)
 

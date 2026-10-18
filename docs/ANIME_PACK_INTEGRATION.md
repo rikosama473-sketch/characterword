@@ -60,6 +60,16 @@ Los ZIP base de FBFFFM001 y HFFF001 son imágenes de personaje completo con capa
 - **Pixel Sprite Shop — Modular Female Character Creator (64px):** https://pixelspriteshop.itch.io/64-pixel-female-character-creator. El paquete de USD 3+ ofrece capas femeninas para cuerpo, cabeza, 126 peinados, 145 ojos, 100 cejas, 147 bocas, posiciones de brazos/manos/piernas y animaciones. Permite modificar/usar en proyectos comerciales, pero no redistribuir el pack original. Su muestra masculina debe excluirse. El KRA/PNG requiere inspección local antes de definir un lienzo compatible.
 - **lofi_kier — Swappable Chibi Portraits:** https://lofi-kier.itch.io/swappable-chibi-portraits-64x64-layers. Paquete de USD 10+, 13 presets y 50+ capas de cabeza, torso, cabello, ropa, ojos, boca y accesorios. Permite modificar/usar comercialmente, pero prohíbe redistribución/reventa, incluidos NFT. Inspeccionar el ZIP antes de activar un perfil.
 - **TheSpriteShop — Female Chibi Character:** https://thespriteshop.itch.io/female-chibi-character-base-hair-eyes. Paquete femenino de USD 6.99+ con siete tonos de piel, cabello, ojos y maquillaje; Female.zip (276 kB). Dimensiones/licencia pendientes de revisión; no importar hasta confirmar ambas.
+## Otras fuentes nuevas para una biblioteca de piezas
+
+- **ani mosity — Modular Character Sprite, Thin Girl:** https://queenofzan.itch.io/modular-character-sprite-thin-girl. Es la candidata más prometedora de las recién encontradas: PNG individuales alineables y PSD. Los ZIP `ThinGirlSprite.zip` (2.3 MB) y `PSDFiles.zip` (9.7 MB) se descargaron usando la descarga gratuita. Licencia CC BY 4.0 con atribución; la autora también prohíbe usos en NFT y dataset generativo. Falta inventariar las imágenes reales y sus dimensiones.
+- **monapdx — Modular Pixel Character Kit:** https://monapdx.itch.io/modular-pixel-character-kit. PNG alineados + XCF de GIMP, Female.zip de 113 kB. La página indica “free to use”, pero no nombra una licencia estándar: revisar README/términos y dimensiones antes de incluirlo.
+- **Potat0Master — Hiyori:** https://potat0master.itch.io/free-character-sprite-for-visual-novels-hiyori. Tres outfits y más de 25 expresiones en PNG/WEBP; PSD/CLIP fuente por USD 1. La página indica uso personal/comercial bajo licencia royalty-free, pero sigue siendo un sprite completo hasta demostrar que las capas anatómicas son independientes.
+- **Hordana — Anime Girl (CC0):** https://opengameart.org/content/anime-girl. Tiras PNG de una personaje chibi para caminar, saltar y parpadear; útil como prueba visual/animada, no como cuerpo modular.
+- **Kenney — Modular Characters (CC0):** https://kenney.nl/assets/modular-characters; espejo con descripción de 425 PNG, seis spritesheets y seis archivos vectoriales en https://opengameart.org/content/modular-character-pack. Estilo flat/cartoon, útil para estudiar piezas y orden de composición. En CharacterWord solo podrían mostrarse variantes femeninas.
+
+**Criterio de aceptación:** no convertir una ficha de investigación en perfil importable hasta revisar dimensiones reales, transparencia/alineación, orden de capa y licencia. No empaquetar activos externos en el repositorio público sin autorización suficiente.
+
 ## Uso
 
 1. Abre https://rikosama473-sketch.github.io/characterword/.
