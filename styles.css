@@ -236,3 +236,7 @@ input[type="range"] { width: 100%; accent-color: #d8a8ff; height: 4px; cursor: p
 .asset-library-action:hover:not(:disabled) { background: #453455; border-color: #9373af; }
 .asset-library-action:disabled { opacity: .38; cursor: not-allowed; }
 .asset-library-status { margin: 0; padding: 6px 0; color: #a9d9c1; font-size: 8px; line-height: 1.5; }
+
+
+.asset-library-thumb { display: block; flex: 0 0 30px; width: 30px; height: 45px; object-fit: contain; border-radius: 4px; background: #17141e; }
+.asset-library-row.is-base .asset-library-thumb { outline: 1px solid #66517b; outline-offset: 1px; }
