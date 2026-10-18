@@ -10,14 +10,22 @@ const catalog = JSON.parse(await read("data/asset-sources.json"));
 assert.ok(html.includes('href="styles.css"'), "index.html must load styles.css");
 assert.ok(html.includes('src="app.js"'), "index.html must load app.js");
 assert.ok(css.includes(".workspace"), "styles.css must define the editor layout");
-assert.ok(app.includes('const PARTS = ['), "app.js must define the parts list");
+assert.ok(css.includes(".layer-row"), "Styles must include the imported-layer list");
+assert.ok(app.includes("const PARTS = ["), "app.js must define the parts list");
+assert.ok(html.includes('id="image-mode"'), "Import UI must provide cropped/aligned layer modes");
+assert.ok(html.includes('id="imported-layer-list"'), "Import UI must provide a per-part layer stack");
+assert.equal((html.match(/Fuentes de arte/g) || []).length, 1, "Editor must show one research link");
+assert.ok(app.includes("function renderImportedLayerList"), "Editor must render imported layers");
+assert.ok(app.includes("layers: []"), "Default anatomical parts must support zero or more layers");
+assert.ok(app.includes('layer.mode === "canvas"'), "Aligned layers must preserve artboard coordinate placement");
+assert.ok(app.includes("Migration from v1 projects"), "Old single-image projects must be migratable");
+assert.ok(app.includes("characterword.studio.project.v2"), "Layered projects must use v2 local storage");
 
 const htmlIds = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
-const uniqueHtmlIds = new Set(htmlIds);
-assert.equal(uniqueHtmlIds.size, htmlIds.length, "HTML ids must be unique");
+assert.equal(new Set(htmlIds).size, htmlIds.length, "HTML ids must be unique");
 
 const partIds = [...app.matchAll(/\{ id: "([^"]+)", name:/g)].map((match) => match[1]);
-assert.equal(partIds.length, 6, "First editor version should define six starter pieces");
+assert.equal(partIds.length, 6, "First editor version should define six starter anatomical pieces");
 assert.equal(new Set(partIds).size, partIds.length, "Part ids must be unique");
 for (const partId of partIds) {
   assert.ok(html.includes('id="part-' + partId + '"'), "Missing SVG group for part: " + partId);
@@ -40,5 +48,4 @@ for (const feature of ["exportProject", "exportPng", "importPartImage", "sanitiz
   assert.ok(app.includes("function " + feature), "Missing expected editor capability: " + feature);
 }
 
-assert.ok(app.includes('characterword.studio.project.v2'), "Layered projects must use v2 local storage");
-console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " source records, layer stack UI, migration path, and linked app files.");
+console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " sources, unique HTML ids, stacked layers, v1 migration, and project exports.");
