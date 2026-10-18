@@ -144,7 +144,8 @@
                   <path d="M188 63 Q198 50 210 53" fill="none" stroke="#c5a8df" stroke-width="4" opacity=".8" stroke-linecap="round"/>
                 </g>
               </g>
-            </svg>
+            <g id="asset-composition" class="asset-composition" style="display:none" pointer-events="none"></g>
+              </svg>
           </div>
           <div class="stage-bottomline">
             <span class="drag-hint"><span class="drag-symbol">✥</span> Arrastra una pieza para recolocarla</span>
@@ -162,6 +163,31 @@
         <div class="selected-part-card">
           <div class="selected-part-icon" id="selected-part-icon">◉</div>
           <div><strong id="selected-part-name">Cabeza y rostro</strong><small id="selected-part-desc">Rostro, flequillo y cabello base</small></div>
+        </div>
+
+        <div class="section-label asset-heading">BASE ANIME / WAIFU</div>
+        <div class="asset-pack-panel">
+          <label class="asset-pack-label" for="asset-pack-select">Conjunto de recursos</label>
+          <select id="asset-pack-select" class="asset-pack-select">
+            <option value="manual">Muñeca provisional por piezas</option>
+            <option value="fbfffm001">FBFFFM001 · anime cuerpo completo (800 × 1200)</option>
+            <option value="hfff001">HFFF001 Oujousama · retrato (537 × 700)</option>
+          </select>
+          <p class="asset-pack-description" id="asset-pack-description">Elige una de las bases anime para componer un sprite completo usando capas PNG alineadas.</p>
+          <div class="asset-pack-actions">
+            <button type="button" class="button button-outline" id="choose-asset-base">Elegir cuerpo base PNG</button>
+            <input id="asset-base-input" type="file" accept="image/png,image/webp" hidden>
+            <button type="button" class="button button-outline" id="choose-asset-overlays">Añadir expresión / detalle</button>
+            <input id="asset-overlay-input" type="file" accept="image/png,image/webp" multiple hidden>
+          </div>
+          <div class="asset-pack-note" id="asset-pack-note">Extrae el ZIP en tu PC. Importa una imagen de cuerpo base y después elige capas de la misma base, como boca o cejas. Cada capa debe compartir las dimensiones indicadas.</div>
+          <div class="section-label asset-layer-heading">CAPAS ANIME IMPORTADAS</div>
+          <div id="asset-layer-list" class="asset-layer-list" aria-live="polite"></div>
+          <div class="asset-pack-footer">
+            <button type="button" class="text-button" id="clear-asset-composition" hidden>Quitar composición anime</button>
+            <p id="asset-pack-credit" class="asset-pack-credit"></p>
+          </div>
+          <p id="asset-rig-note" class="asset-rig-note" hidden>Esta base es un sprite de cuerpo completo. Puedes cambiar sus capas de apariencia, pero sus brazos y torso no son piezas articulables separadas.</p>
         </div>
 
         <div class="section-label">REEMPLAZAR ILUSTRACIÓN</div>
