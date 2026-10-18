@@ -14,9 +14,12 @@ assert.ok(css.includes(".layer-row"), "Styles must include the imported-layer li
 assert.ok(app.includes("const PARTS = ["), "app.js must define the parts list");
 assert.ok(html.includes('id="image-mode"'), "Import UI must provide cropped/aligned layer modes");
 assert.ok(html.includes('id="imported-layer-list"'), "Import UI must provide a per-part layer stack");
+assert.ok(html.includes('id="show-fallback"'), "Each body part must support a temporary sample-art underlay toggle");
 assert.equal((html.match(/Fuentes de arte/g) || []).length, 1, "Editor must show one research link");
 assert.ok(app.includes("function renderImportedLayerList"), "Editor must render imported layers");
 assert.ok(app.includes("layers: []"), "Default anatomical parts must support zero or more layers");
+assert.ok(app.includes("showFallback: true"), "Body parts must track whether the temporary sample art remains visible");
+assert.ok(app.includes('$("show-fallback").addEventListener'), "Sample-art underlay control must be wired to editor state");
 assert.ok(app.includes('layer.mode === "canvas"'), "Aligned layers must preserve artboard coordinate placement");
 assert.ok(app.includes("Migration from v1 projects"), "Old single-image projects must be migratable");
 assert.ok(app.includes("characterword.studio.project.v2"), "Layered projects must use v2 local storage");
