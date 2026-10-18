@@ -40,4 +40,5 @@ for (const feature of ["exportProject", "exportPng", "importPartImage", "sanitiz
   assert.ok(app.includes("function " + feature), "Missing expected editor capability: " + feature);
 }
 
-console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " source records, unique HTML ids, linked app files.");
+assert.ok(app.includes('characterword.studio.project.v2'), "Layered projects must use v2 local storage");
+console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " source records, layer stack UI, migration path, and linked app files.");
