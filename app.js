@@ -309,6 +309,14 @@
     assetLibrary.forEach((item) => {
       const row = document.createElement("div");
       row.className = "asset-library-row" + (item.type === "base" ? " is-base" : "");
+      const thumb = document.createElement("img");
+      thumb.className = "asset-library-thumb";
+      thumb.src = item.dataUrl;
+      thumb.alt = "";
+      thumb.loading = "lazy";
+      thumb.decoding = "async";
+      thumb.title = item.name;
+
       const meta = document.createElement("div");
       meta.className = "asset-library-meta";
       const name = document.createElement("strong");
@@ -335,7 +343,7 @@
         button.disabled = !state.assetBase || alreadyAdded;
         button.setAttribute("aria-label", "Añadir capa " + item.name);
       }
-      row.append(meta, button);
+      row.append(thumb, meta, button);
       host.appendChild(row);
     });
   }
@@ -403,11 +411,13 @@
           const normalizedFolder = parentFolder.replace(/^\d+[_\s-]*/, "").toUpperCase();
           const isBase = normalizedFolder.includes("BODYBASE") || normalizedFolder === "BASE_BODY" || normalizedFolder.includes("BASE_BODY");
           const category = normalizedFolder || (isBase ? "BASE_BODY" : "DETALLE");
+          const folderOrder = Number((parentFolder.match(/^\d+/) || ["999"])[0]);
           found.push({
             id: "library-" + Date.now().toString(36) + "-" + found.length.toString(36) + "-" + Math.random().toString(36).slice(2, 6),
             name: parts[parts.length - 1] || "imagen.png",
             path: entry.name,
             folder: parentFolder,
+            order: Number.isFinite(folderOrder) ? folderOrder : 999,
             category,
             type: isBase ? "base" : "overlay",
             dataUrl,
@@ -477,14 +487,20 @@
       showToast("La composición admite hasta 40 capas de detalle.", true);
       return;
     }
-    state.compositionLayers.push({
+    const newLayer = {
       id: "asset-layer-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
       libraryId: item.id,
       name: item.name,
       originPath: item.path,
+      order: item.order,
       dataUrl: item.dataUrl,
       visible: true
-    });
+    };
+    // The original packs number their folders back-to-front. Insert in that
+    // order initially; the visible up/down controls still allow manual tuning.
+    const insertAt = state.compositionLayers.findIndex((layer) => Number.isFinite(layer.order) && layer.order > item.order);
+    if (insertAt < 0) state.compositionLayers.push(newLayer);
+    else state.compositionLayers.splice(insertAt, 0, newLayer);
     render();
     scheduleLocalSave();
     showToast("Capa añadida: " + item.name + ".");
@@ -1086,6 +1102,7 @@
           originPath: typeof layer.originPath === "string" ? layer.originPath.slice(0, 500) : "",
           dataUrl: layer.dataUrl,
           libraryId: typeof layer.libraryId === "string" ? layer.libraryId.slice(0, 220) : null,
+          order: Number.isFinite(Number(layer.order)) ? Number(layer.order) : null,
           visible: typeof layer.visible === "boolean" ? layer.visible : true
         };
       }).filter(Boolean) : [];
