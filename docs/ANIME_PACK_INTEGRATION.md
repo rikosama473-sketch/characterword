@@ -1,8 +1,8 @@
-# Integración de los paquetes anime FBFFFM001 y HFFF001
+# Integración de los paquetes anime FBFFFM001, HFFF001 y HMLF001
 
-**Inspección realizada:** 18 de octubre de 2026  
+**Revisión de fuentes:** 18 de octubre de 2026  
 **Proyecto:** CharacterWord, independiente de WordWaifu  
-**Estado:** los dos ZIP base fueron descargados desde sus páginas públicas e inspeccionados. CharacterWord incluye un importador local de composición por capas; no se guardaron los ZIP de terceros en el repositorio.
+**Estado:** los ZIP base de FBFFFM001 y HFFF001 fueron descargados e inspeccionados anteriormente. La página oficial de HMLF001 fue revisada y se agregó un perfil de importación para su lienzo anunciado de 600 × 800; sus ZIP aún no se han extraído e inspeccionado localmente. CharacterWord no incorpora ni redistribuye los ZIP de terceros.
 
 ## Resultado importante
 
@@ -44,15 +44,27 @@ Ambos paquetes son recursos anime útiles para personalizar un sprite completo, 
 - **No hay recortes independientes de cabeza, torso o brazos** en este ZIP. El contenido es una base completa con overlays faciales.
 - La página ofrece paquetes adicionales de cabello, ropa y accesorios para esa misma base; deben mantenerse separados de FBFFFM001.
 
+## 3. HMLF001 — Customizable Anime Boy (busto masculino)
+
+- Página original: https://linxuelian.itch.io/customchar-hmlf001-malebust
+- Autoría: LinXueLian.
+- Licencia indicada en la ficha pública: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0); la autora pide enlazar la página del recurso o su perfil.
+- Dimensiones anunciadas por la página: 600 × 800 px. Esto se registró desde la descripción publicada, no mediante inspección local de todos los ZIP.
+- La página anuncia sprites PNG transparentes en carpetas numeradas; el número de carpeta menor queda debajo del mayor. Indica que algunas piezas de cabello, ropa, ojos y accesorios de los distintos paquetes HMLF001 se pueden combinar cuando encajan visualmente.
+- ZIPs que aparecen en la página: `HMLF001_BASE_BODY.zip` (358 kB), `HMLF001_WARLOCK.zip` (3.9 MB), `HMLF001_SHOPKEEPER.zip` (2.3 MB), `HMLF001_HeavyScarf.zip` (1.7 MB), `HMLF001_Kawamuru_Hair.zip` (3.8 MB) y `HMLF001_VAMPIRE_CONFIG.zip` (202 kB). La bitácora de la página describe tres tonos de piel y nueve archivos para la adición de base; no se cuenta aquí como una inspección independiente del ZIP.
+- **Alcance visual:** es una base masculina vertical de busto/retrato; no se anuncia ni se ha comprobado que entregue cabeza, torso, brazos y antebrazos como piezas anatómicas independientes. No se debe describir como un cuerpo completo articulado.
+- **Estado técnico:** CharacterWord ahora ofrece un perfil HMLF001 separado y exige 600 × 800 píxeles para sus imágenes. Esto es una configuración por metadatos públicos; todavía falta importar en una sesión real el ZIP base, añadir una capa de un segundo ZIP, exportar y volver a abrir un proyecto para comprobar el flujo completo.
+- **No mezclar capas HMLF001 con FBFFFM001 (800 × 1200) ni HFFF001 (537 × 700)**. Cada base tiene su propio lienzo y proporciones.
+
 ## Uso en CharacterWord
 
 1. Abre https://rikosama473-sketch.github.io/characterword/.
-2. En **Base anime / waifu**, selecciona FBFFFM001 o HFFF001. No mezcles archivos entre los dos conjuntos.
+2. En **Base anime / waifu**, selecciona FBFFFM001, HFFF001 o HMLF001 según el ZIP que vas a importar. No mezcles archivos entre conjuntos.
 3. Descarga el ZIP base desde la página original y pulsa **Importar ZIP original**; el editor lo abre localmente sin que tengas que extraerlo. El lector ZIP está incluido en CharacterWord y no sube nada al servidor.
 4. En la biblioteca, elige **una sola** variante de cuerpo base:
    - FBFFFM001: una opción de `00_BODYBASE`, 800 × 1200.
    - HFFF001: una opción de `00_BASE_BODY`, 537 × 700.
-5. En la misma biblioteca, pulsa **Añadir capa** en una boca, ceja o capa facial que quieras. También puedes importar ZIPs adicionales de la misma página (por ejemplo, cabello o ropa) y añadir sus capas compatibles.
+5. En la misma biblioteca, pulsa **Añadir capa** en una boca, ceja o capa facial que quieras. En HMLF001, después de seleccionar la base, puedes importar otros ZIP de HMLF001 uno por uno y añadir las capas que coincidan con 600 × 800. En FBFFFM001/HFFF001, usa solo archivos de la misma base y dimensiones.
 5. Las capas importadas aparecen en la lista: puedes ocultarlas, reordenarlas, eliminarlas y conservar el proyecto JSON. La herramienta rechaza imágenes con otras dimensiones para evitar desalinearlas.
 6. Para usar cabello, ropa u otros paquetes adicionales que se descarguen de la página original, aplica la misma regla: sólo si sus PNG mantienen el lienzo y las coordenadas de la base seleccionada.
 
@@ -61,6 +73,6 @@ Las imágenes extraídas del ZIP se mantienen en la memoria del navegador mientr
 ## Modos separados
 
 - **Muñeca provisional por piezas:** permite mover el dibujo de muestra y experimentar con cabeza, torso, brazos y antebrazos por separado.
-- **Base anime / waifu:** combina los PNG originales de cuerpo completo y overlays. Es el modo correcto para estos dos recursos y conserva su geometría, pero no permite girar los brazos individualmente, porque las fuentes no entregan esas piezas recortadas.
+- **Base anime / waifu:** combina PNG de lienzo completo o de busto con overlays del mismo modelo. FBFFFM001, HFFF001 y HMLF001 conservan sus capas de apariencia, pero no habilitan movimiento anatómico individual si la fuente no entrega piezas recortadas.
 
 Para conseguir el siguiente nivel de articulación se necesitará un paquete de arte que proporcione extremidades separadas, o un flujo de segmentación/corte local de una ilustración cuya licencia permita realizar esas modificaciones. La segmentación automática no puede considerarse perfecta sin inspección manual.
