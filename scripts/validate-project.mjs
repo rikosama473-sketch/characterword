@@ -107,5 +107,12 @@ assert.ok(catalog.sources.some((source) => source.id === "psrc-human-mk2-ultimat
 assert.ok(catalog.sources.some((source) => source.id === "konard-anime-avatar-procedural-svg"), "Catalog must track the procedural anime SVG generator reference");
 assert.equal(catalog.policy.runtimeMemoryTargetMB, 2048, "The project's low-memory runtime target must remain explicit");
 assert.ok(String(catalog.sources.find((source) => source.id === "animosity-thin-girl-modular-cc-by-4")?.aiTrainingTerms || "").includes("permission"), "Thin Girl's restriction on AI training must remain recorded");
+assert.equal(catalog.policy.ownModelStrategy, "train-from-random-initialization", "The planned generator must train from random initialization");
+assert.equal(catalog.policy.allowPretrainedImageGenerationCheckpoints, false, "Pretrained image-generation checkpoints must not be the project model");
+assert.equal(catalog.policy.allowLoraAsStandaloneGenerator, false, "A LoRA must not be misrepresented as a standalone model");
+assert.equal(catalog.policy.allowDmd2OrTeacherDistillationAsCoreStrategy, false, "DMD2/teacher distillation must not be the core strategy");
+assert.equal(catalog.policy.initialTrainingImageTarget, 100, "The initial 100-image dataset target must be documented");
+assert.equal(catalog.policy.modelRuntimeBudgetMB, 2048, "Model inference memory target must be explicit");
+
 
 console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " sources, unique HTML ids, stacked layers, v1 migration, and project exports.");
