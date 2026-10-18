@@ -22,9 +22,11 @@ El primer editor está disponible como página estática: abre `index.html` dire
 
 - Ensambla una muñeca anime provisional con cabeza, torso, brazos superiores y antebrazos separados.
 - Selecciona y arrastra las piezas; ajusta rotación, escala, posición y visibilidad.
-- Importa PNG/WebP transparentes por ranura, prueba paletas y poses, exporta a PNG y guarda/carga proyectos JSON.
+- Apila varias capas PNG/WebP transparentes dentro de cabeza, torso, brazo superior o antebrazo; oculta, reordena y elimina capas por separado.
+- Alterna entre capas recortadas y láminas de lienzo alineado; mueve/gira/escalas las capas como una sola pieza anatómica.
+- Prueba paletas y poses, exporta a PNG y guarda/carga proyectos JSON.
 - Los archivos importados permanecen en el navegador. No hay backend ni envío de imágenes a un servidor.
-- El dibujo vectorial incorporado es solo una base de prueba; el catálogo de fuentes registra qué paquetes externos podrían sustituirlo. Aún no es un rig anatómico jerárquico: las piezas se mueven de forma independiente.
+- El dibujo vectorial incorporado es solo una base de prueba; el catálogo de fuentes registra qué paquetes externos podrían sustituirlo. Las piezas anatómicas siguen moviéndose de forma independiente: todavía no hay un esqueleto continuo hombro-codo-muñeca ni una biblioteca anime externa integrada.
 
 ## Validación del código
 
