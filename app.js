@@ -218,7 +218,7 @@
     $("move-y-value").textContent = String(piece.dy);
     $("part-visible").checked = piece.visible;
     const compositionActive = hasActiveAssetComposition();
-    ["rotation", "scale", "move-x", "move-y", "part-visible", "reset-part"].forEach((id) => { $(id).disabled = compositionActive; });
+    ["rotation", "scale", "move-x", "move-y", "part-visible", "reset-part", "choose-image", "image-mode", "remove-image", "show-fallback"].forEach((id) => { $(id).disabled = compositionActive || (id === "remove-image" || id === "show-fallback") && piece.layers.length === 0; });
     $("remove-image").hidden = piece.layers.length === 0;
     $("show-fallback").checked = Boolean(piece.showFallback);
     $("show-fallback").disabled = piece.layers.length === 0;
@@ -738,7 +738,17 @@
   }
 
   function exportProject() {
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json;charset=utf-8" });
+    const pack = activeAssetPack();
+    const exportState = Object.assign({}, state);
+    exportState.attribution = pack.id === "manual" ? null : {
+      author: pack.author,
+      sourceUrl: pack.sourceUrl,
+      license: pack.license,
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      note: "Original transparent PNG layers were composed in CharacterWord. The selected base and visible layer order may have been changed; the imported source PNG files were not retouched by this editor.",
+      shareAlike: true
+    };
+    const blob = new Blob([JSON.stringify(exportState, null, 2)], { type: "application/json;charset=utf-8" });
     downloadBlob(blob, "characterword-project.json");
     showToast("Proyecto JSON exportado con las piezas y sus ajustes.");
   }
