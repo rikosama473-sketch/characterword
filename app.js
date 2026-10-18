@@ -70,10 +70,11 @@
         image.setAttribute("pointer-events", "none");
         group.appendChild(image);
       }
-      image.setAttribute("x", def.box.x);
-      image.setAttribute("y", def.box.y);
-      image.setAttribute("width", def.box.w);
-      image.setAttribute("height", def.box.h);
+      const box = piece.imageMode === "canvas" ? { x: 0, y: 0, w: 440, h: 620 } : def.box;
+      image.setAttribute("x", box.x);
+      image.setAttribute("y", box.y);
+      image.setAttribute("width", box.w);
+      image.setAttribute("height", box.h);
       image.setAttribute("href", piece.imageData);
       image.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", piece.imageData);
     } else {
@@ -355,6 +356,7 @@
         rotation: numeric("rotation", 0, -180, 180),
         scale: numeric("scale", 1, 0.5, 1.8),
         visible: typeof incoming.visible === "boolean" ? incoming.visible : true,
+        imageMode: incoming.imageMode === "canvas" ? "canvas" : "cropped",
         imageData: typeof incoming.imageData === "string" && /^data:image\/(png|webp);base64,/.test(incoming.imageData) && incoming.imageData.length < 36_000_000 ? incoming.imageData : null
       };
     });
