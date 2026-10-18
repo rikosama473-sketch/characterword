@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "project": "CharacterWord",
   "reviewedAt": "2026-10-18",
-  "purpose": "Track reusable modular 2D character art, tools and implementation references before integration.",
+  "purpose": "Track reusable modular 2D character art, low-memory character creation tools, and implementation references before integration.",
   "policy": {
     "assetsBundledByDefault": false,
     "requireSourceUrl": true,
@@ -15,7 +15,11 @@
       "cute chibi/loli aesthetic (non-sexual)"
     ],
     "excludeConventionalMasculineCharacterProfiles": true,
-    "psdImportNote": "The browser editor does not parse PSD/KRA directly. Export selected layers to transparent PNGs that retain one exact full-canvas size; do not include third-party art files in the public repository and respect each source's terms."
+    "psdImportNote": "The browser editor does not parse PSD/KRA directly. Export selected layers to transparent PNGs that retain one exact full-canvas size; do not include third-party art files in the public repository and respect each source's terms.",
+    "runtimeMemoryTargetMB": 2048,
+    "runtimeMemoryTargetNote": "Target the editor/renderer for a low-memory runtime of about 2 GB system RAM. Model training and optional external inference are separate and must not be counted as fitting this budget until benchmarked.",
+    "aiTrainingRequiresSeparatePermissionAudit": true,
+    "distinguishAssetReuseFromAiTraining": true
   },
   "sources": [
     {
@@ -1139,7 +1143,7 @@
       "testedInCharacterWord": false,
       "status": "archives-downloaded-layered-canvas-dimension-inspection-pending",
       "pageNotes": "The page says all individual elements share identical canvas dimensions and can be stacked, moved, recolored, chopped up and relayered. Includes PNGs for each element and PSD files. Permitted project uses include games and PNGtubing; NFT and generative-AI dataset use is explicitly disallowed by the creator.",
-      "notes": "Public free download completed without login/payment: ThinGirlSprite.zip (2.3 MB) and PSDFiles.zip (9.7 MB). Do not commit the archives or source art to the public repository. Pending actual local archive manifest, dimension grouping, and import/save/reopen test in CharacterWord. Strongest recently found match for true interchangeable female character parts.",
+      "notes": "Public page offers individual PNG elements and PSDs under CC BY 4.0 and says all elements share a canvas for stacking. The author also explicitly says these assets are not authorized for generative-AI datasets; respect that restriction for this project's training-data policy unless separate permission is obtained. ThinGirlSprite.zip (2.3 MB) and PSDFiles.zip (9.7 MB) were downloaded through a browser, but their manifests, exact canvas dimensions and CharacterWord round-trip remain unverified in the local workspace. Do not commit the source art or ZIPs.",
       "importerImplementation": {
         "mode": "PNG component import; PSD available for visual/layer reference",
         "exactCanvasDimensions": false,
@@ -1150,7 +1154,9 @@
         "thinGirlSpriteZip": "2.3 MB",
         "psdFilesZip": "9.7 MB",
         "examplesZipDownloaded": false
-      }
+      },
+      "aiTrainingPermission": "not-authorized-by-creator-page",
+      "aiTrainingTerms": "The source page explicitly says these assets are not authorized for generative-AI datasets. Do not include in a LoRA or training dataset unless separate explicit permission is obtained."
     },
     {
       "id": "monapdx-modular-pixel-character-kit",
@@ -1271,6 +1277,112 @@
           "78 kB"
         ]
       }
+    },
+    {
+      "id": "psrc-human-mk2-ultimate-devkit",
+      "name": "PSRC Human Mk2 and Ultimate Devkit",
+      "kind": "modular-art-pack",
+      "sourceUrl": "https://opengameart.org/content/psrc-human-mk2-and-ultimate-devkit",
+      "author": "Reactorcore",
+      "style": [
+        "pixel-art",
+        "modular-paper-doll",
+        "anatomy-reference"
+      ],
+      "formats": [
+        "sprite assets",
+        "modular body-part graphics (exact archive formats pending inspection)"
+      ],
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "creditRequired": false,
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "cc0-modular-body-parts-archive-inspection-pending",
+      "notes": "OpenGameArt page describes a customizable modular Human/Skeleton set with 17+ color variants, torso, limbs, heads, hands, feet, facial features and clothing templates. Useful for evaluating truly separate body parts, pivots and paper-doll structure. Its pixel-art appearance is not the target anime style; do not call it visually compatible until tested.",
+      "availability": "free-download",
+      "articulatedLimbsVerified": false,
+      "importMode": "pending-archive-inspection"
+    },
+    {
+      "id": "see-through-anime-layer-decomposition",
+      "name": "See-through — Single-image Layer Decomposition for Anime Characters",
+      "kind": "anime-layer-decomposition-tool",
+      "sourceUrl": "https://github.com/shitagaki-lab/see-through",
+      "author": "shitagaki-lab and paper authors",
+      "style": [
+        "anime",
+        "vtuber",
+        "layered-illustration"
+      ],
+      "formats": [
+        "layered PSD",
+        "transparent semantic layers"
+      ],
+      "license": "Apache-2.0-code-model-weights-and-dataset-terms-separate",
+      "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
+      "creditRequired": true,
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "research-tool-high-vram-not-core-runtime",
+      "notes": "Research tool can decompose one anime illustration into up to 23 semantic layers (including hair, face, eyes, clothing and accessories), with inpainting and inferred draw order. Official README says default inference needs about 12–16 GB GPU VRAM at 1280 resolution; 4-bit quantized inference uses about 8 GB VRAM, and training used 8 NVIDIA H200 GPUs. This is not compatible with a 2 GB memory budget as the core editor; evaluate only as an optional off-device/preparation pipeline for artwork the user owns or is permitted to modify. Code license does not automatically determine model-weight, dependency, input-art or training-data rights.",
+      "availability": "open-source-research-project",
+      "inputRightsRequired": true,
+      "modelMemoryNote": "Reported GPU VRAM: 12–16 GB default, ~8 GB quantized at 1280 resolution. This is VRAM, not system RAM; no 2 GB system-RAM claim is made."
+    },
+    {
+      "id": "stretchy-studio-layered-character-rigging",
+      "name": "Stretchy Studio",
+      "kind": "layered-character-rigging-tool",
+      "sourceUrl": "https://github.com/MangoLion/stretchystudio",
+      "author": "MangoLion",
+      "style": [
+        "2d-cutout",
+        "anime-layered-characters",
+        "mesh-deformation"
+      ],
+      "formats": [
+        "layered PSD",
+        "PNG",
+        "Stretchy project",
+        "Spine JSON export"
+      ],
+      "license": "MIT-code-art-and-model-licenses-separate",
+      "licenseUrl": "https://opensource.org/license/mit",
+      "creditRequired": false,
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "rigging-reference-tool-not-an-art-pack",
+      "notes": "Open-source animation/rigging editor built for layered illustrations and See-through outputs; includes layer grouping, pivots, mesh deformation and rigging workflow. It supplies tooling, not a licensed library of character art. Use as a later interaction/animation reference; memory use and embedding into CharacterWord have not been benchmarked.",
+      "availability": "open-source-code",
+      "modelMemoryNote": "No low-memory profile verified. Do not place it in the critical 2 GB runtime path without benchmarking."
+    },
+    {
+      "id": "konard-anime-avatar-procedural-svg",
+      "name": "Anime Avatar — configurable procedural anime avatar",
+      "kind": "procedural-anime-vector-generator-reference",
+      "sourceUrl": "https://github.com/konard/anime-avatar",
+      "author": "konard",
+      "style": [
+        "anime",
+        "procedural-svg",
+        "configurable-avatar"
+      ],
+      "formats": [
+        "SVG",
+        "React components",
+        "3D WebGL"
+      ],
+      "license": "Unlicense-code-review-assets-and-dependencies-separately",
+      "licenseUrl": "https://unlicense.org/",
+      "creditRequired": false,
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "procedural-svg-architecture-reference",
+      "notes": "Repository describes modular 2D SVG components for face, eyes, hair, body, legs and background, with configurable detail levels. Study the component boundaries and procedural rendering approach as an alternative when licensed part packs cannot fill a slot. This is a code/reference candidate, not an external modular sprite archive; do not assume separate reference images, 3D models or dependencies share the code license.",
+      "availability": "open-source-code",
+      "importMode": "architecture-reference-only",
+      "modelMemoryNote": "The SVG route is more aligned with low-memory rendering than embedding a diffusion model; 3D mode and full app dependencies are not part of the 2 GB target until measured."
     }
   ]
 }
