@@ -23,7 +23,7 @@
   let state = makeDefaultProject();
 
   function defaultPart() {
-    return { dx: 0, dy: 0, rotation: 0, scale: 1, visible: true, layers: [] };
+    return { dx: 0, dy: 0, rotation: 0, scale: 1, visible: true, showFallback: true, layers: [] };
   }
 
   function makeDefaultProject() {
@@ -64,12 +64,12 @@
 
     const fallback = group.querySelector(".fallback-art");
     const layers = Array.isArray(piece.layers) ? piece.layers : [];
+    if (fallback) fallback.style.display = (!layers.length || piece.showFallback) ? "" : "none";
     const existing = new Map(
       Array.from(group.querySelectorAll(".imported-art")).map((image) => [image.getAttribute("data-layer-id"), image])
     );
 
     if (layers.length) {
-      if (fallback) fallback.style.display = "none";
       layers.forEach((layer) => {
         let image = existing.get(layer.id);
         if (!image) {
@@ -115,7 +115,9 @@
       return;
     }
 
-    layers.forEach((layer, index) => {
+    // The list is displayed top-to-bottom (front-to-back), while the stored
+    // array is painted bottom-to-top for SVG stacking.
+    layers.map((layer, index) => ({ layer, index })).reverse().forEach(({ layer, index }) => {
       const row = document.createElement("div");
       row.className = "layer-row";
       row.dataset.layerRow = layer.id;
@@ -182,6 +184,8 @@
     $("move-y-value").textContent = String(piece.dy);
     $("part-visible").checked = piece.visible;
     $("remove-image").hidden = piece.layers.length === 0;
+    $("show-fallback").checked = Boolean(piece.showFallback);
+    $("show-fallback").disabled = piece.layers.length === 0;
     $("choose-image").textContent = "Añadir capa";
     $("selected-indicator").style.background = piece.layers.length ? "#a4f1d0" : "#d8a8ff";
     renderImportedLayerList();
@@ -354,6 +358,7 @@
         }
         const target = state.parts[targetPartId];
         const layerId = "layer-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        if (target.layers.length === 0) target.showFallback = false;
         target.layers.push({
           id: layerId,
           name: String(file.name || "Capa importada").slice(0, 180),
@@ -489,6 +494,7 @@
         rotation: numeric("rotation", 0, -180, 180),
         scale: numeric("scale", 1, 0.5, 1.8),
         visible: typeof incoming.visible === "boolean" ? incoming.visible : true,
+        showFallback: typeof incoming.showFallback === "boolean" ? incoming.showFallback : importedLayers.length === 0,
         layers: importedLayers
       };
     });
@@ -588,8 +594,14 @@
     importPartImage(event.target.files && event.target.files[0]);
     event.target.value = "";
   });
+  $("show-fallback").addEventListener("change", (event) => {
+    state.parts[selectedPart].showFallback = event.target.checked;
+    render();
+    scheduleLocalSave();
+  });
   $("remove-image").addEventListener("click", () => {
     state.parts[selectedPart].layers = [];
+    state.parts[selectedPart].showFallback = true;
     render();
     scheduleLocalSave();
     showToast("Se quitaron las capas y se restauró el dibujo de muestra.");
