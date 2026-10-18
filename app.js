@@ -51,6 +51,8 @@
   let toastTimer = null;
   let drag = null;
   let state = makeDefaultProject();
+  let assetLibrary = [];
+  let assetLibraryZipName = "";
 
   function defaultPart() {
     return { dx: 0, dy: 0, rotation: 0, scale: 1, visible: true, showFallback: true, layers: [] };
@@ -285,6 +287,209 @@
     state.compositionLayers.forEach((layer) => appendImage(layer.dataUrl, layer.name, layer.visible));
   }
 
+  function renderAssetLibrary() {
+    const host = $("asset-library-list");
+    const title = $("asset-library-title");
+    const clearButton = $("clear-asset-library");
+    if (!host || !title || !clearButton) return;
+    host.replaceChildren();
+    clearButton.hidden = assetLibrary.length === 0;
+    title.textContent = assetLibrary.length
+      ? "Biblioteca del ZIP · " + assetLibrary.length + " PNG"
+      : "Biblioteca del ZIP";
+
+    if (!assetLibrary.length) {
+      const empty = document.createElement("p");
+      empty.className = "asset-library-empty";
+      empty.textContent = "Importa un ZIP descargado de la página original para elegir entre sus variantes. Solo se aceptan imágenes que coincidan con las dimensiones de la base seleccionada.";
+      host.appendChild(empty);
+      return;
+    }
+
+    assetLibrary.forEach((item) => {
+      const row = document.createElement("div");
+      row.className = "asset-library-row" + (item.type === "base" ? " is-base" : "");
+      const meta = document.createElement("div");
+      meta.className = "asset-library-meta";
+      const name = document.createElement("strong");
+      name.textContent = item.name;
+      name.title = item.path;
+      const detail = document.createElement("small");
+      detail.textContent = (item.type === "base" ? "CUERPO BASE" : item.category) + " · " + item.width + " × " + item.height;
+      detail.title = item.path;
+      meta.append(name, detail);
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "asset-library-action";
+      button.dataset.libraryAction = item.type === "base" ? "use-base" : "add-overlay";
+      button.dataset.libraryId = item.id;
+      if (item.type === "base") {
+        const active = state.assetBase && state.assetBase.libraryId === item.id;
+        button.textContent = active ? "Seleccionada" : "Usar base";
+        button.disabled = Boolean(active);
+        button.setAttribute("aria-label", "Usar cuerpo base " + item.name);
+      } else {
+        const alreadyAdded = state.compositionLayers.some((layer) => layer.libraryId === item.id);
+        button.textContent = alreadyAdded ? "Añadida" : "Añadir capa";
+        button.disabled = !state.assetBase || alreadyAdded;
+        button.setAttribute("aria-label", "Añadir capa " + item.name);
+      }
+      row.append(meta, button);
+      host.appendChild(row);
+    });
+  }
+
+  function clearAssetLibrary() {
+    assetLibrary = [];
+    assetLibraryZipName = "";
+    renderAssetLibrary();
+    showToast("Biblioteca del ZIP vaciada. La composición actual no se ha borrado.");
+  }
+
+  async function importAssetZip(file) {
+    if (!file) return;
+    const pack = activeAssetPack();
+    if (pack.id === "manual") {
+      showToast("Selecciona FBFFFM001 o HFFF001 antes de importar un ZIP.", true);
+      return;
+    }
+    if (!window.JSZip || typeof window.JSZip.loadAsync !== "function") {
+      showToast("No se ha cargado el lector ZIP local. Recarga CharacterWord e inténtalo otra vez.", true);
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      showToast("Este ZIP supera el límite de 20 MB para la importación local.", true);
+      return;
+    }
+
+    try {
+      $("asset-library-title").textContent = "Leyendo ZIP…";
+      const archive = await window.JSZip.loadAsync(file);
+      const entries = Object.values(archive.files)
+        .filter((entry) => !entry.dir && /\.png$/i.test(entry.name) && !entry.name.split("/").some((part) => part === "__MACOSX" || part.startsWith(".")))
+        .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+
+      if (!entries.length) {
+        renderAssetLibrary();
+        showToast("El ZIP no contiene archivos PNG.", true);
+        return;
+      }
+      if (entries.length > 150) {
+        renderAssetLibrary();
+        showToast("El ZIP tiene más de 150 PNG. Importa un paquete más pequeño de la misma base.", true);
+        return;
+      }
+
+      const found = [];
+      const rejected = [];
+      let decodedBytes = 0;
+      for (const entry of entries) {
+        try {
+          const base64 = await entry.async("base64");
+          decodedBytes += Math.floor(base64.length * 3 / 4);
+          if (decodedBytes > 30 * 1024 * 1024) {
+            rejected.push("límite de memoria alcanzado");
+            break;
+          }
+          const dataUrl = "data:image/png;base64," + base64;
+          const dimensions = await inspectImageDimensions(dataUrl);
+          if (!validatePackImageDimensions(dimensions.width, dimensions.height)) {
+            rejected.push(entry.name + " (" + dimensions.width + " × " + dimensions.height + ")");
+            continue;
+          }
+          const parts = entry.name.split("/").filter(Boolean);
+          const parentFolder = parts.length > 1 ? parts[parts.length - 2] : "";
+          const normalizedFolder = parentFolder.replace(/^\d+[_\s-]*/, "").toUpperCase();
+          const isBase = normalizedFolder.includes("BODYBASE") || normalizedFolder === "BASE_BODY" || normalizedFolder.includes("BASE_BODY");
+          const category = normalizedFolder || (isBase ? "BASE_BODY" : "DETALLE");
+          found.push({
+            id: "library-" + Date.now().toString(36) + "-" + found.length.toString(36) + "-" + Math.random().toString(36).slice(2, 6),
+            name: parts[parts.length - 1] || "imagen.png",
+            path: entry.name,
+            folder: parentFolder,
+            category,
+            type: isBase ? "base" : "overlay",
+            dataUrl,
+            width: dimensions.width,
+            height: dimensions.height
+          });
+        } catch (_) {
+          rejected.push(entry.name + " (archivo ilegible)");
+        }
+      }
+
+      if (!found.length) {
+        renderAssetLibrary();
+        showToast("Ningún PNG coincide con " + pack.label + ". Se esperaba " + pack.width + " × " + pack.height + ".", true);
+        return;
+      }
+
+      assetLibrary = found;
+      assetLibraryZipName = file.name;
+      renderAssetLibrary();
+      renderAssetPackControls();
+      const bases = found.filter((item) => item.type === "base").length;
+      const overlays = found.length - bases;
+      showToast("ZIP leído localmente: " + bases + " variantes de cuerpo y " + overlays + " capas de detalle." + (rejected.length ? " " + rejected.length + " archivo(s) omitidos por dimensiones o tamaño." : ""));
+    } catch (error) {
+      renderAssetLibrary();
+      showToast(error.message || "No se pudo abrir el ZIP. Comprueba que el archivo se descargó por completo.", true);
+    }
+  }
+
+  function useLibraryBase(libraryId) {
+    const item = assetLibrary.find((candidate) => candidate.id === libraryId);
+    if (!item || item.type !== "base") return;
+    if (!validatePackImageDimensions(item.width, item.height)) {
+      showToast("Esta imagen no coincide con las dimensiones de la base activa.", true);
+      return;
+    }
+    state.assetBase = {
+      name: item.name,
+      dataUrl: item.dataUrl,
+      width: item.width,
+      height: item.height,
+      originPath: item.path,
+      libraryId: item.id
+    };
+    render();
+    scheduleLocalSave();
+    showToast("Cuerpo base seleccionado: " + item.name + ".");
+  }
+
+  function addLibraryOverlay(libraryId) {
+    const item = assetLibrary.find((candidate) => candidate.id === libraryId);
+    if (!item || item.type === "base") return;
+    if (!state.assetBase) {
+      showToast("Selecciona primero una variante de cuerpo base.", true);
+      return;
+    }
+    if (state.compositionLayers.some((layer) => layer.libraryId === item.id)) {
+      showToast("Esta capa ya está añadida.");
+      return;
+    }
+    if (!validatePackImageDimensions(item.width, item.height)) {
+      showToast("Esta capa no coincide con la base activa y no se puede alinear.", true);
+      return;
+    }
+    if (state.compositionLayers.length >= 40) {
+      showToast("La composición admite hasta 40 capas de detalle.", true);
+      return;
+    }
+    state.compositionLayers.push({
+      id: "asset-layer-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
+      libraryId: item.id,
+      name: item.name,
+      originPath: item.path,
+      dataUrl: item.dataUrl,
+      visible: true
+    });
+    render();
+    scheduleLocalSave();
+    showToast("Capa añadida: " + item.name + ".");
+  }
+
   function renderAssetLayerList() {
     const host = $("asset-layer-list");
     if (!host) return;
@@ -420,6 +625,7 @@
       credit.append(author, licence, source);
     }
     renderAssetLayerList();
+    renderAssetLibrary();
   }
 
   function switchAssetPack(nextId) {
@@ -434,6 +640,8 @@
     state.assetPack = { id: next };
     state.assetBase = null;
     state.compositionLayers = [];
+    assetLibrary = [];
+    assetLibraryZipName = "";
     render();
     scheduleLocalSave();
     showToast(next === "manual" ? "Modo de muñeca por piezas activado." : "Base seleccionada: " + ASSET_PACKS[next].label + ".");
@@ -877,6 +1085,7 @@
           name: typeof layer.name === "string" ? layer.name.slice(0, 220) : "Capa " + (index + 1),
           originPath: typeof layer.originPath === "string" ? layer.originPath.slice(0, 500) : "",
           dataUrl: layer.dataUrl,
+          libraryId: typeof layer.libraryId === "string" ? layer.libraryId.slice(0, 220) : null,
           visible: typeof layer.visible === "boolean" ? layer.visible : true
         };
       }).filter(Boolean) : [];
@@ -1023,6 +1232,18 @@
     scheduleLocalSave();
   });
   $("asset-pack-select").addEventListener("change", (event) => switchAssetPack(event.target.value));
+  $("choose-asset-zip").addEventListener("click", () => $("asset-zip-input").click());
+  $("asset-zip-input").addEventListener("change", (event) => {
+    importAssetZip(event.target.files && event.target.files[0]);
+    event.target.value = "";
+  });
+  $("clear-asset-library").addEventListener("click", clearAssetLibrary);
+  $("asset-library-list").addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-library-action]");
+    if (!button || button.disabled) return;
+    if (button.dataset.libraryAction === "use-base") useLibraryBase(button.dataset.libraryId);
+    else if (button.dataset.libraryAction === "add-overlay") addLibraryOverlay(button.dataset.libraryId);
+  });
   $("choose-asset-base").addEventListener("click", () => $("asset-base-input").click());
   $("asset-base-input").addEventListener("change", (event) => {
     importAssetBase(event.target.files && event.target.files[0]);
