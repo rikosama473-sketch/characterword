@@ -21,6 +21,7 @@
         <span>Editor local · tus imágenes no se suben a ningún servidor</span>
       </div>
       <div class="topbar-actions">
+        <a class="button button-quiet" href="https://github.com/rikosama473-sketch/characterword/blob/work/asset-research-2026-10/docs/ASSET_RESEARCH.md" target="_blank" rel="noopener noreferrer">Fuentes de arte</a>
         <a class="button button-quiet" href="https://github.com/rikosama473-sketch/characterword/blob/main/docs/ASSET_RESEARCH.md" target="_blank" rel="noopener noreferrer">Fuentes de arte</a>\n        <a class="button button-quiet" href="https://github.com/rikosama473-sketch/characterword/blob/main/docs/ASSET_RESEARCH.md" target="_blank" rel="noopener noreferrer">Fuentes de arte</a>
         <button class="button button-quiet" id="reset-all" type="button">Restablecer</button>
         <button class="button button-primary" id="export-project" type="button">Exportar proyecto</button>
@@ -165,15 +166,24 @@
         </div>
 
         <div class="section-label">REEMPLAZAR ILUSTRACIÓN</div>
-        <div class="upload-zone" id="upload-zone">
+         <div class="upload-zone" id="upload-zone">
           <div class="upload-icon">↑</div>
-          <strong>Importar pieza PNG</strong>
-          <span>PNG/WebP con transparencia, recortado a esta pieza.</span>
-          <div class="file-mode-row"><label for="image-mode">Formato de la imagen</label><select id="image-mode"><option value="cropped">Pieza recortada</option><option value="canvas">Capa de lámina alineada</option></select></div>\n          <button type="button" class="button button-outline" id="choose-image">Elegir archivo</button>
+          <strong>Añadir capa PNG/WebP</strong>
+          <span>Importa cabello, ojos, ropa u otras capas transparentes sobre la pieza seleccionada.</span>
+          <div class="file-mode-row">
+            <label for="image-mode">Formato de la imagen</label>
+            <select id="image-mode">
+              <option value="canvas" selected>Capa de lámina alineada</option>
+              <option value="cropped">Pieza recortada</option>
+            </select>
+          </div>
+          <button type="button" class="button button-outline" id="choose-image">Añadir capa</button>
           <input id="part-image-input" type="file" accept="image/png,image/webp" hidden>
-          <button type="button" class="text-button" id="remove-image" hidden>Volver al dibujo de muestra</button>
+          <button type="button" class="text-button" id="remove-image" hidden>Quitar todas las capas y restaurar muestra</button>
         </div>
-        <p class="microcopy">“Pieza recortada” ajusta un PNG de una sola parte. “Capa de lámina alineada” conserva las coordenadas relativas de una capa transparente cuyo lienzo completo coincide con el de las demás capas del mismo paquete.</p>
+        <div class="section-label layer-section-label">CAPAS DE ESTA PIEZA</div>
+        <div id="imported-layer-list" class="imported-layer-list" aria-live="polite"></div>
+        <p class="microcopy">Puedes apilar varias capas dentro de una misma pieza. Usa “Capa de lámina alineada” cuando las imágenes conservan el mismo lienzo y coordenadas de origen; usa “Pieza recortada” para un recorte independiente. Las capas se mueven juntas con la pieza anatómica seleccionada.</p>
 
         <div class="panel-divider"></div>
         <div class="control-group">
