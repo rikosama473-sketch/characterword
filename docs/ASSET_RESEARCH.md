@@ -226,8 +226,40 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 - ZIP Female.zip (276 kB), base chibi femenina, siete tonos de piel, pelo y ojos intercambiables; precio anunciado USD 6.99+.
 - Estado: **pendiente de licencia y dimensiones**. La ficha pública revisada no expone claramente estos datos, así que no aprobar ni integrar hasta inspeccionar ZIP y términos.
 
+## Candidatos prioritarios hallados el 2026-10-18
+
+### ani mosity — Modular Character Sprite, Thin Girl
+- Fuente: https://queenofzan.itch.io/modular-character-sprite-thin-girl
+- **Mejor ajuste nuevo para piezas intercambiables.** La autora dice que los PNG de cada elemento tienen el mismo tamaño de lienzo y pueden apilarse; ofrece PNG separados y PSD para recomponer y recolorear.
+- Licencia indicada: **CC BY 4.0**. Atribución requerida y enlace a la página/licencia. La autora excluye NFTs y conjuntos de datos de IA en su página; reflejar esta nota junto con la licencia y no usar esos fines.
+- Descarga gratuita sin iniciar sesión ni pagar comprobada para `ThinGirlSprite.zip` (2.3 MB) y `PSDFiles.zip` (9.7 MB). `Examples.zip` no se descargó.
+- **Estado:** descarga realizada, pero falta inspeccionar el contenido real de los ZIP, contar piezas y medir las dimensiones PNG. No crear un perfil que afirme compatibilidad hasta verificar la misma geometría y hacer una prueba local de importación/guardado/reapertura.
+
+### monapdx — Modular Pixel Character Kit
+- Fuente: https://monapdx.itch.io/modular-pixel-character-kit
+- La ficha ofrece `female-modular-pixel-characters.zip` (113 kB), PNG transparentes alineados y archivos fuente GIMP XCF; indica distintas caras, tonos de piel y peinados/colorways.
+- La página dice “free to use” y acepta donaciones, pero no identifica una licencia estándar en el texto consultado. No marcar como CC0 ni asumir derechos de redistribución hasta revisar el ZIP/README o pedir aclaración.
+- **Estado:** candidato femenino/chibi de prioridad alta; dimensiones exactas y términos pendientes de inspección.
+
+### Potat0Master — Hiyori, Free Character Sprite for Visual Novels
+- Fuente: https://potat0master.itch.io/free-character-sprite-for-visual-novels-hiyori
+- La página ofrece renders femeninos PNG/WEBP en alta resolución, tres conjuntos y más de 25 expresiones; los archivos editables CLIP/PSD se ofrecen por separado (precio publicado: USD 1).
+- La ficha describe una licencia royalty-free y uso en proyectos personales/comerciales. Revisar las condiciones completas antes de redistribuir imágenes o proyectos que las incluyan.
+- **Estado:** recurso visual secundario; las imágenes completas no equivalen a un set de piezas anatómicas separadas. Los archivos fuente todavía no se probaron.
+
+### Hordana — Anime Girl / Michona (CC0)
+- Fuente: https://opengameart.org/content/anime-girl
+- OpenGameArt etiqueta el recurso como CC0. La página enumera tiras PNG de salto, caminata y parpadeo.
+- **Estado:** útil para probar una presentación chibi femenina o secuencias de animación, pero no es una marioneta modular; verificar alfa, fotogramas y proporción antes de integrarlo.
+
+### Kenney — Modular Characters (CC0)
+- Fuente: https://kenney.nl/assets/modular-characters
+- La ficha de OpenGameArt refleja CC0 y lista 425 PNG separados, 6 spritesheets y 6 archivos vectoriales: https://opengameart.org/content/modular-character-pack.
+- El estilo es cartoon/flat, no anime. Sirve como referencia técnica para la composición; filtrar y exponer solo componentes con presentación femenina, sin ofrecer bases masculinas convencionales.
+- **Estado:** candidato CC0 de arquitectura; comprobar alineación y orden de capas en los archivos descargados antes de afirmar que es articulable.
+
 ## Conclusión provisional
 
 La prioridad visual es **FBFFFM001 y HFFF001** (ZIP base inspeccionados). La próxima prueba de origen debe ser **Dorathy** por la variedad de prendas y posiciones de brazos; Pung Lone Wolf es una alternativa de pago. Los candidatos chibi y andróginos permanecen pendientes de revisión de licencia y compatibilidad.
 
-No se han añadido archivos gráficos de terceros al repositorio. Solo los ZIP base de FBFFFM001 y HFFF001 se inspeccionaron localmente; los PSD/KRA y las fuentes adicionales todavía necesitan prueba con sus archivos reales.
+Los archivos descargables de terceros no se incluyen en el repositorio. Los ZIP base de FBFFFM001/HFFF001 ya se inspeccionaron; los archivos de Thin Girl se descargaron pero su contenido y dimensiones aún necesitan verificación. Los demás nuevos candidatos siguen pendientes de archivo real/licencia/compatibilidad según indique cada entrada.
