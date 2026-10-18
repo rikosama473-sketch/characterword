@@ -1,4 +1,4 @@
-# Investigación de recursos gráficos para CharacterWord
+# Investigación de recursos para waifus, femboys andróginos y chibi en CharacterWord
 
 **Revisado:** 2026-10-18  
 **Objetivo visual:** personaje anime o ilustrado compuesto por capas intercambiables; a largo plazo, permitir seleccionar y mover partes del cuerpo como un muñeco articulado.  
@@ -32,20 +32,35 @@ Las capas de ropa, ojos y cabello no garantizan que brazos y piernas sean articu
 - Fuente: https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama
 - Tipo: personaje anime femenino con capas y variaciones, de estética aristocrática.
 - Disponibilidad/estructura confirmada: se presenta como recurso gratuito; tiene paquetes ZIP independientes para la base, varias ropas, cabello, blusa y accesorios. La autora indica que los elementos se entregan como PNG transparentes ordenados en carpetas numeradas, y que los paquetes comparten una base diseñada para combinarse cuando visualmente encajan.
-- Licencia indicada por la categoría pública de la página: **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**. La página pide enlazar al recurso/autora; conservar atribución y revisar las condiciones ShareAlike antes de publicar versiones modificadas.
+- Licencia de la ficha pública actual: **Creative Commons Attribution 4.0 International (CC BY 4.0)**. La página pide enlazar al recurso/autora; no debe heredarse la licencia CC BY-SA de FBFFFM001.
 - Ventajas: la estructura numérica define el orden de composición; la página indica que las piezas de los paquetes diseñados para la misma base se pueden mezclar si encajan. Es un punto de partida práctico para montar cabeza/cara, cabello y torso con una apariencia anime consistente.
-- Condiciones: dar atribución adecuada, enlazar la fuente e indicar cambios cuando corresponda. CC BY 4.0 no es una licencia ShareAlike, a diferencia de la candidata A.
+- Condiciones: atribuir y enlazar la fuente e indicar cambios cuando corresponda. CC BY 4.0 no impone ShareAlike, a diferencia de FBFFFM001.
 - Limitación: comprobar antes el alcance de cada paquete y que las piezas que se quieran mezclar compartan la misma base.
 - Estado: **candidata prioritaria para una segunda prueba**.
 
-### C. LinXueLian — HMLF001 Anime Boy 800px
-- Fuente: https://linxuelian.itch.io/customchar-hmlf001-malebust
-- Tipo: conjunto de personaje anime masculino para novelas visuales.
-- Formato anunciado: PNG en carpetas numeradas por capas; la página describe ropa, cabello, ojos y accesorios combinables entre paquetes de la misma base.
-- Licencia que muestra la página: **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
-- Ventajas: recurso anime con capas reales y licencia declarada, útil para comprobar si la arquitectura admite varias bases de personajes.
-- Limitación: confirmar las proporciones y si la base es busto/medio cuerpo o cuerpo completo, así como la compatibilidad exacta con los conjuntos femeninos. No mezclar piezas entre bases distintas solo porque tengan el mismo estilo.
-- Estado: **candidata prioritaria secundaria**.
+## Nuevas fuentes para el catálogo femenino y andrógino
+
+### Dorathy — Customizable Visual Novel Girl Sprite (Basics Pack)
+- Fuente: https://dorathy.itch.io/customizable-visual-novel-girl-sprite-basics-pack
+- KRA/PSD de 820 × 1080, 13 peinados, varios grupos de ropa y 5 posiciones de brazos con mangas.
+- Los términos de la autora permiten uso personal/comercial y modificación, pero prohíben re-subir sprites originales o modificados y exigen crédito. No se identificó una licencia Creative Commons.
+- Estado: perfil configurado a 820 × 1080; aún falta exportar capas reales a PNG y probar importación/guardado/reapertura. No compartir JSON con los píxeles de este pack.
+
+### Pung Lone Wolf — Layered Female Character Sprite (PSD)
+- Fuente: https://punglonewolf.itch.io/girl-sprite-psd-1
+- PSD de pago (USD 7.99+) a 1504 × 2409, con base, ojos, bocas, rubor y cuatro conjuntos.
+- Permite uso comercial y modificación, pero prohíbe redistribuir/revender archivos fuente; crédito opcional.
+- Estado: perfil configurado; se necesita poseer el PSD y probar exportación de capas. El arte no está incluido.
+
+### Recursos de investigación pendientes de autorización o inspección
+- **blackbunney — FREE Anime Girl Character Sprite:** https://blackbunney.itch.io/free-anime-girl-character-sprite. PSD 1680 × 1050, 5 peinados, 6 conjuntos y 10 expresiones. Uso personal/comercial, pero el sprite no se puede revender por sí solo; lienzo horizontal y capas pendientes de prueba.
+- **TinyClownGames — Customizable Female VN Sprite:** https://tinyclowngames.itch.io/magnoliamoths-customizable-female-vn-sprites. PSD de 1750 × 1750, ocho estilos de cabello, ocho conjuntos, nueve bocas y siete expresiones de ojos. No revender sprites ni usarlos en NFT.
+- **monapdx — Modular Pixel Character Creator (Female Sprites):** https://monapdx.itch.io/modular-pixel-character-creator-female-sprites. ZIP pequeño con PNG femeninos alineados; licencia y dimensiones no visibles en la página. Revisar el README del ZIP antes de usar.
+- **Chibi Pixel Bundle — Modular Female Character Assets:** https://constantreject13.itch.io/chibi-pixel-bundle-modular-female-character-assets. PNG de 32 × 48 con 80 cabellos, 54 ojos, 40 bocas y cuatro tonos de piel. La licencia está en el README del ZIP, aún no revisado. Candidato chibi/loli no sexual.
+- **Kuniko — femboy VN sprite:** https://demonr-kun.itch.io/5-kuniko-asset-pack. Sprite completo y ocho expresiones; USD 15+. Solo permite modificar las expresiones faciales y exige crédito, así que no es una base para cambiar libremente cuerpo o ropa.
+- **Char_0084 Androgynous — studentspub:** https://studentspub.itch.io/anime-character-asset-char-0084. 22 imágenes, 11 poses y 9 emociones; descrito como andrógino y de proporciones adultas. Crédito obligatorio, no redistribuir imágenes sueltas, y la página declara gráficos asistidos por IA. Referencia de poses, no kit modular.
+
+No confundir descarga gratuita, permiso de uso en un juego y permiso de redistribución de las capas. Los activos no se guardan en el repositorio público; cada entrada distingue fuente investigada, perfil configurado y compatibilidad probada.
 
 ## Candidatos para la arquitectura, capas y animación
 
@@ -194,6 +209,6 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 
 ## Conclusión provisional
 
-La primera prueba de arte debería usar **FBFFFM001** para evaluar capas anime de cuerpo completo y **HFFF001** para comparar un conjunto con licencia CC BY 4.0. En paralelo, estudiar LPC para la arquitectura de slots y la contabilidad de créditos. Esta combinación prueba tanto la estética como el problema técnico sin confundir capas de ropa con articulaciones reales.
+La prioridad visual es **FBFFFM001 y HFFF001** (ZIP base inspeccionados). La próxima prueba de origen debe ser **Dorathy** por la variedad de prendas y posiciones de brazos; Pung Lone Wolf es una alternativa de pago. Los candidatos chibi y andróginos permanecen pendientes de revisión de licencia y compatibilidad.
 
-No se han descargado ni incorporado paquetes gráficos en este cambio. El siguiente paso es una prueba local y pequeña para confirmar compatibilidad antes de elegir un estándar de importación.
+No se han añadido archivos gráficos de terceros al repositorio. Solo los ZIP base de FBFFFM001 y HFFF001 se inspeccionaron localmente; los PSD/KRA y las fuentes adicionales todavía necesitan prueba con sus archivos reales.

@@ -24,10 +24,10 @@ El editor ya está publicado en [CharacterWord Studio](https://rikosama473-sketc
 - Selecciona y arrastra las piezas; ajusta rotación, escala, posición y visibilidad.
 - Apila varias capas PNG/WebP transparentes dentro de cabeza, torso, brazo superior o antebrazo; oculta, reordena y elimina capas por separado.
 - Alterna entre capas recortadas y láminas de lienzo alineado; mueve/gira/escalas las capas como una sola pieza anatómica.
-- Importa directamente los ZIP originales de FBFFFM001 o HFFF001: el lector local enumera las variantes disponibles y deja elegir un cuerpo base y las bocas/cejas/maquillaje que quieras añadir.
+- Importa los ZIP originales verificados de FBFFFM001/HFFF001 y también capas PNG exportadas desde PSD/KRA de modelos femeninos compatibles. Cada perfil bloquea las dimensiones del lienzo para evitar mezclar bases incompatibles; los archivos de terceros no están incluidos en el repositorio.
 - Prueba paletas y poses, exporta a PNG y guarda/carga proyectos JSON.
 - Los ZIP e imágenes se leen localmente en el navegador mediante JSZip (MIT); no hay backend ni envío automático de imágenes a un servidor. El proyecto conserva las capas elegidas y metadatos de atribución.
-- El dibujo vectorial incorporado es solo una base de prueba para el modo articulable. Los paquetes FBFFFM001 y HFFF001 ya tienen un modo de importación de cuerpo completo y expresiones por capas; sus ZIP no incluyen piezas anatómicas independientes ni un esqueleto continuo hombro-codo-muñeca.
+- El dibujo vectorial incorporado es solo una base de prueba para el modo articulable. FBFFFM001 y HFFF001 combinan sprites completos con overlays; sus ZIP base inspeccionados no incluyen piezas anatómicas independientes. Dorathy y Pung Lone Wolf ofrecen PSD/KRA por capas, pero deben exportarse a PNG transparentes conservando el lienzo. Sus perfiles están configurados; la prueba de importación completa de esas fuentes sigue pendiente.
 
 ## Validación del código
 

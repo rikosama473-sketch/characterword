@@ -8,7 +8,14 @@
     "requireSourceUrl": true,
     "requirePerAssetLicenseReview": true,
     "requireAttributionManifestWhenNeeded": true,
-    "neverInferRedistributionPermissionFromFreeDownload": true
+    "neverInferRedistributionPermissionFromFreeDownload": true,
+    "targetCharacterStyles": [
+      "female anime/waifu",
+      "androgynous/femboy presentation",
+      "cute chibi/loli aesthetic (non-sexual)"
+    ],
+    "excludeConventionalMasculineCharacterProfiles": true,
+    "psdImportNote": "The browser editor does not parse PSD/KRA directly. Export selected layers to transparent PNGs that retain one exact full-canvas size; do not include third-party art files in the public repository and respect each source's terms."
   },
   "sources": [
     {
@@ -90,7 +97,69 @@
         "addOverlayVariants": true,
         "enforceCanvasDimensions": true,
         "liveRoundTripTested": false
-      }
+      },
+      "availablePackages": [
+        {
+          "file": "FBFFFM001_000_BASE_BODY.zip",
+          "displaySize": "568 kB",
+          "purpose": "Tonos de piel y base"
+        },
+        {
+          "file": "FBFFFM001_001_YuelanMaiden.zip",
+          "displaySize": "8.4 MB",
+          "purpose": "Conjunto de ropa"
+        },
+        {
+          "file": "FBFFFM001_002_TaiyakinaHair.zip",
+          "displaySize": "808 kB",
+          "purpose": "Cabello"
+        },
+        {
+          "file": "FBFFFM001_003_ChunkyChoker.zip",
+          "displaySize": "69 kB",
+          "purpose": "Accesorio"
+        },
+        {
+          "file": "FBFFFM001_004_MaryJaneSlippers.zip",
+          "displaySize": "104 kB",
+          "purpose": "Calzado"
+        },
+        {
+          "file": "FBFFFM001_005_ModernaSet.zip",
+          "displaySize": "3.7 MB",
+          "purpose": "Blusa y falda modernas"
+        },
+        {
+          "file": "FBFFFM001_006_TaiyakinaEyes.zip",
+          "displaySize": "55 kB",
+          "purpose": "Ojos"
+        },
+        {
+          "file": "FBFFFM001_007_Baeseek_LowrisePants.zip",
+          "displaySize": "1.9 MB",
+          "purpose": "Pantalones"
+        },
+        {
+          "file": "FBFFFM001_008_Adora_Hair.zip",
+          "displaySize": "594 kB",
+          "purpose": "Cabello"
+        },
+        {
+          "file": "FBFFFM001_009_Megarin_Eyes.zip",
+          "displaySize": "307 kB",
+          "purpose": "Ojos; añadidos el 9 de octubre de 2026"
+        },
+        {
+          "file": "FBFFFM001_010_Frankenstein_Monster_Skintone.zip",
+          "displaySize": "210 kB",
+          "purpose": "Variante de tono de piel; añadido el 16 de octubre de 2026"
+        },
+        {
+          "file": "FBFFFM001_011_Back_Hairbow.zip",
+          "displaySize": "267 kB",
+          "purpose": "Lazo para cabello; añadido el 16 de octubre de 2026"
+        }
+      ]
     },
     {
       "id": "linxuelian-hfff001-oujousama",
@@ -108,18 +177,18 @@
         "separate numbered layer folders"
       ],
       "layering": "base essentials plus separate clothing/hair/accessory packs",
-      "license": "CC-BY-SA-4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceLicenseLabel": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
       "creditRequired": true,
-      "shareAlike": true,
+      "shareAlike": false,
       "articulatedLimbsVerified": false,
       "testedInCharacterWord": false,
       "status": "archive-inspected-zip-importer-implemented-e2e-test-pending",
-      "notes": "Imported through CharacterWord's full-canvas composition mode. Choose one body PNG, then add face/makeup or mouth overlays from the same HFFF001 base using 537x700 images. Do not combine these images with FBFFFM001 layers; their canvas dimensions and source base differ.",
+      "notes": "The public page currently lists CC BY 4.0 (not CC BY-SA 4.0), asks for source attribution, and identifies several add-on ZIPs using the same base. The inspected base essentials ZIP has full-canvas images rather than independent head/torso/arm cutouts; add-on ZIPs have not been separately extracted here and should be checked by the editor's 537x700 dimension guard.",
       "availability": "free-download-as-presented-on-source-page",
       "layerFolderSystem": "numbered folders; lower number is lower draw order",
-      "pageNotes": "The public page marks the pack under CC BY-SA 4.0, requests a link to the project or author, and says its numbered transparent PNG folders are intended for layer stacking. The inspected base essentials ZIP has full-canvas images rather than independent head/torso/arm cutouts.",
+      "pageNotes": "The current public page shows CC BY 4.0, requests a link to the project or author, and says the numbered transparent PNG folders are intended for layer stacking. The inspected base essentials ZIP has full-canvas images rather than independent head/torso/arm cutouts.",
       "importMode": "full-canvas-composition",
       "layerFolders": [
         "00_BASE_BODY",
@@ -163,33 +232,40 @@
         "addOverlayVariants": true,
         "enforceCanvasDimensions": true,
         "liveRoundTripTested": false
-      }
-    },
-    {
-      "id": "linxuelian-hmlf001-anime-boy",
-      "name": "Custom VN Character: HMLF001 Anime Boy 800px",
-      "kind": "art-pack",
-      "sourceUrl": "https://linxuelian.itch.io/customchar-hmlf001-malebust",
-      "author": "LinXueLian",
-      "style": [
-        "anime",
-        "visual-novel",
-        "male-character"
-      ],
-      "formats": [
-        "PNG",
-        "separate numbered layer folders"
-      ],
-      "layering": "base, expression, mouth, eyes, eyebrows, hair, ears, inner/outer garments, accessories",
-      "license": "CC-BY-SA-4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International",
-      "creditRequired": true,
-      "shareAlike": true,
-      "articulatedLimbsVerified": false,
-      "testedInCharacterWord": false,
-      "status": "priority-candidate",
-      "notes": "Confirm bust/full-body extent and keep compatibility within the same base."
+      },
+      "redistributionReviewed": "source declares CC BY 4.0; retain author attribution and license link; no ShareAlike condition is stated in the current page listing",
+      "availablePackages": [
+        {
+          "file": "HFFF001_OJOU_00_BASE_ESSENTIALS.zip",
+          "displaySize": "341 kB",
+          "purpose": "Base, tonos, maquillaje y bocas"
+        },
+        {
+          "file": "HFFF001_OJOU_01_DASHINGTON.zip",
+          "displaySize": "4.1 MB",
+          "purpose": "Conjunto de diseño/ropa"
+        },
+        {
+          "file": "HFFF001_OJOU_02_DARLINGTON.zip",
+          "displaySize": "3.1 MB",
+          "purpose": "Conjunto de diseño/ropa"
+        },
+        {
+          "file": "HFFF001_OJOU_03_Melina_Hair.zip",
+          "displaySize": "1.1 MB",
+          "purpose": "Cabello; añadido en septiembre de 2026"
+        },
+        {
+          "file": "HFFF001_OJOU_04_Crisscross_Blouse.zip",
+          "displaySize": "979 kB",
+          "purpose": "Blusa; añadido en septiembre de 2026"
+        },
+        {
+          "file": "HFFF001_OJOU_05_ButterflyHairclip.zip",
+          "displaySize": "665 kB",
+          "purpose": "Horquilla; añadido en septiembre de 2026"
+        }
+      ]
     },
     {
       "id": "universal-lpc-generator",
@@ -577,6 +653,320 @@
       "testedInCharacterWord": false,
       "status": "workflow-reference-only",
       "notes": "Useful to study interaction and posing; do not reuse software/art or assume export rights before confirming terms."
+    },
+    {
+      "id": "dorathy-customizable-visual-novel-girl",
+      "name": "Customizable Visual Novel Girl Sprite (Basics Pack)",
+      "kind": "layered-art-pack",
+      "sourceUrl": "https://dorathy.itch.io/customizable-visual-novel-girl-sprite-basics-pack",
+      "author": "Dorathy",
+      "style": [
+        "anime",
+        "female-character",
+        "visual-novel",
+        "modular-clothing",
+        "cute"
+      ],
+      "formats": [
+        "KRA (Krita)",
+        "PSD",
+        "transparent PNG after layer export"
+      ],
+      "sourcePageDimensions": "820x1080",
+      "profileId": "dorathy-girl-psd",
+      "layering": "Layer groups for head/fringe/eyes/expressions, back hair, build-your-own outfit, ready-made outfits, coats/hoodies/bottoms and 5 arm positions with matching sleeves.",
+      "license": "custom-author-terms",
+      "licenseUrl": "https://dorathy.itch.io/customizable-visual-novel-girl-sprite-basics-pack",
+      "sourceLicenseLabel": "Creator's custom terms; no Creative Commons licence identified in the page.",
+      "price": "USD 3 or more",
+      "creditRequired": true,
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "profile-configured-PSD-KRA-to-PNG-required-round-trip-pending",
+      "availability": "paid-download",
+      "redistributionReviewed": "Personal/commercial use and modifications allowed; re-uploading original or modified sprites and reselling are prohibited; credit required.",
+      "notes": "The page lists a female sprite at 820x1080, KRA/PSD, 13 hairstyles, 5 arm positions, multiple outfit groups and 20 example expressions. Export full-canvas PNG layers before using. Profile dimensions are configured but live import/save/reopen is not tested. Do not share project JSON containing these pixels.",
+      "importerImplementation": {
+        "mode": "local PSD/KRA layer export then PNG or ZIP import",
+        "exactCanvasDimensions": true,
+        "liveRoundTripTested": false
+      },
+      "contentCounts": {
+        "hairstyles": 13,
+        "armPositions": 5,
+        "shirtBases": 4,
+        "coatStyles": 3,
+        "hoodies": 2,
+        "onepieceOutfits": 12,
+        "exampleExpressions": 20
+      }
+    },
+    {
+      "id": "pung-lonewolf-layered-female-psd",
+      "name": "Layered Female Character Sprite (PSD)",
+      "kind": "layered-art-pack",
+      "sourceUrl": "https://punglonewolf.itch.io/girl-sprite-psd-1",
+      "author": "Pung Lone Wolf",
+      "style": [
+        "anime",
+        "female-character",
+        "visual-novel",
+        "outfit-customization",
+        "cute"
+      ],
+      "formats": [
+        "layered PSD",
+        "transparent PNG after layer export"
+      ],
+      "sourcePageDimensions": "1504x2409",
+      "profileId": "pung-female-psd",
+      "layering": "One base body, hairstyle, eye and mouth variants, blush, and 4 outfits in PSD layers.",
+      "license": "custom-author-terms",
+      "licenseUrl": "https://punglonewolf.itch.io/girl-sprite-psd-1",
+      "sourceLicenseLabel": "Creator's custom terms; no Creative Commons licence identified in the page.",
+      "price": "USD 7.99 or more",
+      "creditRequired": false,
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "profile-configured-paid-PSD-to-PNG-required-round-trip-pending",
+      "availability": "paid-download",
+      "redistributionReviewed": "Commercial use and modification allowed; redistribution/resale of raw files prohibited; credit optional.",
+      "notes": "The page lists a fully layered female sprite, 1504x2409, 3 eye types, 7 mouth shapes, blush and 4 outfits. Profile validates dimensions but has not been tested with the actual PSD. Keep project JSON with the source pixels private.",
+      "importerImplementation": {
+        "mode": "local PSD layer export then PNG or ZIP import",
+        "exactCanvasDimensions": true,
+        "liveRoundTripTested": false
+      },
+      "contentCounts": {
+        "baseBodies": 1,
+        "hairstyles": 1,
+        "eyeTypes": 3,
+        "mouthShapes": 7,
+        "blushLayers": 1,
+        "outfits": 4
+      }
+    },
+    {
+      "id": "blackbunney-free-anime-girl",
+      "name": "FREE Anime Girl Character Sprite",
+      "kind": "layered-art-pack",
+      "sourceUrl": "https://blackbunney.itch.io/free-anime-girl-character-sprite",
+      "author": "blackbunney",
+      "style": [
+        "anime",
+        "female-character",
+        "visual-novel"
+      ],
+      "formats": [
+        "layered PSD",
+        "transparent PNG after layer export"
+      ],
+      "sourcePageDimensions": "1680x1050",
+      "layering": "PSD layers with 5 hairstyles, 6 outfits, 10 expressions and separate pupil layers.",
+      "license": "custom-author-terms",
+      "licenseUrl": "https://blackbunney.itch.io/free-anime-girl-character-sprite",
+      "sourceLicenseLabel": "Personal/commercial use allowed; the sprite may not be resold on its own. No standard CC label shown.",
+      "availability": "name-your-price",
+      "creditRequired": "not-stated",
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "research-only-canvas-and-layer-export-check-needed",
+      "redistributionReviewed": "Personal/commercial project use allowed; the sprite may not be resold on its own. Credit and redistribution of extracted layers are not fully specified.",
+      "notes": "The 1680x1050 artboard is landscape; keep outside the profile selector until a local export confirms alignment and useful rendering size. No PSD was downloaded.",
+      "importerImplementation": {
+        "mode": "PSD to PNG layer export required",
+        "exactCanvasDimensions": false,
+        "liveRoundTripTested": false
+      },
+      "contentCounts": {
+        "hairstyles": 5,
+        "outfits": 6,
+        "expressions": 10,
+        "separatePupilLayers": true
+      }
+    },
+    {
+      "id": "tinyclowngames-customizable-female-vn-sprite",
+      "name": "Customizable Female VN Sprite",
+      "kind": "layered-art-pack",
+      "sourceUrl": "https://tinyclowngames.itch.io/magnoliamoths-customizable-female-vn-sprites",
+      "author": "TinyClownGames",
+      "style": [
+        "anime",
+        "female-character",
+        "visual-novel",
+        "dating-sim"
+      ],
+      "formats": [
+        "layered PSD",
+        "transparent PNG after layer export"
+      ],
+      "sourcePageDimensions": "1750x1750",
+      "layering": "Square PSD with 8 hair colors/styles, 8 outfits, 9 mouth expressions and 7 eye expressions; no background.",
+      "license": "custom-author-terms",
+      "licenseUrl": "https://tinyclowngames.itch.io/magnoliamoths-customizable-female-vn-sprites",
+      "sourceLicenseLabel": "Creator's custom terms; personal/commercial use allowed; do not resell sprites or use in NFTs.",
+      "availability": "name-your-price",
+      "creditRequired": "not-stated",
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "research-candidate-PSD-and-canvas-compatibility-pending",
+      "notes": "Canvas dimensions are listed as 1750x1750. It has not been converted to PNG layers or tested in CharacterWord.",
+      "contentCounts": {
+        "hairStylesAndColors": 8,
+        "outfits": 8,
+        "mouthExpressions": 9,
+        "eyeExpressions": 7
+      }
+    },
+    {
+      "id": "monapdx-modular-pixel-female",
+      "name": "Modular Pixel Character Creator (Female Sprites)",
+      "kind": "modular-art-pack",
+      "sourceUrl": "https://monapdx.itch.io/modular-pixel-character-creator-female-sprites",
+      "author": "monapdx",
+      "style": [
+        "female-character",
+        "chibi-compatible",
+        "pixel-art",
+        "modular"
+      ],
+      "formats": [
+        "PNG",
+        "ZIP"
+      ],
+      "layering": "Transparent PNGs for base body, hair and optional face/clothing layers; the page says every element shares positioning and scale.",
+      "license": "unverified-until-archive-read",
+      "licenseUrl": "https://monapdx.itch.io/modular-pixel-character-creator-female-sprites",
+      "sourceLicenseLabel": "No licence text is displayed on the public page; inspect the ZIP/README before reuse.",
+      "availability": "name-your-price",
+      "creditRequired": "unknown",
+      "shareAlike": "unknown",
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "high-priority-download-license-and-dimensions-check-pending",
+      "notes": "Compact 86 kB female-only PNG ZIP with aligned layers. The public page does not disclose canvas dimensions or a clear licence; inspect the archive README and PNG sizes before integration.",
+      "contentCounts": {
+        "downloadZip": "girl.zip",
+        "approximateCompressedSize": "86 kB"
+      }
+    },
+    {
+      "id": "constantreject13-chibi-pixel-female",
+      "name": "Chibi Pixel Bundle — Modular Female Character Assets",
+      "kind": "modular-art-pack",
+      "sourceUrl": "https://constantreject13.itch.io/chibi-pixel-bundle-modular-female-character-assets",
+      "author": "ConstantReject13",
+      "style": [
+        "female-character",
+        "chibi",
+        "pixel-art",
+        "cute"
+      ],
+      "formats": [
+        "transparent PNG",
+        "ZIP"
+      ],
+      "sourcePageDimensions": "32x48",
+      "layering": "Separate mix-and-match traits on a common 32x48 canvas: hairstyles, eyes, mouths and skin-tone variants.",
+      "license": "license-file-not-yet-reviewed",
+      "licenseUrl": "https://constantreject13.itch.io/chibi-pixel-bundle-modular-female-character-assets",
+      "sourceLicenseLabel": "The page says the ZIP includes a README with licensing information; terms have not been verified publicly.",
+      "price": "USD 2.50 or more",
+      "availability": "paid-download",
+      "creditRequired": "unknown",
+      "shareAlike": "unknown",
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "chibi-priority-candidate-license-readme-needed-before-integration",
+      "notes": "Advertises 80 hairstyles, 54 eyes, 40 mouths and 4 skin tones in individual transparent PNGs. Review the included README after obtaining the pack. Useful for cute chibi/loli-like non-sexual designs; this entry does not claim the sprites depict minors.",
+      "contentCounts": {
+        "hairstyles": 80,
+        "eyes": 54,
+        "mouths": 40,
+        "skinTones": 4,
+        "canvas": "32x48",
+        "downloadZip": "Female_Character_Customization.zip",
+        "approximateCompressedSize": "300 kB"
+      }
+    },
+    {
+      "id": "demonr-kun-kuniko-femboy",
+      "name": "+5 Kuniko Asset Pack — femboy VN sprite",
+      "kind": "femboy-art-pack",
+      "sourceUrl": "https://demonr-kun.itch.io/5-kuniko-asset-pack",
+      "author": "demonr_kun",
+      "style": [
+        "femboy",
+        "androgynous-presentation",
+        "anime",
+        "visual-novel"
+      ],
+      "formats": [
+        "ZIP",
+        "full-body sprite",
+        "8 facial expressions"
+      ],
+      "sourcePageDimensions": "500x720",
+      "layering": "One full-body sprite and 8 facial expressions; separable clothing/body layers are not advertised.",
+      "license": "custom-author-terms",
+      "licenseUrl": "https://demonr-kun.itch.io/5-kuniko-asset-pack",
+      "sourceLicenseLabel": "After purchase, personal/commercial use allowed; do not trace/edit except facial expressions; credit Demon R.",
+      "price": "USD 15 or more",
+      "availability": "paid-download",
+      "creditRequired": true,
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "femboy-source-restricted-expression-only-not-a-modular-body",
+      "redistributionReviewed": "Only facial expressions may be altered; body/clothes must not be edited or traced. Credit Demon R.",
+      "notes": "Relevant femboy style, but it is not a general-purpose layer kit. Treat as expression-only, not as a base for arbitrary clothes/hair changes.",
+      "contentCounts": {
+        "baseBodies": 1,
+        "facialExpressions": 8,
+        "downloadZip": "Kuniko-20230829T083246Z-001.zip",
+        "approximateCompressedSize": "1.6 MB"
+      }
+    },
+    {
+      "id": "studentspub-char-0084-androgynous",
+      "name": "Anime Character Asset: Char_0084 Androgynous",
+      "kind": "androgynous-character-reference-pack",
+      "sourceUrl": "https://studentspub.itch.io/anime-character-asset-char-0084",
+      "author": "studentspub",
+      "style": [
+        "androgynous",
+        "femboy-compatible",
+        "anime",
+        "adult-proportions",
+        "cyberpunk"
+      ],
+      "formats": [
+        "ZIP",
+        "individual character images"
+      ],
+      "layering": "22 images in 11 poses and 9 emotions, not documented as interoperable body-part layers.",
+      "license": "custom-author-terms",
+      "licenseUrl": "https://studentspub.itch.io/anime-character-asset-char-0084",
+      "sourceLicenseLabel": "Use/edit in projects allowed; do not redistribute originals or slight modifications as standalone assets; credit studentspub. Page discloses AI-assisted graphics.",
+      "availability": "name-your-price",
+      "creditRequired": true,
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "androgynous-adult-pose-pack-reference-not-modular-layers",
+      "notes": "The page describes an androgynous young-adult character with adult proportions. It provides 22 images / 11 poses / 9 expressions and declares AI-assisted graphics. Useful for pose research, not interchangeable clothing/body layers.",
+      "contentCounts": {
+        "images": 22,
+        "poses": 11,
+        "expressions": 9,
+        "agePresentation": "young adult / adult proportions",
+        "aiAssisted": true
+      }
     }
   ]
 }

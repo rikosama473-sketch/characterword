@@ -17,7 +17,7 @@
       label: "Muñeca provisional por piezas",
       description: "Modo articulable de prueba. Permite mover cabeza, torso, brazos y antebrazos por separado con el dibujo provisional.",
       instructions: "Selecciona un paquete anime para importar capas PNG de cuerpo completo, o vuelve a este modo para trabajar con las piezas provisionales.",
-      width: 0, height: 0, sourceUrl: "", author: "", license: ""
+      width: 0, height: 0, sourceUrl: "", author: "", license: "", licenseUrl: "", shareAlike: false
     },
     fbfffm001: {
       id: "fbfffm001",
@@ -27,7 +27,9 @@
       width: 800, height: 1200,
       sourceUrl: "https://linxuelian.itch.io/customchar-fbfffm001-fullbodyfemale",
       author: "LinXueLian",
-      license: "CC BY-SA 4.0"
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      shareAlike: true
     },
     hfff001: {
       id: "hfff001",
@@ -37,7 +39,35 @@
       width: 537, height: 700,
       sourceUrl: "https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama",
       author: "LinXueLian",
-      license: "CC BY-SA 4.0"
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+      shareAlike: false
+    },
+    "dorathy-girl-psd": {
+      id: "dorathy-girl-psd",
+      label: "Dorathy — Girl Sprite (PSD/KRA → PNG)",
+      description: "Base anime femenina muy modular: 13 peinados, varias prendas, 5 posiciones de brazos y numerosas expresiones. La página declara lienzo 820 × 1080. El PSD/KRA no se abre directamente: exporta capas PNG transparentes con el mismo lienzo.",
+      instructions: "Descarga el .kra/.psd desde la página de Dorathy; ábrelo en Krita y exporta las capas que quieras como PNG transparentes conservando exactamente 820 × 1080. Luego importa una base PNG y agrega las capas PNG individuales, o comprímelas en un ZIP con carpetas numeradas y 00_BASE_BODY para la base. Se permite uso personal/comercial y modificación, pero la autora prohíbe re-subir los sprites originales o modificados y exige crédito. Mantén privado el JSON de proyecto si contiene estas imágenes.",
+      width: 820, height: 1080,
+      sourceUrl: "https://dorathy.itch.io/customizable-visual-novel-girl-sprite-basics-pack",
+      author: "Dorathy",
+      license: "Términos de autora (no CC)",
+      licenseUrl: "https://dorathy.itch.io/customizable-visual-novel-girl-sprite-basics-pack",
+      shareAlike: false,
+      termsNotice: "Uso personal/comercial y modificación permitidos; requiere crédito. Prohibido re-subir o redistribuir los sprites originales o modificados. No compartas el JSON con imágenes de esta fuente."
+    },
+    "pung-female-psd": {
+      id: "pung-female-psd",
+      label: "Layered Female Sprite — Pung Lone Wolf (PSD → PNG)",
+      description: "Sprite anime femenino con cuerpo base, pelo, 3 variantes de ojos, 7 bocas, rubor y 4 conjuntos de ropa. La página declara 1504 × 2409 y PSD con capas; requiere exportar las capas a PNG transparentes.",
+      instructions: "Este paquete cuesta USD 7.99 o más y no está incluido. Tras adquirirlo en la página original, abre girl_sprite.psd en Krita/GIMP/Photoshop y exporta solo las capas elegidas manteniendo 1504 × 2409. Importa la base PNG y luego las capas compatibles (o un ZIP de esas PNG). La autora permite uso comercial y modificaciones, pero prohíbe redistribuir o revender los archivos fuente; el crédito es opcional. Mantén privado el JSON de proyecto con los píxeles importados.",
+      width: 1504, height: 2409,
+      sourceUrl: "https://punglonewolf.itch.io/girl-sprite-psd-1",
+      author: "Pung Lone Wolf",
+      license: "Términos de autora (no redistribuir fuente)",
+      licenseUrl: "https://punglonewolf.itch.io/girl-sprite-psd-1",
+      shareAlike: false,
+      termsNotice: "Se permite uso comercial y modificación; está prohibido redistribuir o revender los archivos fuente. Mantén privado el JSON que incorpora los píxeles originales."
     }
   });
   const STORAGE_KEY = "characterword.studio.project.v3";
@@ -359,7 +389,7 @@
     if (!file) return;
     const pack = activeAssetPack();
     if (pack.id === "manual") {
-      showToast("Selecciona FBFFFM001 o HFFF001 antes de importar un ZIP.", true);
+      showToast("Selecciona primero el perfil de la base anime que vas a importar.", true);
       return;
     }
     if (!window.JSZip || typeof window.JSZip.loadAsync !== "function") {
@@ -624,21 +654,27 @@
     const credit = $("asset-pack-credit");
     credit.replaceChildren();
     if (pack.id === "manual") {
-      credit.textContent = "Paquetes anime de LinXueLian: CC BY-SA 4.0. La atribución se mantiene también en la documentación del proyecto.";
+      credit.textContent = "Los recursos externos no están incluidos. Selecciona un modelo para consultar su licencia y conservar la atribución correspondiente.";
     } else {
       const author = document.createElement("span");
-      author.textContent = "Arte: LinXueLian · Licencia ";
+      author.textContent = "Arte: " + pack.author + " · Licencia ";
       const licence = document.createElement("a");
-      licence.href = "https://creativecommons.org/licenses/by-sa/4.0/";
+      licence.href = pack.licenseUrl;
       licence.target = "_blank";
       licence.rel = "noopener noreferrer";
-      licence.textContent = "CC BY-SA 4.0";
+      licence.textContent = pack.license;
       const source = document.createElement("a");
       source.href = pack.sourceUrl;
       source.target = "_blank";
       source.rel = "noopener noreferrer";
       source.textContent = " · Fuente original";
       credit.append(author, licence, source);
+      if (pack.termsNotice) {
+        const terms = document.createElement("small");
+        terms.className = "asset-pack-terms";
+        terms.textContent = " · Aviso: " + pack.termsNotice;
+        credit.appendChild(terms);
+      }
     }
     renderAssetLayerList();
     renderAssetLibrary();
@@ -672,7 +708,7 @@
     if (!file) return;
     const pack = activeAssetPack();
     if (pack.id === "manual") {
-      showToast("Primero selecciona FBFFFM001 o HFFF001.", true);
+      showToast("Primero selecciona un perfil de base anime.", true);
       return;
     }
     if (!["image/png", "image/webp"].includes(file.type)) {
@@ -968,9 +1004,10 @@
       author: pack.author,
       sourceUrl: pack.sourceUrl,
       license: pack.license,
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      licenseUrl: pack.licenseUrl,
       note: "Original transparent PNG layers were composed in CharacterWord. The selected base and visible layer order may have been changed; the imported source PNG files were not retouched by this editor.",
-      shareAlike: true
+      shareAlike: Boolean(pack.shareAlike),
+      termsNotice: pack.termsNotice || ""
     };
     const blob = new Blob([JSON.stringify(exportState, null, 2)], { type: "application/json;charset=utf-8" });
     downloadBlob(blob, "characterword-project.json");

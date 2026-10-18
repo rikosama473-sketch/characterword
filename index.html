@@ -153,7 +153,7 @@
             <span id="save-status" class="save-status">Cambios en esta sesión</span>
           </div>
         </div>
-        <div class="stage-note"><span class="note-icon">i</span><p id="stage-note-text">Modo provisional por piezas: puedes mover cabeza, torso, brazos y antebrazos por separado. Las imágenes anime de cuerpo completo se componen en el modo Base anime / waifu.</p></div>
+        <div class="stage-note"><span class="note-icon">i</span><p id="stage-note-text">Modo provisional por piezas: puedes mover cabeza, torso, brazos y antebrazos por separado. Los sprites anime se componen por capas en el modo Base anime / waifu.</p></div>
       </section>
 
       <aside class="sidebar right-sidebar">
@@ -173,12 +173,14 @@
             <option value="manual">Muñeca provisional por piezas</option>
             <option value="fbfffm001">FBFFFM001 · anime cuerpo completo (800 × 1200)</option>
             <option value="hfff001">HFFF001 Oujousama · retrato (537 × 700)</option>
+            <option value="dorathy-girl-psd">Dorathy · waifu modular PSD/KRA (820 × 1080)</option>
+            <option value="pung-female-psd">Pung Lone Wolf · waifu PSD por capas (1504 × 2409)</option>
           </select>
           <p class="asset-pack-description" id="asset-pack-description">Elige una de las bases anime para componer un sprite completo usando capas PNG alineadas.</p>
           <div class="asset-zip-import">
-            <button type="button" class="button button-primary" id="choose-asset-zip">Importar ZIP original</button>
+            <button type="button" class="button button-primary" id="choose-asset-zip">Importar ZIP de capas</button>
             <input id="asset-zip-input" type="file" accept=".zip,application/zip" hidden>
-            <small>Selecciona uno de los ZIP descargados de la página original. Se leen localmente; no se suben a CharacterWord ni a un servidor.</small>
+            <small>Importa el ZIP original o un ZIP que armes con capas PNG exportadas desde PSD/KRA, conservando el lienzo. Se leen localmente; no se suben a CharacterWord ni a un servidor.</small>
           </div>
           <div class="asset-library-header">
             <strong id="asset-library-title">Biblioteca del ZIP</strong>
@@ -191,14 +193,14 @@
             <button type="button" class="button button-outline" id="choose-asset-overlays">Añadir expresión / detalle</button>
             <input id="asset-overlay-input" type="file" accept="image/png,image/webp" multiple hidden>
           </div>
-          <div class="asset-pack-note" id="asset-pack-note">Pulsa “Importar ZIP original” y selecciona el ZIP que descargaste de itch.io; no hace falta extraerlo antes. El lector corre en tu navegador. Elige una variante como cuerpo base y añade solo las capas que quieras.</div>
+          <div class="asset-pack-note" id="asset-pack-note">Pulsa “Importar ZIP de capas”; puedes elegir el ZIP original o uno de PNG exportados desde PSD/KRA. No hace falta extraer el ZIP antes. El lector corre en tu navegador. Elige una variante como cuerpo base y añade solo las capas que quieras.</div>
           <div class="section-label asset-layer-heading">CAPAS ANIME IMPORTADAS</div>
           <div id="asset-layer-list" class="asset-layer-list" aria-live="polite"></div>
           <div class="asset-pack-footer">
             <button type="button" class="text-button" id="clear-asset-composition" hidden>Quitar composición anime</button>
             <p id="asset-pack-credit" class="asset-pack-credit"></p>
           </div>
-          <p id="asset-rig-note" class="asset-rig-note" hidden>Esta base es un sprite de cuerpo completo. Puedes cambiar sus capas de apariencia, pero sus brazos y torso no son piezas articulables separadas.</p>
+          <p id="asset-rig-note" class="asset-rig-note" hidden>Este modelo se compone por capas de apariencia, pero no permite mover brazos, torso o articulaciones por separado si la fuente no entrega esas piezas recortadas.</p>
         </div>
 
         <div class="section-label">REEMPLAZAR ILUSTRACIÓN</div>
