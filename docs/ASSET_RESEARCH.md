@@ -25,7 +25,8 @@ Las capas de ropa, ojos y cabello no garantizan que brazos y piernas sean articu
 - Ventajas: es la candidata visual más cercana al objetivo; la página indica que sus capas se pueden apilar y combinar con otros paquetes diseñados para la misma base.
 - Condiciones: atribuir a la autora y enlazar a la página; conservar el aviso/licencia y revisar las obligaciones ShareAlike antes de publicar modificaciones de las ilustraciones.
 - Limitación conocida: todavía no se ha comprobado si brazos, manos, piernas y articulaciones son capas independientes; el énfasis confirmado de la página está en rasgos faciales, tono de piel, cabello, ropa y accesorios. Es excelente candidata para un editor de apariencia anime, pero no se debe prometer todavía marioneta corporal completa.
-- Estado: **candidata prioritaria para una prueba local**. No copiar ZIPs ni imágenes al repositorio hasta documentar los términos y comprobar el contenido real.
+- Prueba de descarga del 2026-10-18: el botón oficial para `FBFFFM001_000_BASE_BODY.zip` (568 kB) se activó sin pedir pago ni iniciar sesión; itch.io mostró el mensaje de que la descarga comenzaría. Esto verifica que el archivo está disponible, pero el ZIP aún no fue extraído ni inspeccionado dentro del repositorio.
+- Estado: **candidata prioritaria para una prueba local**. No copiar ZIPs ni imágenes al repositorio hasta comprobar el contenido real y conservar créditos/licencia.
 
 ### B. LinXueLian — HFFF001 Oujousama 700px
 - Fuente: https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama
@@ -87,10 +88,10 @@ Las capas de ropa, ojos y cabello no garantizan que brazos y piernas sean articu
 
 ### H. xG Animation — Student Anime Character, Layered
 - Fuente: https://xg-animation.itch.io/student-anime-character
-- Tipo: kit de personaje anime, archivo de Illustrator por capas, PNG, seis vistas y formas de boca/expresiones; la página anuncia precio mínimo de USD 3.
+- Tipo: kit de personaje anime de pago (USD 3 o más), con archivo Adobe Illustrator por capas y archivos PNG; la página lista seis vistas, diez formas de boca y expresiones, y nombra las capas Head, Torso, Arms, Eyes y Mouth.
 - Uso declarado en página: personal y uso comercial limitado.
-- Ventaja: varias vistas y capas anatómicas; visualmente más cercano al anime que los kits pixel.
-- Condición pendiente: confirmar el texto completo de licencia sobre modificaciones, redistribución, inclusión en aplicaciones y disponibilidad del archivo fuente. No integrar ni redistribuir los archivos de pago mientras eso no esté confirmado.
+- Ventaja: es el candidato que más explícitamente nombra cabeza, torso y brazos como capas, más próximo al primer rig que queremos probar.
+- Condición pendiente: verificar si brazos se separan en brazo superior/antebrazo y revisar los términos completos sobre modificación, redistribución e inclusión en una aplicación. No subir su archivo fuente a este repositorio público; si se compra, importar solo las capas localmente de acuerdo con la licencia.
 - Estado: **opción de compra para evaluar; no aprobado para incluir en el repositorio**.
 
 ### I. Character Nanka Toka Ki y paquetes BOOTH compatibles
