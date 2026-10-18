@@ -475,8 +475,8 @@
       "shareAlike": false,
       "articulatedLimbsVerified": false,
       "testedInCharacterWord": false,
-      "status": "inspect-download-candidate",
-      "notes": "Official asset page lists 425 files and CC0. Body-part separation and articulation need inspection from the actual pack."
+      "status": "cc0-modular-mixed-style-female-components-to-filter-and-inspect",
+      "notes": "OpenGameArt mirrors the official CC0 listing and describes hundreds of combinations: 425 separate PNG sprites, 6 spritesheets and 6 vector files. The art is flat/cartoon rather than anime. For this project, treat it as a technical layering reference and enable only female-coded components; conventional male character bases must not be offered. Inspect the actual pack for common alignment before importing."
     },
     {
       "id": "pjanaya-2d-character-creator",
@@ -1109,6 +1109,167 @@
         ],
         "downloadZip": "Female.zip",
         "approximateCompressedSize": "276 kB"
+      }
+    },
+    {
+      "id": "animosity-thin-girl-modular-cc-by-4",
+      "name": "Modular Character Sprite, Thin Girl",
+      "kind": "modular-art-pack",
+      "sourceUrl": "https://queenofzan.itch.io/modular-character-sprite-thin-girl",
+      "author": "ani mosity",
+      "style": [
+        "anime-inspired",
+        "female-character",
+        "visual-novel",
+        "modular",
+        "customizable"
+      ],
+      "formats": [
+        "individual transparent PNG parts",
+        "PSD layers"
+      ],
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceLicenseLabel": "Creative Commons Attribution 4.0 International. The creator additionally asks that the assets not be used for NFTs or generative-AI datasets; observe the source's stated terms.",
+      "availability": "name-your-price-free-download-available",
+      "price": "Name your own price; free download option tested",
+      "creditRequired": true,
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "archives-downloaded-layered-canvas-dimension-inspection-pending",
+      "pageNotes": "The page says all individual elements share identical canvas dimensions and can be stacked, moved, recolored, chopped up and relayered. Includes PNGs for each element and PSD files. Permitted project uses include games and PNGtubing; NFT and generative-AI dataset use is explicitly disallowed by the creator.",
+      "notes": "Public free download completed without login/payment: ThinGirlSprite.zip (2.3 MB) and PSDFiles.zip (9.7 MB). Do not commit the archives or source art to the public repository. Pending actual local archive manifest, dimension grouping, and import/save/reopen test in CharacterWord. Strongest recently found match for true interchangeable female character parts.",
+      "importerImplementation": {
+        "mode": "PNG component import; PSD available for visual/layer reference",
+        "exactCanvasDimensions": false,
+        "liveRoundTripTested": false
+      },
+      "contentCounts": {
+        "archivesDownloaded": 2,
+        "thinGirlSpriteZip": "2.3 MB",
+        "psdFilesZip": "9.7 MB",
+        "examplesZipDownloaded": false
+      }
+    },
+    {
+      "id": "monapdx-modular-pixel-character-kit",
+      "name": "Modular Pixel Character Kit — female character layers",
+      "kind": "modular-art-pack",
+      "sourceUrl": "https://monapdx.itch.io/modular-pixel-character-kit",
+      "author": "monapdx",
+      "style": [
+        "female-character",
+        "pixel-art",
+        "modular",
+        "chibi-compatible",
+        "visual-novel-avatar"
+      ],
+      "formats": [
+        "transparent PNG",
+        "GIMP XCF source"
+      ],
+      "license": "public-free-use-terms-no-standard-license-identified",
+      "licenseUrl": "https://monapdx.itch.io/modular-pixel-character-kit",
+      "sourceLicenseLabel": "The page calls the pack free to use but does not name a standard licence; inspect any included README/terms before modifying or redistributing assets.",
+      "availability": "name-your-price-free-download-available",
+      "price": "Free; optional donation",
+      "creditRequired": "unknown",
+      "shareAlike": "unknown",
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "priority-local-archive-license-and-dimensions-inspection-pending",
+      "notes": "Official page lists female-modular-pixel-characters.zip (113 kB), transparent PNGs with matching alignment, multiple hairstyles and color variations, and multiple face templates/skin tones. Includes original GIMP XCF files. The previous catalog entry for the other monapdx URL is a separate candidate; do not merge their rights or archives without checking.",
+      "contentCounts": {
+        "zip": "female-modular-pixel-characters.zip",
+        "approximateCompressedSize": "113 kB",
+        "sourceFiles": [
+          "PNG",
+          "XCF"
+        ]
+      }
+    },
+    {
+      "id": "potato-master-hiyori-vn-character",
+      "name": "Free Character Sprite for Visual Novels — Hiyori",
+      "kind": "layered-female-character-pack",
+      "sourceUrl": "https://potat0master.itch.io/free-character-sprite-for-visual-novels-hiyori",
+      "author": "Potat0Master",
+      "style": [
+        "anime",
+        "female-character",
+        "visual-novel",
+        "multiple-outfits",
+        "expression-variants"
+      ],
+      "formats": [
+        "PNG",
+        "WEBP",
+        "Clip Studio Paint CLIP source",
+        "layered PSD source"
+      ],
+      "license": "royalty-free-license-per-source-page",
+      "licenseUrl": "https://potat0master.itch.io/free-character-sprite-for-visual-novels-hiyori",
+      "sourceLicenseLabel": "Page states royalty-free use in personal and commercial projects; check complete terms before redistribution or bundling.",
+      "availability": "free-character-renders-paid-source-file",
+      "price": "Renders free; original CLIP/PSD source files listed at USD 1",
+      "creditRequired": "check-full-terms",
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "secondary-high-resolution-source-layers-and-dimensions-to-verify",
+      "notes": "Page lists one complete female sprite in 4K and HD, three outfits (summer school, winter school, outing) and 25+ expressions. The editable source files are listed separately for USD 1. Useful for a high-quality visual-novel character, but the art is not documented as individual limb/body part sprites and is not yet compatible as an interchangeable anatomy rig.",
+      "contentCounts": {
+        "characters": 1,
+        "outfits": 3,
+        "expressions": "25+",
+        "renderFormats": [
+          "PNG",
+          "WEBP"
+        ],
+        "sourceFormats": [
+          "CLIP",
+          "PSD"
+        ]
+      }
+    },
+    {
+      "id": "hordana-anime-girl-cc0",
+      "name": "Anime Girl — Michona (chibi animation sprites)",
+      "kind": "animated-female-character-sprite",
+      "sourceUrl": "https://opengameart.org/content/anime-girl",
+      "author": "Hordana",
+      "style": [
+        "female-character",
+        "chibi",
+        "anime-inspired",
+        "fantasy",
+        "animation"
+      ],
+      "formats": [
+        "PNG sprite/animation strips"
+      ],
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceLicenseLabel": "CC0 as displayed on OpenGameArt.",
+      "availability": "free-download",
+      "creditRequired": false,
+      "shareAlike": false,
+      "articulatedLimbsVerified": false,
+      "testedInCharacterWord": false,
+      "status": "free-female-chibi-animation-reference-not-modular-body-parts",
+      "notes": "OpenGameArt lists a cute/creepy female chibi fantasy character and PNG sequences for jump, walk and blink. Great as an animation/preview resource if the visual style fits, but the published files are animation strips rather than separately interchangeable body parts. Inspect file sequence/alpha before considering an import profile.",
+      "contentCounts": {
+        "files": [
+          "13jump.png",
+          "11walk.png",
+          "blink strip 5.png"
+        ],
+        "approximateSizes": [
+          "715.6 kB",
+          "656.7 kB",
+          "78 kB"
+        ]
       }
     }
   ]
