@@ -7,6 +7,7 @@
   <meta name="description" content="Editor local de personajes anime por piezas para CharacterWord.">
   <title>CharacterWord Studio — Anime Doll Lab</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="vendor/jszip.min.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -174,6 +175,16 @@
             <option value="hfff001">HFFF001 Oujousama · retrato (537 × 700)</option>
           </select>
           <p class="asset-pack-description" id="asset-pack-description">Elige una de las bases anime para componer un sprite completo usando capas PNG alineadas.</p>
+          <div class="asset-zip-import">
+            <button type="button" class="button button-primary" id="choose-asset-zip">Importar ZIP original</button>
+            <input id="asset-zip-input" type="file" accept=".zip,application/zip" hidden>
+            <small>Selecciona uno de los ZIP descargados de la página original. Se leen localmente; no se suben a CharacterWord ni a un servidor.</small>
+          </div>
+          <div class="asset-library-header">
+            <strong id="asset-library-title">Biblioteca del ZIP</strong>
+            <button type="button" class="text-button" id="clear-asset-library" hidden>Vaciar biblioteca</button>
+          </div>
+          <div id="asset-library-list" class="asset-library-list" aria-live="polite"></div>
           <div class="asset-pack-actions">
             <button type="button" class="button button-outline" id="choose-asset-base">Elegir cuerpo base PNG</button>
             <input id="asset-base-input" type="file" accept="image/png,image/webp" hidden>
