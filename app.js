@@ -22,7 +22,7 @@
   let state = makeDefaultProject();
 
   function defaultPart() {
-    return { dx: 0, dy: 0, rotation: 0, scale: 1, visible: true, imageData: null };
+    return { dx: 0, dy: 0, rotation: 0, scale: 1, visible: true, imageData: null, imageMode: "cropped" };
   }
 
   function makeDefaultProject() {
@@ -447,7 +447,7 @@
       scheduleLocalSave();
     });
   });
-  $("choose-image").addEventListener("click", () => $("part-image-input").click());
+  $("image-mode").addEventListener("change", (event) => {\n    state.parts[selectedPart].imageMode = event.target.value === "canvas" ? "canvas" : "cropped";\n    updateAndRender();\n  });\n  $("choose-image").addEventListener("click", () => $("part-image-input").click());
   $("part-image-input").addEventListener("change", (event) => {
     importPartImage(event.target.files && event.target.files[0]);
     event.target.value = "";
