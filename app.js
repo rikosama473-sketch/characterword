@@ -43,17 +43,31 @@
       licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
       shareAlike: false
     },
-    hmlf001: {
-      id: "hmlf001",
-      label: "HMLF001 — Anime Boy (masculino, busto)",
-      description: "Sprite anime masculino de capas para novela visual. La página de LinXueLian declara lienzo de 600 × 800 px y ofrece ZIP separados para base, Warlock, Shopkeeper, bufanda, cabello y vampiro. No es un cuerpo anatómico articulado.",
-      instructions: "Importa HMLF001_BASE_BODY.zip para empezar. Elige una variante de la carpeta BASE_BODY como cuerpo base; después importa otros ZIP de HMLF001 de uno en uno y añade las capas compatibles. Solo se aceptan PNG de 600 × 800 px. El archivo debe descargarse desde la página original.",
-      width: 600, height: 800,
-      sourceUrl: "https://linxuelian.itch.io/customchar-hmlf001-malebust",
-      author: "LinXueLian",
-      license: "CC BY-SA 4.0",
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-      shareAlike: true
+    "dorathy-girl-psd": {
+      id: "dorathy-girl-psd",
+      label: "Dorathy — Girl Sprite (PSD/KRA → PNG)",
+      description: "Base anime femenina muy modular: 13 peinados, varias prendas, 5 posiciones de brazos y numerosas expresiones. La página declara lienzo 820 × 1080. El PSD/KRA no se abre directamente: exporta capas PNG transparentes con el mismo lienzo.",
+      instructions: "Descarga el .kra/.psd desde la página de Dorathy; ábrelo en Krita y exporta las capas que quieras como PNG transparentes conservando exactamente 820 × 1080. Luego importa una base PNG y agrega las capas PNG individuales, o comprímelas en un ZIP con carpetas numeradas y 00_BASE_BODY para la base. Se permite uso personal/comercial y modificación, pero la autora prohíbe re-subir los sprites originales o modificados y exige crédito. Mantén privado el JSON de proyecto si contiene estas imágenes.",
+      width: 820, height: 1080,
+      sourceUrl: "https://dorathy.itch.io/customizable-visual-novel-girl-sprite-basics-pack",
+      author: "Dorathy",
+      license: "Términos de autora (no CC)",
+      licenseUrl: "https://dorathy.itch.io/customizable-visual-novel-girl-sprite-basics-pack",
+      shareAlike: false,
+      termsNotice: "Uso personal/comercial y modificación permitidos; requiere crédito. Prohibido re-subir o redistribuir los sprites originales o modificados. No compartas el JSON con imágenes de esta fuente."
+    },
+    "pung-female-psd": {
+      id: "pung-female-psd",
+      label: "Layered Female Sprite — Pung Lone Wolf (PSD → PNG)",
+      description: "Sprite anime femenino con cuerpo base, pelo, 3 variantes de ojos, 7 bocas, rubor y 4 conjuntos de ropa. La página declara 1504 × 2409 y PSD con capas; requiere exportar las capas a PNG transparentes.",
+      instructions: "Este paquete cuesta USD 7.99 o más y no está incluido. Tras adquirirlo en la página original, abre girl_sprite.psd en Krita/GIMP/Photoshop y exporta solo las capas elegidas manteniendo 1504 × 2409. Importa la base PNG y luego las capas compatibles (o un ZIP de esas PNG). La autora permite uso comercial y modificaciones, pero prohíbe redistribuir o revender los archivos fuente; el crédito es opcional. Mantén privado el JSON de proyecto con los píxeles importados.",
+      width: 1504, height: 2409,
+      sourceUrl: "https://punglonewolf.itch.io/girl-sprite-psd-1",
+      author: "Pung Lone Wolf",
+      license: "Términos de autora (no redistribuir fuente)",
+      licenseUrl: "https://punglonewolf.itch.io/girl-sprite-psd-1",
+      shareAlike: false,
+      termsNotice: "Se permite uso comercial y modificación; está prohibido redistribuir o revender los archivos fuente. Mantén privado el JSON que incorpora los píxeles originales."
     }
   });
   const STORAGE_KEY = "characterword.studio.project.v3";
@@ -655,6 +669,12 @@
       source.rel = "noopener noreferrer";
       source.textContent = " · Fuente original";
       credit.append(author, licence, source);
+      if (pack.termsNotice) {
+        const terms = document.createElement("small");
+        terms.className = "asset-pack-terms";
+        terms.textContent = " · Aviso: " + pack.termsNotice;
+        credit.appendChild(terms);
+      }
     }
     renderAssetLayerList();
     renderAssetLibrary();
@@ -986,7 +1006,8 @@
       license: pack.license,
       licenseUrl: pack.licenseUrl,
       note: "Original transparent PNG layers were composed in CharacterWord. The selected base and visible layer order may have been changed; the imported source PNG files were not retouched by this editor.",
-      shareAlike: Boolean(pack.shareAlike)
+      shareAlike: Boolean(pack.shareAlike),
+      termsNotice: pack.termsNotice || ""
     };
     const blob = new Blob([JSON.stringify(exportState, null, 2)], { type: "application/json;charset=utf-8" });
     downloadBlob(blob, "characterword-project.json");
