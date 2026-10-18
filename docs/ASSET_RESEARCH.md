@@ -111,6 +111,50 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 6. Registrar autores, licencia, URL de origen, cambios hechos y aviso de licencia junto a cada paquete. En paquetes con créditos por recurso, conservar el archivo original de créditos y crear un manifiesto acotado con los elementos usados.
 7. Mantener los activos comerciales o con licencia incierta fuera del repositorio público hasta tener autorización clara. No basta con enlazar a una descarga gratuita para asumir permiso de redistribución.
 
+### H. OpenGameArt — Free CC0 Modular Animated Vector Characters 2D
+- Fuente: https://opengameart.org/content/free-cc0-modular-animated-vector-characters-2d
+- Autor indicado: rgsdev.
+- Licencia publicada: **CC0**; la página indica que no hace falta crédito.
+- Tamaño del ZIP anunciado: 72.7 MB; canvas de sprites de 2048×2048.
+- El autor indica que contiene partes corporales separadas y animadas, seis animaciones (idle, walk, roll, jump, hit, death), variantes de cabezas, pelo, ojos, cuernos y bocas, además de alas, armas y personajes precompuestos.
+- Ventajas: es la coincidencia más clara encontrada para validar técnicamente la recomposición y animación de piezas con condiciones de uso simples. Las piezas blancas están pensadas para colorearse en el motor.
+- Limitación: estilo cartoon/vectorial, no anime. La página afirma que las partes son separadas y animadas, pero aún no comprobamos si cada articulación puede moverse libremente o si las poses disponibles son animaciones predefinidas.
+- Estado: **prioridad para una prueba de articulación**, no estilo artístico final.
+
+### I. Kenney — Modular Characters
+- Fuente: https://kenney.nl/assets/modular-characters
+- Tipo: paquete de personajes 2D; la página oficial anuncia 425 archivos y licencia **CC0**.
+- Ventajas: opción de bajo riesgo de licencia para evaluar otro catálogo modular.
+- Limitación: la página de resumen no detalla por sí sola los puntos de unión ni qué partes son movibles. Descargar/inspeccionar antes de marcarlo como articulable.
+- Estado: **candidato para inspección del paquete**.
+
+## Código de referencia para un editor propio
+
+### J. pjanaya — 2D Character Creator (web)
+- Demo: https://pjanaya.github.io/2d-character-creator/
+- Repositorio: https://github.com/pjanaya/2d-character-creator
+- Licencia de código publicada: MIT.
+- Tipo: framework web de configuración de personajes 2D. Usa un catálogo externo de imágenes y configura colores, tipos de piezas y combinaciones en archivos TypeScript.
+- Ventajas: es la referencia más directa para un editor de navegador con biblioteca de piezas, opciones de color y variantes.
+- Limitaciones: no trae una biblioteca de ilustraciones propia y no demuestra por sí solo un sistema de huesos/articulaciones. Confirmar la versión, dependencias y estado actual antes de adoptar código.
+- Estado: **primera referencia para estudiar la interfaz web y el catálogo**.
+
+### K. uglycygnet — Modular Character Prototype
+- Repositorio: https://github.com/uglycygnet/character_creator
+- Licencia de código publicada: MIT.
+- Tipo: prototipo LÖVE2D con esqueleto jerárquico, huesos, uniones, animación idle/walk y controles para rotar hombros y codos.
+- Ventajas: explica una tubería de cutout: piezas PNG transparentes conectadas mediante pivotes, con brazos y piernas separados. El README da convenciones prácticas para anclas y tamaños.
+- Limitaciones: es una app LÖVE2D/Lua, no una librería web lista para insertar y no aporta una colección de arte final.
+- Estado: **referencia conceptual para la articulación**.
+
+### L. rhedak — Anime Character Creator
+- Repositorio: https://github.com/rhedak/anime-character-creator
+- Licencia del código publicada: MIT.
+- Tipo: generador que dibuja personajes anime estilizados mediante formas SVG paramétricas, en lugar de componer piezas artísticas preexistentes.
+- Ventajas: alternativa de estudio cuando falten recursos gráficos compatibles; usa anclas proporcionales para mantener coherencia entre cabeza, torso, miembros, pelo y ropa.
+- Limitaciones: su propio README declara que la animación está fuera de alcance y su estilo actual es tall-chibi. La licencia del código no debe confundirse con las condiciones aplicables a referencias, imágenes o salidas concretas.
+- Estado: **alternativa de generación procedural, no sustituto del kit de piezas**.
+
 ## Conclusión provisional
 
 La primera prueba de arte debería usar **FBFFFM001** para evaluar capas anime de cuerpo completo y **HFFF001** para comparar un conjunto con licencia CC BY 4.0. En paralelo, estudiar LPC para la arquitectura de slots y la contabilidad de créditos. Esta combinación prueba tanto la estética como el problema técnico sin confundir capas de ropa con articulaciones reales.
