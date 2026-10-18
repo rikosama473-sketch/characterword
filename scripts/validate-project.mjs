@@ -102,5 +102,10 @@ assert.equal(pungRecord.testedInCharacterWord, false, "Pung round-trip must rema
 assert.ok(!catalog.sources.some((source) => source.id === "linxuelian-hmlf001-anime-boy"), "The conventional male source must not remain in the art catalog");
 assert.equal(hfffRecord.license, "CC-BY-4.0", "HFFF001 licence must match the current source page");
 assert.equal(hfffRecord.shareAlike, false, "HFFF001 must not inherit the ShareAlike restriction");
+assert.ok(catalog.sources.some((source) => source.id === "see-through-anime-layer-decomposition"), "Catalog must track the See-through layer decomposition tool and its memory constraints");
+assert.ok(catalog.sources.some((source) => source.id === "psrc-human-mk2-ultimate-devkit"), "Catalog must track the CC0 modular body-parts candidate");
+assert.ok(catalog.sources.some((source) => source.id === "konard-anime-avatar-procedural-svg"), "Catalog must track the procedural anime SVG generator reference");
+assert.equal(catalog.policy.runtimeMemoryTargetMB, 2048, "The project's low-memory runtime target must remain explicit");
+assert.ok(String(catalog.sources.find((source) => source.id === "animosity-thin-girl-modular-cc-by-4")?.aiTrainingTerms || "").includes("permission"), "Thin Girl's restriction on AI training must remain recorded");
 
 console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " sources, unique HTML ids, stacked layers, v1 migration, and project exports.");
