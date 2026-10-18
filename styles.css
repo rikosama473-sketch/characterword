@@ -163,3 +163,20 @@ input[type="range"] { width: 100%; accent-color: #d8a8ff; height: 4px; cursor: p
 .file-mode-row { display: flex; flex-direction: column; align-items: stretch; width: 100%; gap: 6px; margin: 4px 0 2px; text-align: left; }
 .file-mode-row label { color: #bfb4d0; font-size: 9px; font-weight: 700; }
 .file-mode-row select { width: 100%; padding: 8px 9px; border: 1px solid #4b405c; border-radius: 7px; background: #211d2c; color: #f0e7fc; font-size: 10px; }
+
+.layer-section-label { margin-top: 15px; margin-bottom: 9px; }
+.imported-layer-list { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.layer-list-empty { margin: 0; padding: 12px 10px; border: 1px dashed #484057; border-radius: 9px; color: #9189a3; font-size: 9px; line-height: 1.55; background: #2622335c; }
+.layer-row { display: flex; align-items: center; gap: 7px; min-width: 0; padding: 7px 6px; border: 1px solid #40374f; border-radius: 9px; background: #242130; }
+.layer-visibility { display: flex; align-items: center; gap: 4px; flex: 0 0 25px; color: #c6a7ec; cursor: pointer; font-size: 12px; }
+.layer-visibility input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.layer-visibility input:focus-visible + span { outline: 2px solid #d8a8ff; outline-offset: 2px; border-radius: 4px; }
+.layer-visibility input:not(:checked) + span { color: #6b6479; }
+.layer-name { display: flex; flex-direction: column; gap: 3px; flex: 1 1 auto; min-width: 0; }
+.layer-name strong { color: #e5ddef; font-size: 9px; line-height: 1.35; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.layer-name small { color: #90879f; font-size: 8px; }
+.layer-actions { display: flex; align-items: center; gap: 2px; flex: 0 0 auto; }
+.layer-action { display: grid; place-items: center; min-width: 21px; height: 24px; padding: 0 4px; border: 1px solid transparent; border-radius: 5px; background: transparent; color: #c9bddb; font-size: 12px; line-height: 1; }
+.layer-action:hover:not(:disabled) { border-color: #65517d; background: #342a44; color: #f4eaff; }
+.layer-action-remove { color: #e4a4c1; font-size: 16px; }
+.layer-action:disabled { opacity: .28; cursor: not-allowed; }
