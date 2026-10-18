@@ -46,14 +46,15 @@ Ambos paquetes son recursos anime útiles para personalizar un sprite completo, 
 
 1. Abre https://rikosama473-sketch.github.io/characterword/.
 2. En **Base anime / waifu**, selecciona FBFFFM001 o HFFF001. No mezcles archivos entre los dos conjuntos.
-3. Descarga y extrae el ZIP de cuerpo base desde su página original. Elige **un solo** PNG de la carpeta base correspondiente:
-   - FBFFFM001: `00_BODYBASE`, 800 × 1200.
-   - HFFF001: `00_BASE_BODY`, 537 × 700.
-4. Pulsa “Añadir expresión / detalle” para elegir uno o varios overlays transparentes del mismo paquete. Pueden añadirse en operaciones separadas.
+3. Descarga el ZIP base desde la página original y pulsa **Importar ZIP original**; el editor lo abre localmente sin que tengas que extraerlo. El lector ZIP está incluido en CharacterWord y no sube nada al servidor.
+4. En la biblioteca, elige **una sola** variante de cuerpo base:
+   - FBFFFM001: una opción de `00_BODYBASE`, 800 × 1200.
+   - HFFF001: una opción de `00_BASE_BODY`, 537 × 700.
+5. En la misma biblioteca, pulsa **Añadir capa** en una boca, ceja o capa facial que quieras. También puedes importar ZIPs adicionales de la misma página (por ejemplo, cabello o ropa) y añadir sus capas compatibles.
 5. Las capas importadas aparecen en la lista: puedes ocultarlas, reordenarlas, eliminarlas y conservar el proyecto JSON. La herramienta rechaza imágenes con otras dimensiones para evitar desalinearlas.
 6. Para usar cabello, ropa u otros paquetes adicionales que se descarguen de la página original, aplica la misma regla: sólo si sus PNG mantienen el lienzo y las coordenadas de la base seleccionada.
 
-Las imágenes importadas se mantienen en el navegador y en el archivo de proyecto que exportes; el sitio no las sube automáticamente a un servidor. Por defecto, los ZIP no se distribuyen desde CharacterWord. El panel del editor y el catálogo conservan los enlaces de atribución y la licencia.
+Las imágenes extraídas del ZIP se mantienen en la memoria del navegador mientras exploras la biblioteca; solo el cuerpo base y las capas que eliges pasan al proyecto local. El ZIP original no se sube a un servidor ni se copia al repositorio. El proyecto guardado conserva la composición y una nota de atribución CC BY-SA 4.0.
 
 ## Modos separados
 
