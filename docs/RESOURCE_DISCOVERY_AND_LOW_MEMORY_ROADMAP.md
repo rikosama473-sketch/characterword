@@ -8,7 +8,11 @@
 
 CharacterWord debe ensamblar personajes 2D a partir de piezas que encajen: base corporal, cabeza, rostro, ojos, boca, cabello trasero/delantero, torso, mangas, brazos, manos, pelvis, piernas, calzado, prendas y accesorios. Las piezas ideales son PNG transparentes o vectores SVG, con lienzos alineados, nombres claros y pivotes/anchors conocidos.
 
-La meta a largo plazo es un generador concentrado en un estilo anime, con variantes de cabello, ropa, piernas y siluetas, fondos transparentes o simples/estilizados y posible adaptación LoRA. El motor de composición y la interfaz apuntan a un presupuesto de referencia de **2 GB de RAM del sistema**. Ese objetivo se aplica primero al editor y al compositor; no promete que un modelo de difusión entrenado, sus pesos o inferencia local entren dentro de ese límite. La memoria del sistema y la VRAM de GPU son métricas distintas.
+La meta a largo plazo es entrenar **un generador propio desde inicialización aleatoria**, especializado en cuerpos/personajes anime de baja resolución, con variaciones controladas y salida transparente o con fondo simple. El proyecto no usará como núcleo un checkpoint de generación preentrenado (incluido Haruka v2/SDXL), un LoRA que dependa de un checkpoint ajeno, ni DMD2/destilación de un modelo docente.
+
+Los aproximadamente 100 personajes son un conjunto de datos inicial para un experimento de viabilidad, no un LoRA ni garantía de calidad: el sobreajuste es probable con tan pocas imágenes. La primera prueba comparará una red convolucional pequeña tipo GAN condicional con un VAE convolucional simple, ambos inicializados al azar. El editor y la inferencia buscan un presupuesto medido de **2 GB de RAM del sistema**; el entrenamiento tiene presupuesto separado y no se promete que quepa en esa memoria. Comenzaremos en 64×96 px y solo probaremos 128×192 si calidad y uso de memoria lo justifican.
+
+Para variar cabello, ropa y piernas realmente por separado, la biblioteca necesita partes etiquetadas/alineadas o un generador que produzca capas separadas. Entrenar solo con 100 retratos/composiciones completas no garantiza ese control modular. Ver [OWN_MODEL_FROM_SCRATCH.md](OWN_MODEL_FROM_SCRATCH.md).
 
 ## Prioridad de adquisición de activos
 
