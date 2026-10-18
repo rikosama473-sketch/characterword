@@ -159,3 +159,7 @@ input[type="range"] { width: 100%; accent-color: #d8a8ff; height: 4px; cursor: p
   .footer { padding: 11px 13px; font-size: 7px; flex-wrap: wrap; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+
+.file-mode-row { display: flex; flex-direction: column; align-items: stretch; width: 100%; gap: 6px; margin: 4px 0 2px; text-align: left; }
+.file-mode-row label { color: #bfb4d0; font-size: 9px; font-weight: 700; }
+.file-mode-row select { width: 100%; padding: 8px 9px; border: 1px solid #4b405c; border-radius: 7px; background: #211d2c; color: #f0e7fc; font-size: 10px; }
