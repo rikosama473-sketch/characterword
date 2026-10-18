@@ -45,7 +45,7 @@ Las capas de ropa, ojos y cabello no garantizan que brazos y piernas sean articu
 - Licencia que muestra la página: **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
 - Ventajas: recurso anime con capas reales y licencia declarada, útil para comprobar si la arquitectura admite varias bases de personajes.
 - Limitación: confirmar las proporciones y si la base es busto/medio cuerpo o cuerpo completo, así como la compatibilidad exacta con los conjuntos femeninos. No mezclar piezas entre bases distintas solo porque tengan el mismo estilo.
-- Estado: **candidata prioritaria secundaria**.
+- Estado: **perfil HMLF001 agregado a CharacterWord para 600 × 800; quedan pendientes la inspección local de los ZIP y la prueba de importación/guardado/reapertura**.
 
 ## Candidatos para la arquitectura, capas y animación
 
