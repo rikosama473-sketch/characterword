@@ -38,6 +38,16 @@
       sourceUrl: "https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama",
       author: "LinXueLian",
       license: "CC BY-SA 4.0"
+    },
+    hmlf001: {
+      id: "hmlf001",
+      label: "HMLF001 — Anime Boy (masculino, busto)",
+      description: "Sprite anime masculino de capas para novela visual. La página de LinXueLian declara lienzo de 600 × 800 px y ofrece ZIP separados para base, Warlock, Shopkeeper, bufanda, cabello y vampiro. No es un cuerpo anatómico articulado.",
+      instructions: "Importa HMLF001_BASE_BODY.zip para empezar. Elige una variante de la carpeta BASE_BODY como cuerpo base; después importa otros ZIP de HMLF001 de uno en uno y añade las capas compatibles. Solo se aceptan PNG de 600 × 800 px. El archivo debe descargarse desde la página original.",
+      width: 600, height: 800,
+      sourceUrl: "https://linxuelian.itch.io/customchar-hmlf001-malebust",
+      author: "LinXueLian",
+      license: "CC BY-SA 4.0"
     }
   });
   const STORAGE_KEY = "characterword.studio.project.v3";
@@ -359,7 +369,7 @@
     if (!file) return;
     const pack = activeAssetPack();
     if (pack.id === "manual") {
-      showToast("Selecciona FBFFFM001 o HFFF001 antes de importar un ZIP.", true);
+      showToast("Selecciona primero el perfil de la base anime que vas a importar.", true);
       return;
     }
     if (!window.JSZip || typeof window.JSZip.loadAsync !== "function") {
@@ -672,7 +682,7 @@
     if (!file) return;
     const pack = activeAssetPack();
     if (pack.id === "manual") {
-      showToast("Primero selecciona FBFFFM001 o HFFF001.", true);
+      showToast("Primero selecciona un perfil de base anime.", true);
       return;
     }
     if (!["image/png", "image/webp"].includes(file.type)) {
