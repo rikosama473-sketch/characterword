@@ -234,6 +234,14 @@
     renderAssetComposition();
     renderInspector();
     renderAssetPackControls();
+    const stageNote = $("stage-note-text");
+    if (stageNote) {
+      stageNote.textContent = hasActiveAssetComposition()
+        ? "Modo anime compuesto: las capas del paquete se dibujan alineadas sobre el cuerpo base. Puedes cambiar expresiones y detalles, pero este recurso no incluye brazos ni torso recortados para moverlos por separado."
+        : activeAssetPack().id !== "manual"
+          ? "Paquete seleccionado sin cuerpo importado. Añade un PNG base para previsualizar el personaje y después agrega expresiones o detalles de la misma base."
+          : "Modo provisional por piezas: puedes mover cabeza, torso, brazos y antebrazos por separado. Las imágenes anime de cuerpo completo se componen en el modo Base anime / waifu.";
+    }
   }
 
   function activeAssetPack() {
@@ -910,7 +918,7 @@
       const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY) || localStorage.getItem(OLDEST_STORAGE_KEY);
       if (!saved) return false;
       state = sanitizeProject(JSON.parse(saved));
-      // Persist the normalized v2 project after migrating old single-image slots.
+      // Persist the normalized v3 project after migrating old single-image slots.
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       return true;
     } catch (_) {
@@ -1004,6 +1012,55 @@
     render();
     scheduleLocalSave();
   });
+  $("asset-pack-select").addEventListener("change", (event) => switchAssetPack(event.target.value));
+  $("choose-asset-base").addEventListener("click", () => $("asset-base-input").click());
+  $("asset-base-input").addEventListener("change", (event) => {
+    importAssetBase(event.target.files && event.target.files[0]);
+    event.target.value = "";
+  });
+  $("choose-asset-overlays").addEventListener("click", () => $("asset-overlay-input").click());
+  $("asset-overlay-input").addEventListener("change", (event) => {
+    importAssetOverlays(event.target.files);
+    event.target.value = "";
+  });
+  $("clear-asset-composition").addEventListener("click", () => {
+    state.assetBase = null;
+    state.compositionLayers = [];
+    render();
+    scheduleLocalSave();
+    showToast("Composición anime retirada.");
+  });
+  $("asset-layer-list").addEventListener("change", (event) => {
+    const input = event.target.closest('input[data-asset-action="toggle-layer"]');
+    if (!input) return;
+    const layer = state.compositionLayers.find((item) => item.id === input.dataset.assetLayerId);
+    if (!layer) return;
+    layer.visible = input.checked;
+    render();
+    scheduleLocalSave();
+  });
+  $("asset-layer-list").addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-asset-action]");
+    if (!button) return;
+    const action = button.dataset.assetAction;
+    const id = button.dataset.assetLayerId;
+    if (action === "remove-base") {
+      state.assetBase = null;
+      state.compositionLayers = [];
+    } else {
+      const index = state.compositionLayers.findIndex((item) => item.id === id);
+      if (index < 0) return;
+      if (action === "remove") state.compositionLayers.splice(index, 1);
+      else if (action === "up" && index < state.compositionLayers.length - 1) {
+        [state.compositionLayers[index], state.compositionLayers[index + 1]] = [state.compositionLayers[index + 1], state.compositionLayers[index]];
+      } else if (action === "down" && index > 0) {
+        [state.compositionLayers[index], state.compositionLayers[index - 1]] = [state.compositionLayers[index - 1], state.compositionLayers[index]];
+      } else return;
+    }
+    render();
+    scheduleLocalSave();
+  });
+
   $("export-project").addEventListener("click", exportProject);
   $("export-png").addEventListener("click", exportPng);
   $("import-project").addEventListener("click", () => $("project-input").click());
