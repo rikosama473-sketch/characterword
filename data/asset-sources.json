@@ -36,7 +36,10 @@
       "articulatedLimbsVerified": false,
       "testedInCharacterWord": false,
       "status": "priority-pilot-candidate",
-      "notes": "Closest visual fit to anime full-body layer customization. Layered facial, skin, hair, clothing and accessories do not prove independent movable arm/leg joints."
+      "notes": "Closest visual fit to anime full-body layer customization. Layered facial, skin, hair, clothing and accessories do not prove independent movable arm/leg joints.",
+      "availability": "free-download-as-presented-on-source-page",
+      "layerFolderSystem": "numbered folders; lower number is lower draw order",
+      "pageNotes": "Page says it contains 124 files in current listing; separate ZIPs include base body, hair, eyes, clothing and accessories. Exact independent arm/forearm cutouts remain unverified."
     },
     {
       "id": "linxuelian-hfff001-oujousama",
@@ -54,15 +57,18 @@
         "separate numbered layer folders"
       ],
       "layering": "base essentials plus separate clothing/hair/accessory packs",
-      "license": "CC-BY-4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-      "sourceLicenseLabel": "Creative Commons Attribution 4.0 International",
+      "license": "CC-BY-SA-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0; page is categorized under itch.io's CC 4.0 BY-SA assets)",
       "creditRequired": true,
-      "shareAlike": false,
+      "shareAlike": true,
       "articulatedLimbsVerified": false,
       "testedInCharacterWord": false,
       "status": "priority-pilot-candidate",
-      "notes": "Layered anime art with shared base across packs; only mix assets where the creator's base and alignment match."
+      "notes": "Layered anime art with shared base across packs; only mix assets where the creator's base and alignment match.",
+      "availability": "free-download-as-presented-on-source-page",
+      "layerFolderSystem": "numbered folders; lower number is lower draw order",
+      "pageNotes": "Separate transparent-PNG ZIPs for base essentials, clothing, hair and accessories. Author notes corresponding packs share the same base and may be combined when they fit."
     },
     {
       "id": "linxuelian-hmlf001-anime-boy",
