@@ -25,12 +25,12 @@ El editor ya está publicado en [CharacterWord Studio](https://rikosama473-sketc
 - Apila varias capas PNG/WebP transparentes dentro de cabeza, torso, brazo superior o antebrazo; oculta, reordena y elimina capas por separado.
 - Alterna entre capas recortadas y láminas de lienzo alineado; mueve/gira/escalas las capas como una sola pieza anatómica.
 - Prueba paletas y poses, exporta a PNG y guarda/carga proyectos JSON.
-- Los archivos importados permanecen en el navegador. No hay backend ni envío de imágenes a un servidor.
+- Los ZIP e imágenes se leen localmente en el navegador mediante JSZip (MIT); no hay backend ni envío automático de imágenes a un servidor. El proyecto conserva las capas elegidas y metadatos de atribución.
 - El dibujo vectorial incorporado es solo una base de prueba para el modo articulable. Los paquetes FBFFFM001 y HFFF001 ya tienen un modo de importación de cuerpo completo y expresiones por capas; sus ZIP no incluyen piezas anatómicas independientes ni un esqueleto continuo hombro-codo-muñeca.
 
 ## Validación del código
 
-Un flujo de GitHub Actions ejecuta `node --check app.js` y `node scripts/validate-project.mjs` para verificar sintaxis, rutas de recursos, identificadores y el catálogo de licencias.
+Un flujo de GitHub Actions ejecuta `node --check app.js`, `node --check vendor/jszip.min.js` y `node scripts/validate-project.mjs` para verificar sintaxis, controles del importador, archivos vendorizados, dimensiones de los dos paquetes y el catálogo de licencias. La licencia de JSZip se conserva en `vendor/JSZIP-LICENSE.markdown`.
 
 ## Recursos anime integrados
 
