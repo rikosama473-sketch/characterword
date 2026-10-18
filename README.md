@@ -24,10 +24,10 @@ El editor ya está publicado en [CharacterWord Studio](https://rikosama473-sketc
 - Selecciona y arrastra las piezas; ajusta rotación, escala, posición y visibilidad.
 - Apila varias capas PNG/WebP transparentes dentro de cabeza, torso, brazo superior o antebrazo; oculta, reordena y elimina capas por separado.
 - Alterna entre capas recortadas y láminas de lienzo alineado; mueve/gira/escalas las capas como una sola pieza anatómica.
-- Importa directamente los ZIP originales de FBFFFM001 o HFFF001: el lector local enumera las variantes disponibles y deja elegir un cuerpo base y las bocas/cejas/maquillaje que quieras añadir.
+- Importa directamente los ZIP originales de FBFFFM001, HFFF001 o HMLF001: el lector local enumera las variantes disponibles y deja elegir un cuerpo base y las bocas/cejas/maquillaje que quieras añadir.
 - Prueba paletas y poses, exporta a PNG y guarda/carga proyectos JSON.
 - Los ZIP e imágenes se leen localmente en el navegador mediante JSZip (MIT); no hay backend ni envío automático de imágenes a un servidor. El proyecto conserva las capas elegidas y metadatos de atribución.
-- El dibujo vectorial incorporado es solo una base de prueba para el modo articulable. Los paquetes FBFFFM001 y HFFF001 ya tienen un modo de importación de cuerpo completo y expresiones por capas; sus ZIP no incluyen piezas anatómicas independientes ni un esqueleto continuo hombro-codo-muñeca.
+- El dibujo vectorial incorporado es solo una base de prueba para el modo articulable. Los paquetes FBFFFM001 y HFFF001 ya tienen un modo de importación de cuerpo completo y expresiones por capas; sus ZIP base inspeccionados no incluyen piezas anatómicas independientes ni un esqueleto continuo hombro-codo-muñeca. HMLF001 añade una base masculina de 600 × 800 px anunciada en su página pública; el perfil de importación está habilitado, pero sus ZIP aún no se han inspeccionado localmente ni probado de extremo a extremo.
 
 ## Validación del código
 
