@@ -7,9 +7,14 @@ const css = await read("styles.css");
 const app = await read("app.js");
 const catalog = JSON.parse(await read("data/asset-sources.json"));
 const animePackDoc = await read("docs/ANIME_PACK_INTEGRATION.md");
+const zipReader = await read("vendor/jszip.min.js");
+const zipReaderLicense = await read("vendor/JSZIP-LICENSE.markdown");
 
 assert.ok(html.includes('href="styles.css"'), "index.html must load styles.css");
 assert.ok(html.includes('src="app.js"'), "index.html must load app.js");
+assert.ok(html.includes('src="vendor/jszip.min.js"'), "index.html must load the local ZIP reader before the app");
+assert.ok(zipReader.includes("JSZip v3.10.2"), "The vendored ZIP reader must identify its upstream version");
+assert.ok(zipReaderLicense.includes("The MIT License"), "The vendored ZIP reader must retain its license");
 assert.ok(css.includes(".workspace"), "styles.css must define the editor layout");
 assert.ok(css.includes(".layer-row"), "Styles must include the imported-layer list");
 assert.ok(css.includes("#character-svg image.imported-art { pointer-events: visiblePainted; }"), "Imported images must remain pointer-draggable");
