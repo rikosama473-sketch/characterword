@@ -90,7 +90,69 @@
         "addOverlayVariants": true,
         "enforceCanvasDimensions": true,
         "liveRoundTripTested": false
-      }
+      },
+      "availablePackages": [
+        {
+          "file": "FBFFFM001_000_BASE_BODY.zip",
+          "displaySize": "568 kB",
+          "purpose": "Tonos de piel y base"
+        },
+        {
+          "file": "FBFFFM001_001_YuelanMaiden.zip",
+          "displaySize": "8.4 MB",
+          "purpose": "Conjunto de ropa"
+        },
+        {
+          "file": "FBFFFM001_002_TaiyakinaHair.zip",
+          "displaySize": "808 kB",
+          "purpose": "Cabello"
+        },
+        {
+          "file": "FBFFFM001_003_ChunkyChoker.zip",
+          "displaySize": "69 kB",
+          "purpose": "Accesorio"
+        },
+        {
+          "file": "FBFFFM001_004_MaryJaneSlippers.zip",
+          "displaySize": "104 kB",
+          "purpose": "Calzado"
+        },
+        {
+          "file": "FBFFFM001_005_ModernaSet.zip",
+          "displaySize": "3.7 MB",
+          "purpose": "Blusa y falda modernas"
+        },
+        {
+          "file": "FBFFFM001_006_TaiyakinaEyes.zip",
+          "displaySize": "55 kB",
+          "purpose": "Ojos"
+        },
+        {
+          "file": "FBFFFM001_007_Baeseek_LowrisePants.zip",
+          "displaySize": "1.9 MB",
+          "purpose": "Pantalones"
+        },
+        {
+          "file": "FBFFFM001_008_Adora_Hair.zip",
+          "displaySize": "594 kB",
+          "purpose": "Cabello"
+        },
+        {
+          "file": "FBFFFM001_009_Megarin_Eyes.zip",
+          "displaySize": "307 kB",
+          "purpose": "Ojos; añadidos el 9 de octubre de 2026"
+        },
+        {
+          "file": "FBFFFM001_010_Frankenstein_Monster_Skintone.zip",
+          "displaySize": "210 kB",
+          "purpose": "Variante de tono de piel; añadido el 16 de octubre de 2026"
+        },
+        {
+          "file": "FBFFFM001_011_Back_Hairbow.zip",
+          "displaySize": "267 kB",
+          "purpose": "Lazo para cabello; añadido el 16 de octubre de 2026"
+        }
+      ]
     },
     {
       "id": "linxuelian-hfff001-oujousama",
@@ -108,18 +170,18 @@
         "separate numbered layer folders"
       ],
       "layering": "base essentials plus separate clothing/hair/accessory packs",
-      "license": "CC-BY-SA-4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceLicenseLabel": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
       "creditRequired": true,
-      "shareAlike": true,
+      "shareAlike": false,
       "articulatedLimbsVerified": false,
       "testedInCharacterWord": false,
       "status": "archive-inspected-zip-importer-implemented-e2e-test-pending",
-      "notes": "Imported through CharacterWord's full-canvas composition mode. Choose one body PNG, then add face/makeup or mouth overlays from the same HFFF001 base using 537x700 images. Do not combine these images with FBFFFM001 layers; their canvas dimensions and source base differ.",
+      "notes": "The public page currently lists CC BY 4.0 (not CC BY-SA 4.0), asks for source attribution, and identifies several add-on ZIPs using the same base. The inspected base essentials ZIP has full-canvas images rather than independent head/torso/arm cutouts; add-on ZIPs have not been separately extracted here and should be checked by the editor's 537x700 dimension guard.",
       "availability": "free-download-as-presented-on-source-page",
       "layerFolderSystem": "numbered folders; lower number is lower draw order",
-      "pageNotes": "The public page marks the pack under CC BY-SA 4.0, requests a link to the project or author, and says its numbered transparent PNG folders are intended for layer stacking. The inspected base essentials ZIP has full-canvas images rather than independent head/torso/arm cutouts.",
+      "pageNotes": "The current public page shows CC BY 4.0, requests a link to the project or author, and says the numbered transparent PNG folders are intended for layer stacking. The inspected base essentials ZIP has full-canvas images rather than independent head/torso/arm cutouts.",
       "importMode": "full-canvas-composition",
       "layerFolders": [
         "00_BASE_BODY",
@@ -163,7 +225,40 @@
         "addOverlayVariants": true,
         "enforceCanvasDimensions": true,
         "liveRoundTripTested": false
-      }
+      },
+      "redistributionReviewed": "source declares CC BY 4.0; retain author attribution and license link; no ShareAlike condition is stated in the current page listing",
+      "availablePackages": [
+        {
+          "file": "HFFF001_OJOU_00_BASE_ESSENTIALS.zip",
+          "displaySize": "341 kB",
+          "purpose": "Base, tonos, maquillaje y bocas"
+        },
+        {
+          "file": "HFFF001_OJOU_01_DASHINGTON.zip",
+          "displaySize": "4.1 MB",
+          "purpose": "Conjunto de diseño/ropa"
+        },
+        {
+          "file": "HFFF001_OJOU_02_DARLINGTON.zip",
+          "displaySize": "3.1 MB",
+          "purpose": "Conjunto de diseño/ropa"
+        },
+        {
+          "file": "HFFF001_OJOU_03_Melina_Hair.zip",
+          "displaySize": "1.1 MB",
+          "purpose": "Cabello; añadido en septiembre de 2026"
+        },
+        {
+          "file": "HFFF001_OJOU_04_Crisscross_Blouse.zip",
+          "displaySize": "979 kB",
+          "purpose": "Blusa; añadido en septiembre de 2026"
+        },
+        {
+          "file": "HFFF001_OJOU_05_ButterflyHairclip.zip",
+          "displaySize": "665 kB",
+          "purpose": "Horquilla; añadido en septiembre de 2026"
+        }
+      ]
     },
     {
       "id": "linxuelian-hmlf001-anime-boy",
