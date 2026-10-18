@@ -11,6 +11,7 @@ assert.ok(html.includes('href="styles.css"'), "index.html must load styles.css")
 assert.ok(html.includes('src="app.js"'), "index.html must load app.js");
 assert.ok(css.includes(".workspace"), "styles.css must define the editor layout");
 assert.ok(css.includes(".layer-row"), "Styles must include the imported-layer list");
+assert.ok(css.includes("#character-svg image.imported-art { pointer-events: visiblePainted; }"), "Imported images must remain pointer-draggable");
 assert.ok(app.includes("const PARTS = ["), "app.js must define the parts list");
 assert.ok(html.includes('id="image-mode"'), "Import UI must provide cropped/aligned layer modes");
 assert.ok(html.includes('id="imported-layer-list"'), "Import UI must provide a per-part layer stack");
