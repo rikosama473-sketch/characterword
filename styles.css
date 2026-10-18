@@ -218,3 +218,21 @@ input[type="range"] { width: 100%; accent-color: #d8a8ff; height: 4px; cursor: p
 @media (max-width: 1120px) {
   .asset-pack-panel { grid-column: 1 / -1; }
 }
+
+
+.asset-zip-import { display: flex; flex-direction: column; gap: 6px; }
+.asset-zip-import .button { width: 100%; }
+.asset-zip-import small { color: #978da7; font-size: 8px; line-height: 1.55; }
+.asset-library-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 4px; }
+.asset-library-header strong { color: #cfc2e1; font-size: 9px; letter-spacing: .03em; }
+.asset-library-list { display: flex; flex-direction: column; gap: 5px; max-height: 235px; overflow: auto; min-width: 0; padding-right: 2px; }
+.asset-library-empty { margin: 0; padding: 8px 0; color: #90869e; font-size: 9px; line-height: 1.5; }
+.asset-library-row { display: flex; align-items: center; gap: 6px; padding: 7px 6px; min-width: 0; border: 1px solid #40374f; border-radius: 8px; background: #211d2a; }
+.asset-library-row.is-base { border-color: #655079; background: #2a2236; }
+.asset-library-meta { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.asset-library-meta strong { color: #ded5ea; font-size: 9px; line-height: 1.35; overflow-wrap: anywhere; }
+.asset-library-meta small { color: #91879f; font-size: 8px; line-height: 1.35; overflow-wrap: anywhere; }
+.asset-library-action { flex: 0 0 auto; border: 1px solid #574367; border-radius: 6px; padding: 5px 6px; color: #e8d9fa; background: #332840; font-size: 8px; font-weight: 750; }
+.asset-library-action:hover:not(:disabled) { background: #453455; border-color: #9373af; }
+.asset-library-action:disabled { opacity: .38; cursor: not-allowed; }
+.asset-library-status { margin: 0; padding: 6px 0; color: #a9d9c1; font-size: 8px; line-height: 1.5; }
