@@ -34,8 +34,8 @@
       "shareAlike": true,
       "redistributionReviewed": "source declares CC BY-SA 4.0; retain author attribution and license; inspect contents and verify all files before bundling",
       "articulatedLimbsVerified": false,
-      "testedInCharacterWord": true,
-      "status": "archive-inspected-importer-integrated",
+      "testedInCharacterWord": false,
+      "status": "archive-inspected-zip-importer-implemented-e2e-test-pending",
       "notes": "Imported through CharacterWord's full-canvas composition mode. Choose one body base PNG, then add mouth/brow or later hair/clothing PNG layers from the same base if their canvas remains 800x1200. Independent arm/forearm movement is not available from this pack.",
       "availability": "free-download-as-presented-on-source-page",
       "layerFolderSystem": "numbered folders; lower number is lower draw order",
@@ -81,6 +81,14 @@
         ],
         "anatomicalPartsSeparated": false,
         "sourceInspectedAt": "2026-10-18"
+      },
+      "importerImplementation": {
+        "mode": "client-side-ZIP-library-browser",
+        "library": "JSZip 3.10.2 (MIT)",
+        "chooseBaseVariant": true,
+        "addOverlayVariants": true,
+        "enforceCanvasDimensions": true,
+        "liveRoundTripTested": false
       }
     },
     {
@@ -105,8 +113,8 @@
       "creditRequired": true,
       "shareAlike": true,
       "articulatedLimbsVerified": false,
-      "testedInCharacterWord": true,
-      "status": "archive-inspected-importer-integrated",
+      "testedInCharacterWord": false,
+      "status": "archive-inspected-zip-importer-implemented-e2e-test-pending",
       "notes": "Imported through CharacterWord's full-canvas composition mode. Choose one body PNG, then add face/makeup or mouth overlays from the same HFFF001 base using 537x700 images. Do not combine these images with FBFFFM001 layers; their canvas dimensions and source base differ.",
       "availability": "free-download-as-presented-on-source-page",
       "layerFolderSystem": "numbered folders; lower number is lower draw order",
@@ -145,6 +153,14 @@
         ],
         "anatomicalPartsSeparated": false,
         "sourceInspectedAt": "2026-10-18"
+      },
+      "importerImplementation": {
+        "mode": "client-side-ZIP-library-browser",
+        "library": "JSZip 3.10.2 (MIT)",
+        "chooseBaseVariant": true,
+        "addOverlayVariants": true,
+        "enforceCanvasDimensions": true,
+        "liveRoundTripTested": false
       }
     },
     {
