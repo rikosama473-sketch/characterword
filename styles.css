@@ -180,3 +180,7 @@ input[type="range"] { width: 100%; accent-color: #d8a8ff; height: 4px; cursor: p
 .layer-action:hover:not(:disabled) { border-color: #65517d; background: #342a44; color: #f4eaff; }
 .layer-action-remove { color: #e4a4c1; font-size: 16px; }
 .layer-action:disabled { opacity: .28; cursor: not-allowed; }
+
+.show-fallback-control { display: flex; align-items: flex-start; gap: 7px; margin: 10px 1px 3px; color: #b9afcb; font-size: 9px; line-height: 1.45; cursor: pointer; }
+.show-fallback-control input { margin: 1px 0 0; accent-color: #c995ee; flex: 0 0 auto; }
+.show-fallback-control input:disabled { opacity: .4; cursor: not-allowed; }
