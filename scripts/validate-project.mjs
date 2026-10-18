@@ -9,6 +9,7 @@ const catalog = JSON.parse(await read("data/asset-sources.json"));
 const animePackDoc = await read("docs/ANIME_PACK_INTEGRATION.md");
 const zipReader = await read("vendor/jszip.min.js");
 const zipReaderLicense = await read("vendor/JSZIP-LICENSE.markdown");
+const pagesWorkflow = await read(".github/workflows/pages.yml");
 
 assert.ok(html.includes('href="styles.css"'), "index.html must load styles.css");
 assert.ok(html.includes('src="app.js"'), "index.html must load app.js");
@@ -25,6 +26,15 @@ assert.ok(html.includes('id="show-fallback"'), "Each body part must support a te
 assert.ok(html.includes('id="asset-pack-select"'), "Editor must expose the two inspected anime pack profiles");
 assert.ok(html.includes('id="asset-base-input"'), "Editor must allow selecting one full-canvas base PNG");
 assert.ok(html.includes('id="asset-overlay-input"'), "Editor must allow selecting aligned expression/detail overlays");
+assert.ok(html.includes('id="asset-zip-input"'), "Editor must allow importing original ZIP archives");
+assert.ok(html.includes('id="asset-library-list"'), "ZIP contents must be exposed as a selectable library");
+assert.ok(app.includes("async function importAssetZip"), "Editor must parse original ZIP archives locally");
+assert.ok(app.includes("window.JSZip.loadAsync"), "ZIP parsing must use the bundled reader");
+assert.ok(app.includes("function renderAssetLibrary"), "Editor must display choices found inside the ZIP");
+assert.ok(app.includes("function useLibraryBase"), "Users must be able to select a body-base variant");
+assert.ok(app.includes("function addLibraryOverlay"), "Users must be able to add overlay variants from the archive");
+assert.ok(pagesWorkflow.includes("cp vendor/jszip.min.js _site/vendor/"), "Pages deploy must publish the ZIP reader");
+assert.ok(pagesWorkflow.includes("cp vendor/JSZIP-LICENSE.markdown _site/vendor/"), "Pages deploy must publish the ZIP reader license");
 assert.ok(html.includes('id="asset-composition"'), "SVG must contain the separate full-body composition group");
 assert.ok(html.includes('id="asset-layer-list"'), "Editor must expose controls for imported full-canvas layers");
 assert.ok(animePackDoc.includes("FBFFFM001_000_BASE_BODY.zip"), "Inspection guide must document the FBFFFM001 archive");
@@ -36,7 +46,7 @@ assert.ok(app.includes("showFallback: true"), "Body parts must track whether the
 assert.ok(app.includes('$("show-fallback").addEventListener'), "Sample-art underlay control must be wired to editor state");
 assert.ok(app.includes('layer.mode === "canvas"'), "Aligned layers must preserve artboard coordinate placement");
 assert.ok(app.includes("Migration from v1 projects"), "Old single-image projects must be migratable");
-assert.ok(app.includes("characterword.studio.project.v2"), "Layered projects must use v2 local storage");
+assert.ok(app.includes("characterword.studio.project.v3"), "Layered projects must use v3 local storage");
 
 const htmlIds = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(new Set(htmlIds).size, htmlIds.length, "HTML ids must be unique");
@@ -64,5 +74,17 @@ for (const source of catalog.sources) {
 for (const feature of ["exportProject", "exportPng", "importPartImage", "sanitizeProject", "scheduleLocalSave"]) {
   assert.ok(app.includes("function " + feature), "Missing expected editor capability: " + feature);
 }
+
+
+const fbRecord = catalog.sources.find((source) => source.id === "linxuelian-fbfffm001-fullbody-girl");
+const hfffRecord = catalog.sources.find((source) => source.id === "linxuelian-hfff001-oujousama");
+assert.ok(fbRecord && fbRecord.inspectedArchive, "Catalog must include the verified FBFFFM001 archive inspection");
+assert.equal(fbRecord.inspectedArchive.pngCount, 27, "FBFFFM001 base ZIP should list 27 PNGs");
+assert.equal(fbRecord.inspectedArchive.dimensions, "800x1200", "FBFFFM001 canvas dimensions must be recorded");
+assert.equal(fbRecord.inspectedArchive.anatomicalPartsSeparated, false, "FBFFFM001 archive must not be labelled as articulated body parts");
+assert.ok(hfffRecord && hfffRecord.inspectedArchive, "Catalog must include the verified HFFF001 archive inspection");
+assert.equal(hfffRecord.inspectedArchive.pngCount, 16, "HFFF001 base ZIP should list 16 PNGs");
+assert.equal(hfffRecord.inspectedArchive.dimensions, "537x700", "HFFF001 canvas dimensions must be recorded");
+assert.equal(hfffRecord.inspectedArchive.anatomicalPartsSeparated, false, "HFFF001 archive must not be labelled as articulated body parts");
 
 console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " sources, unique HTML ids, stacked layers, v1 migration, and project exports.");
