@@ -168,11 +168,11 @@
           <div class="upload-icon">↑</div>
           <strong>Importar pieza PNG</strong>
           <span>PNG/WebP con transparencia, recortado a esta pieza.</span>
-          <button type="button" class="button button-outline" id="choose-image">Elegir archivo</button>
+          <div class="file-mode-row"><label for="image-mode">Formato de la imagen</label><select id="image-mode"><option value="cropped">Pieza recortada</option><option value="canvas">Capa de lámina alineada</option></select></div>\n          <button type="button" class="button button-outline" id="choose-image">Elegir archivo</button>
           <input id="part-image-input" type="file" accept="image/png,image/webp" hidden>
           <button type="button" class="text-button" id="remove-image" hidden>Volver al dibujo de muestra</button>
         </div>
-        <p class="microcopy">Usa un recorte de una sola pieza, no una lámina de cuerpo completo. Cada autor puede usar tamaños y coordenadas diferentes; quizás haya que ajustar escala y posición.</p>
+        <p class="microcopy">“Pieza recortada” ajusta un PNG de una sola parte. “Capa de lámina alineada” conserva las coordenadas relativas de una capa transparente cuyo lienzo completo coincide con el de las demás capas del mismo paquete.</p>
 
         <div class="panel-divider"></div>
         <div class="control-group">
