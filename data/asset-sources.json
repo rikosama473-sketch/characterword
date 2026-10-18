@@ -366,6 +366,105 @@
       "testedInCharacterWord": false,
       "status": "procedural-alternative-review",
       "notes": "Generates stylized characters from parametric vector shapes instead of pre-made images. Animation is out of scope; review source/reference and output terms separately."
+    },
+    {
+      "id": "anime-image-cutout-studio",
+      "name": "Anime Image Cutout Studio",
+      "kind": "desktop-preparation-tool",
+      "sourceUrl": "https://github.com/gino07172002/anime-image-cutout-studio",
+      "author": "gino07172002",
+      "style": [
+        "anime",
+        "image-segmentation",
+        "layer-extraction"
+      ],
+      "formats": [
+        "PNG transparent parts",
+        "layered PSD",
+        "skeleton tree"
+      ],
+      "license": "Apache-2.0-code",
+      "licenseUrl": "https://github.com/gino07172002/anime-image-cutout-studio/blob/main/LICENSE",
+      "creditRequired": "retain Apache license/notice for code if reused",
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "local-art-preparation-candidate",
+      "notes": "Use only on artwork the user owns or is licensed to modify. Inspect model weights/dependencies and source-image terms separately."
+    },
+    {
+      "id": "paper-doll-studio",
+      "name": "Paper Doll Studio",
+      "kind": "desktop-preparation-tool",
+      "sourceUrl": "https://github.com/KhurrumAli1997/paper-doll-studio",
+      "author": "KhurrumAli1997",
+      "style": [
+        "anime",
+        "visual-novel",
+        "wardrobe-layers",
+        "local-first"
+      ],
+      "formats": [
+        "PSD import",
+        "PNG import",
+        "RGBA layers",
+        "wardrobe slots",
+        "ZIP export"
+      ],
+      "license": "Apache-2.0-code",
+      "licenseUrl": "https://github.com/KhurrumAli1997/paper-doll-studio/blob/main/LICENSE",
+      "creditRequired": "retain Apache license/notice for code if reused",
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "tool-to-evaluate",
+      "notes": "Uses Python and optional vision/inpainting models; model and dependency licenses are distinct. Could prepare art locally but is too heavy to assume as the core lightweight web app."
+    },
+    {
+      "id": "spriteforge",
+      "name": "SpriteForge",
+      "kind": "browser-rigging-editor-reference",
+      "sourceUrl": "https://github.com/Wilson-Cheng/SpriteForge",
+      "author": "Wilson-Cheng and contributors",
+      "style": [
+        "2D-cutout",
+        "bones",
+        "timeline",
+        "browser"
+      ],
+      "formats": [
+        "PNG parts",
+        "bone hierarchy",
+        "Spine JSON"
+      ],
+      "license": "MIT-code",
+      "licenseUrl": "https://github.com/Wilson-Cheng/SpriteForge/blob/main/LICENSE",
+      "creditRequired": "include MIT license for reused code; check art credits separately",
+      "shareAlike": false,
+      "testedInCharacterWord": false,
+      "status": "high-value-rigging-reference",
+      "notes": "Useful for future articulated movement after CharacterWord has separate art parts and pivots. Not an anime art pack itself."
+    },
+    {
+      "id": "pinkcel-2d-rigging-online",
+      "name": "Pinkcel 2D Rigging Online",
+      "kind": "web-rigging-tool-reference",
+      "sourceUrl": "https://pinkcel.com/2d-rigging.html",
+      "author": "Pinkcel",
+      "style": [
+        "2D-rigging",
+        "bones",
+        "IK",
+        "mesh-deformation"
+      ],
+      "formats": [
+        "layered PSD or separate art layers according to product page"
+      ],
+      "license": "terms-unverified",
+      "licenseUrl": "https://pinkcel.com/2d-rigging.html",
+      "creditRequired": "verify",
+      "shareAlike": "unknown",
+      "testedInCharacterWord": false,
+      "status": "workflow-reference-only",
+      "notes": "Useful to study interaction and posing; do not reuse software/art or assume export rights before confirming terms."
     }
   ]
 }
