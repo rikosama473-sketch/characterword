@@ -18,7 +18,7 @@ La prioridad inicial no es inventar arte desde cero: es localizar recursos dispo
 
 ## Prototipo ejecutable
 
-El editor puede abrirse localmente desde `index.html`. El workflow `.github/workflows/pages.yml` prepara y despliega una versión estática en GitHub Pages cada vez que se actualiza `main` (y también permite ejecución manual). La primera publicación requiere que el repositorio tenga Pages habilitado con la fuente **GitHub Actions** en Settings → Pages.
+El editor ya está publicado en [CharacterWord Studio](https://rikosama473-sketch.github.io/characterword/) y también puede abrirse localmente desde `index.html`. El workflow `.github/workflows/pages.yml` vuelve a desplegar la versión estática cada vez que se actualiza `main` y permite ejecución manual.
 
 - Ensambla una muñeca anime provisional con cabeza, torso, brazos superiores y antebrazos separados.
 - Selecciona y arrastra las piezas; ajusta rotación, escala, posición y visibilidad.
