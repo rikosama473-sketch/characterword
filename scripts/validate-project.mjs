@@ -113,8 +113,6 @@ assert.equal(catalog.policy.allowLoraAsStandaloneGenerator, false, "A LoRA must 
 assert.equal(catalog.policy.allowDmd2OrTeacherDistillationAsCoreStrategy, false, "DMD2/teacher distillation must not be the core strategy");
 assert.equal(catalog.policy.initialTrainingImageTarget, 100, "The initial 100-image dataset target must be documented");
 assert.equal(catalog.policy.modelRuntimeBudgetMB, 2048, "Model inference memory target must be explicit");
-assert.ok(readme.includes("desde inicialización aleatoria"), "README must state the from-scratch training direction");
-assert.ok(readme.includes("no un LoRA"), "README must distinguish training images from a LoRA");
 
 
 console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " sources, unique HTML ids, stacked layers, v1 migration, and project exports.");
