@@ -1,4 +1,4 @@
-# Investigación de recursos gráficos para CharacterWord
+# Investigación de recursos para waifus, femboys andróginos y chibi en CharacterWord
 
 **Revisado:** 2026-10-18  
 **Objetivo visual:** personaje anime o ilustrado compuesto por capas intercambiables; a largo plazo, permitir seleccionar y mover partes del cuerpo como un muñeco articulado.  
