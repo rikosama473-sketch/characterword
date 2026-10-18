@@ -207,6 +207,25 @@ Antes de incorporar un paquete al repositorio o a una futura versión distribuib
 - Limitaciones: su propio README declara que la animación está fuera de alcance y su estilo actual es tall-chibi. La licencia del código no debe confundirse con las condiciones aplicables a referencias, imágenes o salidas concretas.
 - Estado: **alternativa de generación procedural, no sustituto del kit de piezas**.
 
+## Nuevos candidatos femeninos y chibi (2026-10-18)
+
+### Pixel Sprite Shop — Modular Female Character Creator (64px)
+- Fuente: https://pixelspriteshop.itch.io/64-pixel-female-character-creator
+- Recurso modular de pago (USD 3+) con 145 ojos, 100 cejas, 147 bocas, 65 formas de cabeza, 126 peinados, tres tipos de cuerpo, 14 posiciones de brazo, 14 pares de manos, siete posturas de piernas y animaciones.
+- Los términos permiten modificar y usar en proyectos comerciales, pero prohíben redistribuir/re-subir el pack original. La página incluye una muestra de cabeza masculina que debe omitirse; el candidato para CharacterWord son sus activos femeninos.
+- Estado: **prioridad alta de inspección**. Descargar los KRA/PNG cuando se disponga de ellos, comprobar artboards, pivotes y separabilidad real; no declarar articulaciones compatibles aún.
+
+### lofi_kier — Swappable Chibi Portraits (64x64 - Layers)
+- Fuente: https://lofi-kier.itch.io/swappable-chibi-portraits-64x64-layers
+- Pack de USD 10+ con 13 presets y más de 50 capas para cabeza, torso, pelo, ropa, ojos, boca, cejas, rubor, extras y fondo.
+- Permite uso comercial y modificaciones; prohíbe redistribución y reventa, incluidos NFT. Atribución apreciada, no obligatoria.
+- Estado: **candidato chibi de alta prioridad**. Inspeccionar el ZIP para confirmar el tamaño de las imágenes y cómo se ordenan las capas antes de crear un perfil en el selector.
+
+### TheSpriteShop — Female Chibi Character (7 skin tones)
+- Fuente: https://thespriteshop.itch.io/female-chibi-character-base-hair-eyes
+- ZIP Female.zip (276 kB), base chibi femenina, siete tonos de piel, pelo y ojos intercambiables; precio anunciado USD 6.99+.
+- Estado: **pendiente de licencia y dimensiones**. La ficha pública revisada no expone claramente estos datos, así que no aprobar ni integrar hasta inspeccionar ZIP y términos.
+
 ## Conclusión provisional
 
 La prioridad visual es **FBFFFM001 y HFFF001** (ZIP base inspeccionados). La próxima prueba de origen debe ser **Dorathy** por la variedad de prendas y posiciones de brazos; Pung Lone Wolf es una alternativa de pago. Los candidatos chibi y andróginos permanecen pendientes de revisión de licencia y compatibilidad.
