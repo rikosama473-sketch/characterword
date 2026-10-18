@@ -26,11 +26,18 @@ El editor ya está publicado en [CharacterWord Studio](https://rikosama473-sketc
 - Alterna entre capas recortadas y láminas de lienzo alineado; mueve/gira/escalas las capas como una sola pieza anatómica.
 - Prueba paletas y poses, exporta a PNG y guarda/carga proyectos JSON.
 - Los archivos importados permanecen en el navegador. No hay backend ni envío de imágenes a un servidor.
-- El dibujo vectorial incorporado es solo una base de prueba; el catálogo de fuentes registra qué paquetes externos podrían sustituirlo. Las piezas anatómicas siguen moviéndose de forma independiente: todavía no hay un esqueleto continuo hombro-codo-muñeca ni una biblioteca anime externa integrada.
+- El dibujo vectorial incorporado es solo una base de prueba para el modo articulable. Los paquetes FBFFFM001 y HFFF001 ya tienen un modo de importación de cuerpo completo y expresiones por capas; sus ZIP no incluyen piezas anatómicas independientes ni un esqueleto continuo hombro-codo-muñeca.
 
 ## Validación del código
 
 Un flujo de GitHub Actions ejecuta `node --check app.js` y `node scripts/validate-project.mjs` para verificar sintaxis, rutas de recursos, identificadores y el catálogo de licencias.
+
+## Recursos anime integrados
+
+- [Informe de inspección e instrucciones FBFFFM001 / HFFF001](docs/ANIME_PACK_INTEGRATION.md)
+- [Catálogo de fuentes y licencias](data/asset-sources.json)
+
+El modo **Base anime / waifu** permite importar un PNG de cuerpo base y capas de expresión alineadas de cualquiera de los dos conjuntos. El modo provisional articulable sigue separado: ninguno de los dos ZIP base inspeccionados trae brazos, torso y cabeza independientes.
 
 ## Investigación actual
 
