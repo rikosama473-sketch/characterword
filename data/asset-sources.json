@@ -80,7 +80,8 @@
           }
         ],
         "anatomicalPartsSeparated": false,
-        "sourceInspectedAt": "2026-10-18"
+        "sourceInspectedAt": "2026-10-18",
+        "countCaveat": "The saved inspection summary reported 27 PNGs total while named folder counts sum to 26 (9+5+12); one PNG/category path is not accounted for in that summary. The importer enumerates actual ZIP entries at runtime."
       },
       "importerImplementation": {
         "mode": "client-side-ZIP-library-browser",
@@ -152,7 +153,8 @@
           }
         ],
         "anatomicalPartsSeparated": false,
-        "sourceInspectedAt": "2026-10-18"
+        "sourceInspectedAt": "2026-10-18",
+        "countCaveat": "The saved inspection summary reported 16 PNGs total while named folder counts sum to 15 (5+2+8); one PNG/category path is not accounted for in that summary. The importer enumerates actual ZIP entries at runtime."
       },
       "importerImplementation": {
         "mode": "client-side-ZIP-library-browser",
