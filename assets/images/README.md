@@ -20,3 +20,21 @@ No subas aquí una imagen solo porque puede verse o descargarse gratis de una we
 Guarda los archivos directamente aquí al principio; cuando el catálogo crezca, puedes separarlos en subcarpetas como `bodies/`, `faces/`, `hair/`, `clothes/`, `limbs/`, `poses/` y `backgrounds/`.
 
 Para el ensamblador, prioriza PNG con transparencia, SVG original y capas alineadas en un mismo lienzo. Conserva la resolución fuente; crea derivados de baja resolución por separado en vez de sobrescribir el original permitido.
+
+
+## Si GitHub rechaza una imagen por tamaño
+
+La subida desde el navegador tiene un límite de **25 MiB por archivo**. Para archivos mayores, hasta 100 MiB, usa un clon local y haz commit/push con Git. Los archivos de más de 100 MiB requieren Git LFS, pero **Git LFS no sirve para entregar recursos de un sitio GitHub Pages**. Para las imágenes que el editor web necesita mostrar, prepara versiones optimizadas PNG/WebP de menos de 25 MiB.
+
+En Windows, para subir archivos de entre 25 y 100 MiB con Git instalado:
+
+```powershell
+git clone https://github.com/rikosama473-sketch/characterword.git
+cd characterword
+# Copia las imágenes autorizadas a .\assets\images\
+git add assets/images
+git commit -m "Add approved image assets"
+git push origin main
+```
+
+Si ya tienes un clon local, omite `git clone` y entra en esa carpeta. No subas a un repositorio público imágenes que solo tengas permiso de usar en privado ni uses Git LFS para imágenes que deban servirse desde GitHub Pages. Para el dataset privado de entrenamiento, es preferible guardar los originales fuera del repositorio y publicar solo arte propio o autorizado para redistribución.
