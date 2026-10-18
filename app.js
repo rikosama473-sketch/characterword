@@ -11,8 +11,38 @@
   ];
 
   const DEFAULT_COLORS = { skin: "#f6c9c3", hair: "#70458b", eyes: "#6b64d8", outfit: "#f1b4d6" };
-  const STORAGE_KEY = "characterword.studio.project.v2";
-  const LEGACY_STORAGE_KEY = "characterword.studio.project.v1";
+  const ASSET_PACKS = Object.freeze({
+    manual: {
+      id: "manual",
+      label: "Muñeca provisional por piezas",
+      description: "Modo articulable de prueba. Permite mover cabeza, torso, brazos y antebrazos por separado con el dibujo provisional.",
+      instructions: "Selecciona un paquete anime para importar capas PNG de cuerpo completo, o vuelve a este modo para trabajar con las piezas provisionales.",
+      width: 0, height: 0, sourceUrl: "", author: "", license: ""
+    },
+    fbfffm001: {
+      id: "fbfffm001",
+      label: "FBFFFM001 — Fullbody Girl",
+      description: "Personaje anime de cuerpo completo. Importa directamente el ZIP base verificado: contiene 27 PNG RGBA de 800 × 1200 (9 variantes de cuerpo, 5 bocas y 12 cejas). No contiene cabeza, torso ni brazos recortados por separado.",
+      instructions: "Pulsa “Importar ZIP original” y elige FBFFFM001_000_BASE_BODY.zip sin extraerlo. Selecciona una variante de 00_BODYBASE como base y añade las bocas de 01_MOUTHS o cejas de 03_BROWS que quieras. Los PNG deben ser de 800 × 1200.",
+      width: 800, height: 1200,
+      sourceUrl: "https://linxuelian.itch.io/customchar-fbfffm001-fullbodyfemale",
+      author: "LinXueLian",
+      license: "CC BY-SA 4.0"
+    },
+    hfff001: {
+      id: "hfff001",
+      label: "HFFF001 — Oujousama",
+      description: "Sprite anime de lienzo 537 × 700. El ZIP base verificado contiene 16 PNG RGBA (5 variantes de cuerpo, 2 capas de maquillaje y 8 bocas); no contiene piezas anatómicas independientes.",
+      instructions: "Pulsa “Importar ZIP original” y elige HFFF001_OJOU_00_BASE_ESSENTIALS.zip sin extraerlo. Selecciona una variante de 00_BASE_BODY y añade los detalles de 01_FACE_AND_MAKEUP o 02_MOUTH. Los PNG deben ser de 537 × 700.",
+      width: 537, height: 700,
+      sourceUrl: "https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama",
+      author: "LinXueLian",
+      license: "CC BY-SA 4.0"
+    }
+  });
+  const STORAGE_KEY = "characterword.studio.project.v3";
+  const LEGACY_STORAGE_KEY = "characterword.studio.project.v2";
+  const OLDEST_STORAGE_KEY = "characterword.studio.project.v1";
   const svg = document.getElementById("character-svg");
   const partsList = document.getElementById("parts-list");
   const $ = (id) => document.getElementById(id);
@@ -21,6 +51,8 @@
   let toastTimer = null;
   let drag = null;
   let state = makeDefaultProject();
+  let assetLibrary = [];
+  let assetLibraryZipName = "";
 
   function defaultPart() {
     return { dx: 0, dy: 0, rotation: 0, scale: 1, visible: true, showFallback: true, layers: [] };
@@ -29,7 +61,7 @@
   function makeDefaultProject() {
     const parts = {};
     PARTS.forEach((part) => { parts[part.id] = defaultPart(); });
-    return { version: 2, name: "Nueva waifu", colors: Object.assign({}, DEFAULT_COLORS), parts };
+    return { version: 3, name: "Nueva waifu", colors: Object.assign({}, DEFAULT_COLORS), parts, assetPack: { id: "manual" }, assetBase: null, compositionLayers: [] };
   }
 
   function getPart(id) {
@@ -43,7 +75,8 @@
       const active = part.id === selectedPart ? " active" : "";
       const imported = count ? " imported" : "";
       const label = count ? (count + (count === 1 ? " capa importada" : " capas importadas")) : part.desc;
-      return '<button class="part-button' + active + '" type="button" data-select-part="' + part.id + '">' +
+      const disabled = hasActiveAssetComposition() ? " disabled" : "";
+      return '<button class="part-button' + active + '" type="button" data-select-part="' + part.id + '"' + disabled + '>' +
         '<span class="part-thumb">' + part.icon + '</span><span class="part-labels"><strong>' + part.short + '</strong><small>' + label + '</small></span>' +
         '<span class="part-state' + imported + '" aria-label="' + (count ? count + " capas importadas" : "Dibujo de muestra") + '"></span></button>';
     }).join("");
@@ -54,7 +87,8 @@
     const piece = state.parts[def.id];
     const group = $("part-" + def.id);
     if (!group) return;
-    group.style.display = piece.visible ? "" : "none";
+    const fullBodyCompositionActive = Boolean(state.assetBase && state.assetPack && state.assetPack.id !== "manual");
+    group.style.display = fullBodyCompositionActive ? "none" : (piece.visible ? "" : "none");
     group.classList.toggle("is-selected", def.id === selectedPart);
     group.setAttribute("transform",
       "translate(" + piece.dx + " " + piece.dy + ") " +
@@ -99,7 +133,9 @@
 
   function renderColors() {
     Object.keys(state.colors).forEach((key) => svg.style.setProperty("--" + key, state.colors[key]));
-    ["skin", "hair", "eyes", "outfit"].forEach((key) => { $("color-" + key).value = state.colors[key]; });
+    const compositionActive = hasActiveAssetComposition();
+    ["skin", "hair", "eyes", "outfit"].forEach((key) => { $("color-" + key).value = state.colors[key]; $("color-" + key).disabled = compositionActive; });
+    $("random-colors").disabled = compositionActive;
   }
 
   function renderImportedLayerList() {
@@ -172,7 +208,7 @@
     const def = getPart(selectedPart);
     const piece = state.parts[def.id];
     $("selected-part-name").textContent = def.name;
-    $("selected-part-desc").textContent = def.desc;
+    $("selected-part-desc").textContent = hasActiveAssetComposition() ? "Desactivado en el modo de sprite completo" : def.desc;
     $("selected-part-icon").textContent = def.icon;
     $("rotation").value = String(piece.rotation);
     $("rotation-value").textContent = piece.rotation + "°";
@@ -183,6 +219,8 @@
     $("move-y").value = String(piece.dy);
     $("move-y-value").textContent = String(piece.dy);
     $("part-visible").checked = piece.visible;
+    const compositionActive = hasActiveAssetComposition();
+    ["rotation", "scale", "move-x", "move-y", "part-visible", "reset-part", "choose-image", "image-mode", "remove-image", "show-fallback"].forEach((id) => { $(id).disabled = compositionActive || (id === "remove-image" || id === "show-fallback") && piece.layers.length === 0; });
     $("remove-image").hidden = piece.layers.length === 0;
     $("show-fallback").checked = Boolean(piece.showFallback);
     $("show-fallback").disabled = piece.layers.length === 0;
@@ -195,7 +233,539 @@
     renderPartList();
     renderColors();
     PARTS.forEach(setPartTransform);
+    renderAssetComposition();
     renderInspector();
+    renderAssetPackControls();
+    const stageNote = $("stage-note-text");
+    if (stageNote) {
+      stageNote.textContent = hasActiveAssetComposition()
+        ? "Modo anime compuesto: las capas del paquete se dibujan alineadas sobre el cuerpo base. Puedes cambiar expresiones y detalles, pero este recurso no incluye brazos ni torso recortados para moverlos por separado."
+        : activeAssetPack().id !== "manual"
+          ? "Paquete seleccionado sin cuerpo importado. Añade un PNG base para previsualizar el personaje y después agrega expresiones o detalles de la misma base."
+          : "Modo provisional por piezas: puedes mover cabeza, torso, brazos y antebrazos por separado. Las imágenes anime de cuerpo completo se componen en el modo Base anime / waifu.";
+    }
+  }
+
+  function activeAssetPack() {
+    const id = state.assetPack && state.assetPack.id;
+    return ASSET_PACKS[id] || ASSET_PACKS.manual;
+  }
+
+  function hasActiveAssetComposition() {
+    return activeAssetPack().id !== "manual" && Boolean(state.assetBase && state.assetBase.dataUrl);
+  }
+
+  function renderAssetComposition() {
+    const group = $("asset-composition");
+    if (!group) return;
+    group.replaceChildren();
+    if (!hasActiveAssetComposition()) {
+      group.style.display = "none";
+      return;
+    }
+
+    group.style.display = "";
+    const appendImage = (dataUrl, name, visible) => {
+      const image = document.createElementNS("http://www.w3.org/2000/svg", "image");
+      image.setAttribute("class", "asset-composition-image");
+      image.setAttribute("x", "0");
+      image.setAttribute("y", "0");
+      image.setAttribute("width", "440");
+      image.setAttribute("height", "620");
+      image.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      image.setAttribute("pointer-events", "none");
+      image.setAttribute("aria-label", name);
+      image.setAttribute("href", dataUrl);
+      image.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", dataUrl);
+      image.style.display = visible ? "" : "none";
+      group.appendChild(image);
+    };
+
+    // All files in each official pack share one transparent artboard. The
+    // SVG preserves the source aspect ratio so overlays remain aligned.
+    appendImage(state.assetBase.dataUrl, state.assetBase.name || "Cuerpo base", true);
+    state.compositionLayers.forEach((layer) => appendImage(layer.dataUrl, layer.name, layer.visible));
+  }
+
+  function renderAssetLibrary() {
+    const host = $("asset-library-list");
+    const title = $("asset-library-title");
+    const clearButton = $("clear-asset-library");
+    if (!host || !title || !clearButton) return;
+    host.replaceChildren();
+    clearButton.hidden = assetLibrary.length === 0;
+    title.textContent = assetLibrary.length
+      ? "Biblioteca · " + assetLibraryZipName + " · " + assetLibrary.length + " PNG"
+      : "Biblioteca del ZIP";
+
+    if (!assetLibrary.length) {
+      const empty = document.createElement("p");
+      empty.className = "asset-library-empty";
+      empty.textContent = "Importa un ZIP descargado de la página original para elegir entre sus variantes. Solo se aceptan imágenes que coincidan con las dimensiones de la base seleccionada.";
+      host.appendChild(empty);
+      return;
+    }
+
+    assetLibrary.forEach((item) => {
+      const row = document.createElement("div");
+      row.className = "asset-library-row" + (item.type === "base" ? " is-base" : "");
+      const thumb = document.createElement("img");
+      thumb.className = "asset-library-thumb";
+      thumb.src = item.dataUrl;
+      thumb.alt = "";
+      thumb.loading = "lazy";
+      thumb.decoding = "async";
+      thumb.title = item.name;
+
+      const meta = document.createElement("div");
+      meta.className = "asset-library-meta";
+      const name = document.createElement("strong");
+      name.textContent = item.name;
+      name.title = item.path;
+      const detail = document.createElement("small");
+      detail.textContent = (item.type === "base" ? "CUERPO BASE" : item.category) + " · " + item.width + " × " + item.height;
+      detail.title = item.path;
+      meta.append(name, detail);
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "asset-library-action";
+      button.dataset.libraryAction = item.type === "base" ? "use-base" : "add-overlay";
+      button.dataset.libraryId = item.id;
+      if (item.type === "base") {
+        const active = state.assetBase && state.assetBase.libraryId === item.id;
+        button.textContent = active ? "Seleccionada" : "Usar base";
+        button.disabled = Boolean(active);
+        button.setAttribute("aria-label", "Usar cuerpo base " + item.name);
+      } else {
+        const alreadyAdded = state.compositionLayers.some((layer) => layer.libraryId === item.id);
+        button.textContent = alreadyAdded ? "Añadida" : "Añadir capa";
+        button.disabled = !state.assetBase || alreadyAdded;
+        button.setAttribute("aria-label", "Añadir capa " + item.name);
+      }
+      row.append(thumb, meta, button);
+      host.appendChild(row);
+    });
+  }
+
+  function clearAssetLibrary() {
+    assetLibrary = [];
+    assetLibraryZipName = "";
+    renderAssetLibrary();
+    showToast("Biblioteca del ZIP vaciada. La composición actual no se ha borrado.");
+  }
+
+  async function importAssetZip(file) {
+    if (!file) return;
+    const pack = activeAssetPack();
+    if (pack.id === "manual") {
+      showToast("Selecciona FBFFFM001 o HFFF001 antes de importar un ZIP.", true);
+      return;
+    }
+    if (!window.JSZip || typeof window.JSZip.loadAsync !== "function") {
+      showToast("No se ha cargado el lector ZIP local. Recarga CharacterWord e inténtalo otra vez.", true);
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      showToast("Este ZIP supera el límite de 20 MB para la importación local.", true);
+      return;
+    }
+
+    try {
+      $("asset-library-title").textContent = "Leyendo ZIP…";
+      const archive = await window.JSZip.loadAsync(file);
+      const entries = Object.values(archive.files)
+        .filter((entry) => !entry.dir && /\.png$/i.test(entry.name) && !entry.name.split("/").some((part) => part === "__MACOSX" || part.startsWith(".")))
+        .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+
+      if (!entries.length) {
+        renderAssetLibrary();
+        showToast("El ZIP no contiene archivos PNG.", true);
+        return;
+      }
+      if (entries.length > 150) {
+        renderAssetLibrary();
+        showToast("El ZIP tiene más de 150 PNG. Importa un paquete más pequeño de la misma base.", true);
+        return;
+      }
+
+      const found = [];
+      const rejected = [];
+      let decodedBytes = 0;
+      for (const entry of entries) {
+        try {
+          const base64 = await entry.async("base64");
+          decodedBytes += Math.floor(base64.length * 3 / 4);
+          if (decodedBytes > 30 * 1024 * 1024) {
+            rejected.push("límite de memoria alcanzado");
+            break;
+          }
+          const dataUrl = "data:image/png;base64," + base64;
+          const dimensions = await inspectImageDimensions(dataUrl);
+          if (!validatePackImageDimensions(dimensions.width, dimensions.height)) {
+            rejected.push(entry.name + " (" + dimensions.width + " × " + dimensions.height + ")");
+            continue;
+          }
+          const parts = entry.name.split("/").filter(Boolean);
+          const parentFolder = parts.length > 1 ? parts[parts.length - 2] : "";
+          const normalizedFolder = parentFolder.replace(/^\d+[_\s-]*/, "").toUpperCase();
+          const isBase = normalizedFolder.includes("BODYBASE") || normalizedFolder === "BASE_BODY" || normalizedFolder.includes("BASE_BODY");
+          const category = normalizedFolder || (isBase ? "BASE_BODY" : "DETALLE");
+          const folderOrder = Number((parentFolder.match(/^\d+/) || ["999"])[0]);
+          found.push({
+            id: "library-" + Date.now().toString(36) + "-" + found.length.toString(36) + "-" + Math.random().toString(36).slice(2, 6),
+            name: parts[parts.length - 1] || "imagen.png",
+            path: entry.name,
+            folder: parentFolder,
+            order: Number.isFinite(folderOrder) ? folderOrder : 999,
+            category,
+            type: isBase ? "base" : "overlay",
+            dataUrl,
+            width: dimensions.width,
+            height: dimensions.height
+          });
+        } catch (_) {
+          rejected.push(entry.name + " (archivo ilegible)");
+        }
+      }
+
+      if (!found.length) {
+        renderAssetLibrary();
+        showToast("Ningún PNG coincide con " + pack.label + ". Se esperaba " + pack.width + " × " + pack.height + ".", true);
+        return;
+      }
+
+      assetLibrary = found;
+      assetLibraryZipName = file.name;
+      renderAssetLibrary();
+      renderAssetPackControls();
+      const bases = found.filter((item) => item.type === "base").length;
+      const overlays = found.length - bases;
+      showToast("ZIP leído localmente: " + bases + " variantes de cuerpo y " + overlays + " capas de detalle." + (rejected.length ? " " + rejected.length + " archivo(s) omitidos por dimensiones o tamaño." : ""));
+    } catch (error) {
+      renderAssetLibrary();
+      showToast(error.message || "No se pudo abrir el ZIP. Comprueba que el archivo se descargó por completo.", true);
+    }
+  }
+
+  function useLibraryBase(libraryId) {
+    const item = assetLibrary.find((candidate) => candidate.id === libraryId);
+    if (!item || item.type !== "base") return;
+    if (!validatePackImageDimensions(item.width, item.height)) {
+      showToast("Esta imagen no coincide con las dimensiones de la base activa.", true);
+      return;
+    }
+    state.assetBase = {
+      name: item.name,
+      dataUrl: item.dataUrl,
+      width: item.width,
+      height: item.height,
+      originPath: item.path,
+      libraryId: item.id
+    };
+    render();
+    scheduleLocalSave();
+    showToast("Cuerpo base seleccionado: " + item.name + ".");
+  }
+
+  function addLibraryOverlay(libraryId) {
+    const item = assetLibrary.find((candidate) => candidate.id === libraryId);
+    if (!item || item.type === "base") return;
+    if (!state.assetBase) {
+      showToast("Selecciona primero una variante de cuerpo base.", true);
+      return;
+    }
+    if (state.compositionLayers.some((layer) => layer.libraryId === item.id)) {
+      showToast("Esta capa ya está añadida.");
+      return;
+    }
+    if (!validatePackImageDimensions(item.width, item.height)) {
+      showToast("Esta capa no coincide con la base activa y no se puede alinear.", true);
+      return;
+    }
+    if (state.compositionLayers.length >= 40) {
+      showToast("La composición admite hasta 40 capas de detalle.", true);
+      return;
+    }
+    const newLayer = {
+      id: "asset-layer-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
+      libraryId: item.id,
+      name: item.name,
+      originPath: item.path,
+      order: item.order,
+      dataUrl: item.dataUrl,
+      visible: true
+    };
+    // The original packs number their folders back-to-front. Insert in that
+    // order initially; the visible up/down controls still allow manual tuning.
+    const insertAt = state.compositionLayers.findIndex((layer) => Number.isFinite(layer.order) && layer.order > item.order);
+    if (insertAt < 0) state.compositionLayers.push(newLayer);
+    else state.compositionLayers.splice(insertAt, 0, newLayer);
+    render();
+    scheduleLocalSave();
+    showToast("Capa añadida: " + item.name + ".");
+  }
+
+  function renderAssetLayerList() {
+    const host = $("asset-layer-list");
+    if (!host) return;
+    host.replaceChildren();
+    const pack = activeAssetPack();
+    if (pack.id === "manual") {
+      const empty = document.createElement("p");
+      empty.className = "asset-layer-empty";
+      empty.textContent = "Selecciona una base anime para ver las capas de composición.";
+      host.appendChild(empty);
+      return;
+    }
+
+    if (state.assetBase) {
+      const baseRow = document.createElement("div");
+      baseRow.className = "asset-layer-row is-base";
+      const marker = document.createElement("span");
+      marker.className = "asset-layer-toggle";
+      marker.textContent = "◉";
+      const label = document.createElement("div");
+      label.className = "asset-layer-name";
+      const name = document.createElement("strong");
+      name.textContent = state.assetBase.name || "Cuerpo base";
+      name.title = name.textContent;
+      const detail = document.createElement("small");
+      detail.textContent = "CUERPO BASE · " + pack.width + " × " + pack.height;
+      label.append(name, detail);
+      const actions = document.createElement("div");
+      actions.className = "asset-layer-actions";
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "asset-layer-action remove";
+      remove.dataset.assetAction = "remove-base";
+      remove.textContent = "×";
+      remove.title = "Quitar cuerpo base";
+      remove.setAttribute("aria-label", "Quitar cuerpo base");
+      actions.appendChild(remove);
+      baseRow.append(marker, label, actions);
+      host.appendChild(baseRow);
+    }
+
+    if (!state.assetBase) {
+      const empty = document.createElement("p");
+      empty.className = "asset-layer-empty";
+      empty.textContent = "Aún no hay cuerpo base. Elige un PNG de la carpeta de cuerpo para empezar.";
+      host.appendChild(empty);
+    }
+
+    if (state.compositionLayers.length === 0) {
+      if (state.assetBase) {
+        const empty = document.createElement("p");
+        empty.className = "asset-layer-empty";
+        empty.textContent = "Sin capas de expresión todavía. Puedes añadir una boca, cejas o maquillaje.";
+        host.appendChild(empty);
+      }
+      return;
+    }
+
+    // Stored from back to front, listed from front to back.
+    state.compositionLayers.map((layer, index) => ({ layer, index })).reverse().forEach(({ layer, index }) => {
+      const row = document.createElement("div");
+      row.className = "asset-layer-row";
+      const toggleLabel = document.createElement("label");
+      toggleLabel.className = "asset-layer-toggle";
+      const toggle = document.createElement("input");
+      toggle.type = "checkbox";
+      toggle.checked = layer.visible;
+      toggle.dataset.assetAction = "toggle-layer";
+      toggle.dataset.assetLayerId = layer.id;
+      toggle.setAttribute("aria-label", (layer.visible ? "Ocultar " : "Mostrar ") + layer.name);
+      toggleLabel.appendChild(toggle);
+
+      const label = document.createElement("div");
+      label.className = "asset-layer-name";
+      const name = document.createElement("strong");
+      name.textContent = layer.name;
+      name.title = layer.originPath || layer.name;
+      const detail = document.createElement("small");
+      detail.textContent = layer.visible ? "CAPA VISIBLE" : "CAPA OCULTA";
+      label.append(name, detail);
+
+      const actions = document.createElement("div");
+      actions.className = "asset-layer-actions";
+      [
+        { action: "up", text: "↑", title: "Traer al frente", disabled: index === state.compositionLayers.length - 1 },
+        { action: "down", text: "↓", title: "Enviar al fondo", disabled: index === 0 },
+        { action: "remove", text: "×", title: "Eliminar capa", disabled: false }
+      ].forEach((config) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "asset-layer-action" + (config.action === "remove" ? " remove" : "");
+        button.textContent = config.text;
+        button.title = config.title;
+        button.setAttribute("aria-label", config.title + ": " + layer.name);
+        button.dataset.assetAction = config.action;
+        button.dataset.assetLayerId = layer.id;
+        button.disabled = config.disabled;
+        actions.appendChild(button);
+      });
+
+      row.append(toggleLabel, label, actions);
+      host.appendChild(row);
+    });
+  }
+
+  function renderAssetPackControls() {
+    const pack = activeAssetPack();
+    $("asset-pack-select").value = pack.id;
+    $("asset-pack-description").textContent = pack.description;
+    $("asset-pack-note").textContent = pack.instructions;
+    $("choose-asset-base").disabled = pack.id === "manual";
+    $("choose-asset-overlays").disabled = pack.id === "manual" || !state.assetBase;
+    $("clear-asset-composition").hidden = !state.assetBase && state.compositionLayers.length === 0;
+    $("asset-rig-note").hidden = !hasActiveAssetComposition();
+
+    const credit = $("asset-pack-credit");
+    credit.replaceChildren();
+    if (pack.id === "manual") {
+      credit.textContent = "Paquetes anime de LinXueLian: CC BY-SA 4.0. La atribución se mantiene también en la documentación del proyecto.";
+    } else {
+      const author = document.createElement("span");
+      author.textContent = "Arte: LinXueLian · Licencia ";
+      const licence = document.createElement("a");
+      licence.href = "https://creativecommons.org/licenses/by-sa/4.0/";
+      licence.target = "_blank";
+      licence.rel = "noopener noreferrer";
+      licence.textContent = "CC BY-SA 4.0";
+      const source = document.createElement("a");
+      source.href = pack.sourceUrl;
+      source.target = "_blank";
+      source.rel = "noopener noreferrer";
+      source.textContent = " · Fuente original";
+      credit.append(author, licence, source);
+    }
+    renderAssetLayerList();
+    renderAssetLibrary();
+  }
+
+  function switchAssetPack(nextId) {
+    const next = ASSET_PACKS[nextId] ? nextId : "manual";
+    const current = activeAssetPack().id;
+    if (next === current) return;
+    const hasComposition = Boolean(state.assetBase || state.compositionLayers.length);
+    if (hasComposition && !window.confirm("Cambiar de base elimina la composición anime actual. ¿Continuar?")) {
+      $("asset-pack-select").value = current;
+      return;
+    }
+    state.assetPack = { id: next };
+    state.assetBase = null;
+    state.compositionLayers = [];
+    assetLibrary = [];
+    assetLibraryZipName = "";
+    render();
+    scheduleLocalSave();
+    showToast(next === "manual" ? "Modo de muñeca por piezas activado." : "Base seleccionada: " + ASSET_PACKS[next].label + ".");
+  }
+
+  function validatePackImageDimensions(width, height) {
+    const pack = activeAssetPack();
+    return pack.id !== "manual" && width === pack.width && height === pack.height;
+  }
+
+  async function importAssetBase(file) {
+    if (!file) return;
+    const pack = activeAssetPack();
+    if (pack.id === "manual") {
+      showToast("Primero selecciona FBFFFM001 o HFFF001.", true);
+      return;
+    }
+    if (!["image/png", "image/webp"].includes(file.type)) {
+      showToast("El cuerpo base debe ser PNG o WebP.", true);
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      showToast("El cuerpo base supera el límite de 5 MB.", true);
+      return;
+    }
+    try {
+      const dataUrl = await readFileAsDataUrl(file);
+      const dimensions = await inspectImageDimensions(dataUrl);
+      if (!validatePackImageDimensions(dimensions.width, dimensions.height)) {
+        showToast("Dimensiones incorrectas para " + pack.label + ": se esperaba " + pack.width + " × " + pack.height + " y el archivo mide " + dimensions.width + " × " + dimensions.height + ".", true);
+        return;
+      }
+      state.assetBase = { name: file.name, dataUrl, width: dimensions.width, height: dimensions.height };
+      render();
+      scheduleLocalSave();
+      showToast("Cuerpo base importado: " + file.name + ".");
+    } catch (error) {
+      showToast(error.message || "No se pudo importar el cuerpo base.", true);
+    }
+  }
+
+  async function importAssetOverlays(fileList) {
+    const files = Array.from(fileList || []);
+    if (!files.length) return;
+    const pack = activeAssetPack();
+    if (pack.id === "manual") {
+      showToast("Selecciona una base anime primero.", true);
+      return;
+    }
+    if (!state.assetBase) {
+      showToast("Importa primero un cuerpo base para mantener alineadas las capas.", true);
+      return;
+    }
+    if (state.compositionLayers.length + files.length > 40) {
+      showToast("La composición admite hasta 40 capas de expresión y detalles.", true);
+      return;
+    }
+
+    const accepted = [];
+    const rejected = [];
+    // Sort naturally when a browser provides relative paths; users can also
+    // refine order with the up/down controls after importing.
+    files.sort((a, b) => String(a.webkitRelativePath || a.name).localeCompare(String(b.webkitRelativePath || b.name), undefined, { numeric: true }));
+    for (const file of files) {
+      if (!["image/png", "image/webp"].includes(file.type) || file.size > 5 * 1024 * 1024) {
+        rejected.push(file.name + " (tipo o tamaño)");
+        continue;
+      }
+      try {
+        const dataUrl = await readFileAsDataUrl(file);
+        const dimensions = await inspectImageDimensions(dataUrl);
+        if (!validatePackImageDimensions(dimensions.width, dimensions.height)) {
+          rejected.push(file.name + " (" + dimensions.width + " × " + dimensions.height + ")");
+          continue;
+        }
+        accepted.push({
+          id: "asset-layer-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
+          name: file.name,
+          originPath: file.webkitRelativePath || file.name,
+          dataUrl,
+          visible: true
+        });
+      } catch (_) {
+        rejected.push(file.name + " (no se pudo leer)");
+      }
+    }
+    if (accepted.length) {
+      state.compositionLayers.push(...accepted);
+      render();
+      scheduleLocalSave();
+      showToast("Añadidas " + accepted.length + " capas a " + pack.label + (rejected.length ? "; " + rejected.length + " se omitieron." : "."));
+    } else {
+      showToast("No se añadió ninguna capa. Comprueba el formato y que las imágenes midan " + pack.width + " × " + pack.height + ".", true);
+    }
+  }
+
+  function inspectImageDimensions(dataUrl) {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve({ width: image.naturalWidth, height: image.naturalHeight });
+      image.onerror = () => reject(new Error("La imagen no se puede interpretar."));
+      image.src = dataUrl;
+    });
+  }
+
+  function removeAssetLayer(layerId) {
+    const index = state.compositionLayers.findIndex((layer) => layer.id === layerId);
+    if (index >= 0) state.compositionLayers.splice(index, 1);
   }
 
   function scheduleLocalSave() {
@@ -232,6 +802,7 @@
   }
 
   function resetPose() {
+    if (hasActiveAssetComposition()) return;
     PARTS.forEach((part) => {
       state.parts[part.id].dx = 0;
       state.parts[part.id].dy = 0;
@@ -256,6 +827,7 @@
   }
 
   function randomizeColors() {
+    if (hasActiveAssetComposition()) return;
     const palettes = [
       { hair: "#70458b", eyes: "#6b64d8", outfit: "#f1b4d6" },
       { hair: "#49364f", eyes: "#6e9ed8", outfit: "#b7d7ee" },
@@ -274,6 +846,7 @@
   }
 
   function randomizePose() {
+    if (hasActiveAssetComposition()) return;
     ["head", "arm-left-upper", "arm-left-forearm", "arm-right-upper", "arm-right-forearm"].forEach((id) => {
       const span = id === "head" ? 9 : 35;
       state.parts[id].rotation = Math.round((Math.random() * 2 - 1) * span);
@@ -389,7 +962,17 @@
   }
 
   function exportProject() {
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json;charset=utf-8" });
+    const pack = activeAssetPack();
+    const exportState = Object.assign({}, state);
+    exportState.attribution = pack.id === "manual" ? null : {
+      author: pack.author,
+      sourceUrl: pack.sourceUrl,
+      license: pack.license,
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      note: "Original transparent PNG layers were composed in CharacterWord. The selected base and visible layer order may have been changed; the imported source PNG files were not retouched by this editor.",
+      shareAlike: true
+    };
+    const blob = new Blob([JSON.stringify(exportState, null, 2)], { type: "application/json;charset=utf-8" });
     downloadBlob(blob, "characterword-project.json");
     showToast("Proyecto JSON exportado con las piezas y sus ajustes.");
   }
@@ -432,8 +1015,8 @@
   }
 
   function sanitizeProject(input) {
-    if (!input || (input.version !== 1 && input.version !== 2) || !input.parts || !input.colors) {
-      throw new Error("El archivo no tiene el formato de proyecto CharacterWord v1/v2.");
+    if (!input || ![1, 2, 3].includes(input.version) || !input.parts || !input.colors) {
+      throw new Error("El archivo no tiene el formato de proyecto CharacterWord v1/v2/v3.");
     }
     const clean = makeDefaultProject();
     clean.name = typeof input.name === "string" ? input.name.slice(0, 100) : "Proyecto importado";
@@ -498,6 +1081,38 @@
         layers: importedLayers
       };
     });
+    clean.assetPack = { id: ["fbfffm001", "hfff001"].includes(input.assetPack && input.assetPack.id) ? input.assetPack.id : "manual" };
+    const activePack = ASSET_PACKS[clean.assetPack.id];
+    const validPackImage = (item) => item && typeof item === "object" && isValidDataUrl(item.dataUrl);
+    if (clean.assetPack.id !== "manual" && validPackImage(input.assetBase)) {
+      const base = input.assetBase;
+      if (Number(base.width) === activePack.width && Number(base.height) === activePack.height) {
+        clean.assetBase = {
+          name: typeof base.name === "string" ? base.name.slice(0, 220) : "Cuerpo base",
+          dataUrl: base.dataUrl,
+          width: activePack.width,
+          height: activePack.height
+        };
+      }
+      clean.compositionLayers = Array.isArray(input.compositionLayers) ? input.compositionLayers.slice(0, 40).map((layer, index) => {
+        if (!validPackImage(layer)) return null;
+        return {
+          id: typeof layer.id === "string" && /^asset-layer-[a-zA-Z0-9_-]{1,100}$/.test(layer.id) ? layer.id : "asset-layer-imported-" + index,
+          name: typeof layer.name === "string" ? layer.name.slice(0, 220) : "Capa " + (index + 1),
+          originPath: typeof layer.originPath === "string" ? layer.originPath.slice(0, 500) : "",
+          dataUrl: layer.dataUrl,
+          libraryId: typeof layer.libraryId === "string" ? layer.libraryId.slice(0, 220) : null,
+          order: Number.isFinite(Number(layer.order)) ? Number(layer.order) : null,
+          visible: typeof layer.visible === "boolean" ? layer.visible : true
+        };
+      }).filter(Boolean) : [];
+      if (!clean.assetBase) clean.compositionLayers = [];
+    } else {
+      clean.assetPack = { id: "manual" };
+      clean.assetBase = null;
+      clean.compositionLayers = [];
+    }
+    clean.version = 3;
     return clean;
   }
 
@@ -536,10 +1151,10 @@
 
   function loadLocalProject() {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
+      const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY) || localStorage.getItem(OLDEST_STORAGE_KEY);
       if (!saved) return false;
       state = sanitizeProject(JSON.parse(saved));
-      // Persist the normalized v2 project after migrating old single-image slots.
+      // Persist the normalized v3 project after migrating old single-image slots.
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       return true;
     } catch (_) {
@@ -633,6 +1248,67 @@
     render();
     scheduleLocalSave();
   });
+  $("asset-pack-select").addEventListener("change", (event) => switchAssetPack(event.target.value));
+  $("choose-asset-zip").addEventListener("click", () => $("asset-zip-input").click());
+  $("asset-zip-input").addEventListener("change", (event) => {
+    importAssetZip(event.target.files && event.target.files[0]);
+    event.target.value = "";
+  });
+  $("clear-asset-library").addEventListener("click", clearAssetLibrary);
+  $("asset-library-list").addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-library-action]");
+    if (!button || button.disabled) return;
+    if (button.dataset.libraryAction === "use-base") useLibraryBase(button.dataset.libraryId);
+    else if (button.dataset.libraryAction === "add-overlay") addLibraryOverlay(button.dataset.libraryId);
+  });
+  $("choose-asset-base").addEventListener("click", () => $("asset-base-input").click());
+  $("asset-base-input").addEventListener("change", (event) => {
+    importAssetBase(event.target.files && event.target.files[0]);
+    event.target.value = "";
+  });
+  $("choose-asset-overlays").addEventListener("click", () => $("asset-overlay-input").click());
+  $("asset-overlay-input").addEventListener("change", (event) => {
+    importAssetOverlays(event.target.files);
+    event.target.value = "";
+  });
+  $("clear-asset-composition").addEventListener("click", () => {
+    state.assetBase = null;
+    state.compositionLayers = [];
+    render();
+    scheduleLocalSave();
+    showToast("Composición anime retirada.");
+  });
+  $("asset-layer-list").addEventListener("change", (event) => {
+    const input = event.target.closest('input[data-asset-action="toggle-layer"]');
+    if (!input) return;
+    const layer = state.compositionLayers.find((item) => item.id === input.dataset.assetLayerId);
+    if (!layer) return;
+    layer.visible = input.checked;
+    render();
+    scheduleLocalSave();
+  });
+  $("asset-layer-list").addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-asset-action]");
+    if (!button) return;
+    const action = button.dataset.assetAction;
+    const id = button.dataset.assetLayerId;
+    if (action === "remove-base") {
+      state.assetBase = null;
+      state.compositionLayers = [];
+    } else {
+      const index = state.compositionLayers.findIndex((item) => item.id === id);
+      if (index < 0) return;
+      if (action === "remove") state.compositionLayers.splice(index, 1);
+      else if (action === "up" && index < state.compositionLayers.length - 1) {
+        [state.compositionLayers[index], state.compositionLayers[index + 1]] = [state.compositionLayers[index + 1], state.compositionLayers[index]];
+      } else if (action === "down" && index > 0) {
+        [state.compositionLayers[index], state.compositionLayers[index - 1]] = [state.compositionLayers[index - 1], state.compositionLayers[index]];
+      } else return;
+    }
+    render();
+    scheduleLocalSave();
+  });
+
   $("export-project").addEventListener("click", exportProject);
   $("export-png").addEventListener("click", exportPng);
   $("import-project").addEventListener("click", () => $("project-input").click());

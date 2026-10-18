@@ -7,6 +7,7 @@
   <meta name="description" content="Editor local de personajes anime por piezas para CharacterWord.">
   <title>CharacterWord Studio — Anime Doll Lab</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="vendor/jszip.min.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -144,14 +145,15 @@
                   <path d="M188 63 Q198 50 210 53" fill="none" stroke="#c5a8df" stroke-width="4" opacity=".8" stroke-linecap="round"/>
                 </g>
               </g>
-            </svg>
+            <g id="asset-composition" class="asset-composition" style="display:none" pointer-events="none"></g>
+              </svg>
           </div>
           <div class="stage-bottomline">
             <span class="drag-hint"><span class="drag-symbol">✥</span> Arrastra una pieza para recolocarla</span>
             <span id="save-status" class="save-status">Cambios en esta sesión</span>
           </div>
         </div>
-        <div class="stage-note"><span class="note-icon">i</span><p>Prototipo funcional: la muñeca SVG es una base provisional. Puedes apilar varias capas en cada pieza y decidir si el dibujo de muestra queda debajo. Las piezas aún se mueven de forma independiente; todavía no hay un esqueleto anatómico conectado.</p></div>
+        <div class="stage-note"><span class="note-icon">i</span><p id="stage-note-text">Modo provisional por piezas: puedes mover cabeza, torso, brazos y antebrazos por separado. Las imágenes anime de cuerpo completo se componen en el modo Base anime / waifu.</p></div>
       </section>
 
       <aside class="sidebar right-sidebar">
@@ -162,6 +164,41 @@
         <div class="selected-part-card">
           <div class="selected-part-icon" id="selected-part-icon">◉</div>
           <div><strong id="selected-part-name">Cabeza y rostro</strong><small id="selected-part-desc">Rostro, flequillo y cabello base</small></div>
+        </div>
+
+        <div class="section-label asset-heading">BASE ANIME / WAIFU</div>
+        <div class="asset-pack-panel">
+          <label class="asset-pack-label" for="asset-pack-select">Conjunto de recursos</label>
+          <select id="asset-pack-select" class="asset-pack-select">
+            <option value="manual">Muñeca provisional por piezas</option>
+            <option value="fbfffm001">FBFFFM001 · anime cuerpo completo (800 × 1200)</option>
+            <option value="hfff001">HFFF001 Oujousama · retrato (537 × 700)</option>
+          </select>
+          <p class="asset-pack-description" id="asset-pack-description">Elige una de las bases anime para componer un sprite completo usando capas PNG alineadas.</p>
+          <div class="asset-zip-import">
+            <button type="button" class="button button-primary" id="choose-asset-zip">Importar ZIP original</button>
+            <input id="asset-zip-input" type="file" accept=".zip,application/zip" hidden>
+            <small>Selecciona uno de los ZIP descargados de la página original. Se leen localmente; no se suben a CharacterWord ni a un servidor.</small>
+          </div>
+          <div class="asset-library-header">
+            <strong id="asset-library-title">Biblioteca del ZIP</strong>
+            <button type="button" class="text-button" id="clear-asset-library" hidden>Vaciar biblioteca</button>
+          </div>
+          <div id="asset-library-list" class="asset-library-list" aria-live="polite"></div>
+          <div class="asset-pack-actions">
+            <button type="button" class="button button-outline" id="choose-asset-base">Elegir cuerpo base PNG</button>
+            <input id="asset-base-input" type="file" accept="image/png,image/webp" hidden>
+            <button type="button" class="button button-outline" id="choose-asset-overlays">Añadir expresión / detalle</button>
+            <input id="asset-overlay-input" type="file" accept="image/png,image/webp" multiple hidden>
+          </div>
+          <div class="asset-pack-note" id="asset-pack-note">Pulsa “Importar ZIP original” y selecciona el ZIP que descargaste de itch.io; no hace falta extraerlo antes. El lector corre en tu navegador. Elige una variante como cuerpo base y añade solo las capas que quieras.</div>
+          <div class="section-label asset-layer-heading">CAPAS ANIME IMPORTADAS</div>
+          <div id="asset-layer-list" class="asset-layer-list" aria-live="polite"></div>
+          <div class="asset-pack-footer">
+            <button type="button" class="text-button" id="clear-asset-composition" hidden>Quitar composición anime</button>
+            <p id="asset-pack-credit" class="asset-pack-credit"></p>
+          </div>
+          <p id="asset-rig-note" class="asset-rig-note" hidden>Esta base es un sprite de cuerpo completo. Puedes cambiar sus capas de apariencia, pero sus brazos y torso no son piezas articulables separadas.</p>
         </div>
 
         <div class="section-label">REEMPLAZAR ILUSTRACIÓN</div>

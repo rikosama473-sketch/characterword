@@ -29,23 +29,66 @@
       "layering": "separate numbered folders; body/face/eyes/hair/clothing/accessory variants per source description",
       "license": "CC-BY-SA-4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International",
+      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
       "creditRequired": true,
       "shareAlike": true,
       "redistributionReviewed": "source declares CC BY-SA 4.0; retain author attribution and license; inspect contents and verify all files before bundling",
       "articulatedLimbsVerified": false,
       "testedInCharacterWord": false,
-      "status": "priority-pilot-candidate",
-      "notes": "Closest visual fit to anime full-body layer customization. Layered facial, skin, hair, clothing and accessories do not prove independent movable arm/leg joints.",
+      "status": "archive-inspected-zip-importer-implemented-e2e-test-pending",
+      "notes": "Imported through CharacterWord's full-canvas composition mode. Choose one body base PNG, then add mouth/brow or later hair/clothing PNG layers from the same base if their canvas remains 800x1200. Independent arm/forearm movement is not available from this pack.",
       "availability": "free-download-as-presented-on-source-page",
       "layerFolderSystem": "numbered folders; lower number is lower draw order",
-      "pageNotes": "Page says it contains 124 files in current listing; separate ZIPs include base body, hair, eyes, clothing and accessories. Exact independent arm/forearm cutouts remain unverified.",
+      "pageNotes": "The public page marks the pack under CC BY-SA 4.0, asks users to link to the project or author, and says the numbered PNG folders should be layered with lower numbers behind higher ones. The inspected base ZIP has full-canvas images rather than independent head/torso/arm cutouts.",
       "pageDownloadTest": {
         "checkedAt": "2026-10-18",
         "package": "FBFFFM001_000_BASE_BODY.zip",
         "size": "568 kB",
         "outcome": "official button triggered a download confirmation without login or payment",
         "extractedAndInspectedLocally": false
+      },
+      "importMode": "full-canvas-composition",
+      "layerFolders": [
+        "00_BODYBASE",
+        "01_MOUTHS",
+        "03_BROWS"
+      ],
+      "inspectedArchive": {
+        "file": "FBFFFM001_000_BASE_BODY.zip",
+        "compressedBytes": 582585,
+        "approximateDisplayedSize": "568 kB",
+        "entries": 30,
+        "pngCount": 27,
+        "infoFile": "INFO.txt",
+        "dimensions": "800x1200",
+        "format": "RGBA PNG",
+        "folderContents": [
+          {
+            "folder": "00_BODYBASE",
+            "count": 9,
+            "contents": "Chocolate, Light and Mocha base variants, each with plain, Blush and Darken versions"
+          },
+          {
+            "folder": "01_MOUTHS",
+            "count": 5,
+            "contents": "Blah, Laugh, Smile, Talk and Upturned mouth overlays"
+          },
+          {
+            "folder": "03_BROWS",
+            "count": 12,
+            "contents": "Angry, Normal and Sad eyebrows in Black, Blonde, Brown and Grey"
+          }
+        ],
+        "anatomicalPartsSeparated": false,
+        "sourceInspectedAt": "2026-10-18"
+      },
+      "importerImplementation": {
+        "mode": "client-side-ZIP-library-browser",
+        "library": "JSZip 3.10.2 (MIT)",
+        "chooseBaseVariant": true,
+        "addOverlayVariants": true,
+        "enforceCanvasDimensions": true,
+        "liveRoundTripTested": false
       }
     },
     {
@@ -66,16 +109,59 @@
       "layering": "base essentials plus separate clothing/hair/accessory packs",
       "license": "CC-BY-SA-4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0; page is categorized under itch.io's CC 4.0 BY-SA assets)",
+      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
       "creditRequired": true,
       "shareAlike": true,
       "articulatedLimbsVerified": false,
       "testedInCharacterWord": false,
-      "status": "priority-pilot-candidate",
-      "notes": "Layered anime art with shared base across packs; only mix assets where the creator's base and alignment match.",
+      "status": "archive-inspected-zip-importer-implemented-e2e-test-pending",
+      "notes": "Imported through CharacterWord's full-canvas composition mode. Choose one body PNG, then add face/makeup or mouth overlays from the same HFFF001 base using 537x700 images. Do not combine these images with FBFFFM001 layers; their canvas dimensions and source base differ.",
       "availability": "free-download-as-presented-on-source-page",
       "layerFolderSystem": "numbered folders; lower number is lower draw order",
-      "pageNotes": "Separate transparent-PNG ZIPs for base essentials, clothing, hair and accessories. Author notes corresponding packs share the same base and may be combined when they fit."
+      "pageNotes": "The public page marks the pack under CC BY-SA 4.0, requests a link to the project or author, and says its numbered transparent PNG folders are intended for layer stacking. The inspected base essentials ZIP has full-canvas images rather than independent head/torso/arm cutouts.",
+      "importMode": "full-canvas-composition",
+      "layerFolders": [
+        "00_BASE_BODY",
+        "01_FACE_AND_MAKEUP",
+        "02_MOUTH"
+      ],
+      "inspectedArchive": {
+        "file": "HFFF001_OJOU_00_BASE_ESSENTIALS.zip",
+        "compressedBytes": 349370,
+        "approximateDisplayedSize": "341 kB",
+        "entries": 19,
+        "pngCount": 16,
+        "infoFile": "INFO.txt",
+        "dimensions": "537x700",
+        "format": "RGBA PNG",
+        "folderContents": [
+          {
+            "folder": "00_BASE_BODY",
+            "count": 5,
+            "contents": "Dhamphir, Olive, Peachy, Sunny and Wheat body base variants"
+          },
+          {
+            "folder": "01_FACE_AND_MAKEUP",
+            "count": 2,
+            "contents": "Blush Deep Pink and Sweatdrop overlays"
+          },
+          {
+            "folder": "02_MOUTH",
+            "count": 8,
+            "contents": "four standard and four Redlipped variants: Closed, Laugh, Smile and Speaking"
+          }
+        ],
+        "anatomicalPartsSeparated": false,
+        "sourceInspectedAt": "2026-10-18"
+      },
+      "importerImplementation": {
+        "mode": "client-side-ZIP-library-browser",
+        "library": "JSZip 3.10.2 (MIT)",
+        "chooseBaseVariant": true,
+        "addOverlayVariants": true,
+        "enforceCanvasDimensions": true,
+        "liveRoundTripTested": false
+      }
     },
     {
       "id": "linxuelian-hmlf001-anime-boy",

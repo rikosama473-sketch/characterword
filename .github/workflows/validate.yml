@@ -20,6 +20,8 @@ jobs:
         with:
           node-version: 22
       - name: Check JavaScript syntax
-        run: node --check app.js
+        run: |
+          node --check app.js
+          node --check vendor/jszip.min.js
       - name: Validate the page and asset catalog
         run: node scripts/validate-project.mjs

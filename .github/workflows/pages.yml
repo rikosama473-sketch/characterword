@@ -26,10 +26,12 @@ jobs:
       - name: Assemble static editor
         run: |
           rm -rf _site
-          mkdir -p _site/data _site/docs
+          mkdir -p _site/data _site/docs _site/vendor
           cp index.html styles.css app.js _site/
+          cp vendor/jszip.min.js _site/vendor/
+          cp vendor/JSZIP-LICENSE.markdown _site/vendor/
           cp data/asset-sources.json _site/data/
-          cp docs/ASSET_RESEARCH.md _site/docs/
+          cp docs/ASSET_RESEARCH.md docs/ANIME_PACK_INTEGRATION.md _site/docs/
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
