@@ -26,6 +26,10 @@ El primer editor está disponible como página estática: abre `index.html` dire
 - Los archivos importados permanecen en el navegador. No hay backend ni envío de imágenes a un servidor.
 - El dibujo vectorial incorporado es solo una base de prueba; el catálogo de fuentes registra qué paquetes externos podrían sustituirlo. Aún no es un rig anatómico jerárquico: las piezas se mueven de forma independiente.
 
+## Validación del código
+
+Un flujo de GitHub Actions ejecuta `node --check app.js` y `node scripts/validate-project.mjs` para verificar sintaxis, rutas de recursos, identificadores y el catálogo de licencias.
+
 ## Investigación actual
 
 - [Catálogo de recursos y licencias](docs/ASSET_RESEARCH.md)
