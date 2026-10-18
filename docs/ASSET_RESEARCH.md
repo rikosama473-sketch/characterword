@@ -21,17 +21,18 @@ Las capas de ropa, ojos y cabello no garantizan que brazos y piernas sean articu
 - Formato anunciado: PNG transparente en carpetas numeradas por capas.
 - Piezas descritas: base corporal, tonos de piel, cabello, ojos, ropa, accesorios y otras variantes.
 - Licencia que muestra la página: **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
+- Disponibilidad/estructura confirmada al consultar la página: se presenta como recurso gratuito y ofrece ZIP separados para el cuerpo base (568 kB), cabello, ojos, prendas y accesorios; la página de la autora documenta 124 archivos y carpetas numeradas donde el número inferior se coloca debajo de las demás capas. Es un paquete concreto para empezar a construir el personaje desde piezas reales.
 - Ventajas: es la candidata visual más cercana al objetivo; la página indica que sus capas se pueden apilar y combinar con otros paquetes diseñados para la misma base.
 - Condiciones: atribuir a la autora y enlazar a la página; conservar el aviso/licencia y revisar las obligaciones ShareAlike antes de publicar modificaciones de las ilustraciones.
-- Limitación conocida: todavía no se ha comprobado si brazos, manos, piernas y articulaciones son capas independientes. Es excelente candidata para probar personalización por capas, pero no se debe prometer todavía marioneta corporal completa.
+- Limitación conocida: todavía no se ha comprobado si brazos, manos, piernas y articulaciones son capas independientes; el énfasis confirmado de la página está en rasgos faciales, tono de piel, cabello, ropa y accesorios. Es excelente candidata para un editor de apariencia anime, pero no se debe prometer todavía marioneta corporal completa.
 - Estado: **candidata prioritaria para una prueba local**. No copiar ZIPs ni imágenes al repositorio hasta documentar los términos y comprobar el contenido real.
 
 ### B. LinXueLian — HFFF001 Oujousama 700px
 - Fuente: https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama
 - Tipo: personaje anime femenino con capas y variaciones, de estética aristocrática.
-- Formato anunciado: PNG transparentes en carpetas numeradas; hay un paquete de elementos base y paquetes adicionales de ropa, cabello y accesorios.
-- Licencia que muestra la página: **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
-- Ventajas: la estructura numérica define el orden de composición; la página indica que las piezas de los paquetes diseñados para la misma base se pueden mezclar si encajan.
+- Disponibilidad/estructura confirmada: se presenta como recurso gratuito; tiene paquetes ZIP independientes para la base, varias ropas, cabello, blusa y accesorios. La autora indica que los elementos se entregan como PNG transparentes ordenados en carpetas numeradas, y que los paquetes comparten una base diseñada para combinarse cuando visualmente encajan.
+- Licencia indicada por la categoría pública de la página: **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**. La página pide enlazar al recurso/autora; conservar atribución y revisar las condiciones ShareAlike antes de publicar versiones modificadas.
+- Ventajas: la estructura numérica define el orden de composición; la página indica que las piezas de los paquetes diseñados para la misma base se pueden mezclar si encajan. Es un punto de partida práctico para montar cabeza/cara, cabello y torso con una apariencia anime consistente.
 - Condiciones: dar atribución adecuada, enlazar la fuente e indicar cambios cuando corresponda. CC BY 4.0 no es una licencia ShareAlike, a diferencia de la candidata A.
 - Limitación: comprobar antes el alcance de cada paquete y que las piezas que se quieran mezclar compartan la misma base.
 - Estado: **candidata prioritaria para una segunda prueba**.
