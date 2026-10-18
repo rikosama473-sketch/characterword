@@ -113,6 +113,12 @@ assert.equal(catalog.policy.allowLoraAsStandaloneGenerator, false, "A LoRA must 
 assert.equal(catalog.policy.allowDmd2OrTeacherDistillationAsCoreStrategy, false, "DMD2/teacher distillation must not be the core strategy");
 assert.equal(catalog.policy.initialTrainingImageTarget, 100, "The initial 100-image dataset target must be documented");
 assert.equal(catalog.policy.modelRuntimeBudgetMB, 2048, "Model inference memory target must be explicit");
+assert.ok(catalog.sources.some((source) => source.id === "spritegan-character-sprites-apache"), "Catalog must track the sprite generation GAN reference");
+assert.ok(catalog.sources.some((source) => source.id === "mdigan-character-pose-completion"), "Catalog must track character pose completion research");
+assert.ok(catalog.sources.some((source) => source.id === "nvlabs-stylegan2-ada-limited-data-reference"), "Catalog must track limited-data research");
+assert.equal(catalog.policy.researchReferencesDoNotAuthorizeAssetReuse, true, "Research references must not grant asset-reuse permission");
+assert.equal(catalog.policy.trainingDataNeedsIndependentLicenseReview, true, "Training images need independent license review");
+
 
 
 console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " sources, unique HTML ids, stacked layers, v1 migration, and project exports.");
