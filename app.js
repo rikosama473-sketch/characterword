@@ -355,7 +355,7 @@
         rotation: numeric("rotation", 0, -180, 180),
         scale: numeric("scale", 1, 0.5, 1.8),
         visible: typeof incoming.visible === "boolean" ? incoming.visible : true,
-        imageData: typeof incoming.imageData === "string" && /^data:image\/(png|webp);base64,/.test(incoming.imageData) && incoming.imageData.length < 7_000_000 ? incoming.imageData : null
+        imageData: typeof incoming.imageData === "string" && /^data:image\/(png|webp);base64,/.test(incoming.imageData) && incoming.imageData.length < 36_000_000 ? incoming.imageData : null
       };
     });
     return clean;
@@ -363,8 +363,8 @@
 
   async function loadProject(file) {
     if (!file) return;
-    if (file.size > 7 * 1024 * 1024) {
-      showToast("El archivo JSON supera el límite de 7 MB.", true);
+    if (file.size > 40 * 1024 * 1024) {
+      showToast("El archivo JSON supera el límite de 40 MB.", true);
       return;
     }
     try {
