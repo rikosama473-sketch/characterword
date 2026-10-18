@@ -29,6 +29,7 @@ jobs:
           mkdir -p _site/data _site/docs _site/vendor
           cp index.html styles.css app.js _site/
           cp vendor/jszip.min.js _site/vendor/
+          cp vendor/JSZIP-LICENSE.markdown _site/vendor/
           cp data/asset-sources.json _site/data/
           cp docs/ASSET_RESEARCH.md docs/ANIME_PACK_INTEGRATION.md _site/docs/
 
