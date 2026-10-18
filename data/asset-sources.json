@@ -174,22 +174,58 @@
       "style": [
         "anime",
         "visual-novel",
-        "male-character"
+        "male-character",
+        "bust"
       ],
       "formats": [
-        "PNG",
+        "transparent PNG",
+        "ZIP",
         "separate numbered layer folders"
       ],
-      "layering": "base, expression, mouth, eyes, eyebrows, hair, ears, inner/outer garments, accessories",
+      "layering": "Numbered PNG layer folders; smaller folder number is behind higher numbers. The author says some hair, clothing, eyes and accessory parts from packs designed for HMLF001 can be mixed when they visually fit.",
       "license": "CC-BY-SA-4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International",
+      "sourceLicenseLabel": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
       "creditRequired": true,
       "shareAlike": true,
       "articulatedLimbsVerified": false,
       "testedInCharacterWord": false,
-      "status": "priority-candidate",
-      "notes": "Confirm bust/full-body extent and keep compatibility within the same base."
+      "status": "profile-enabled-page-reviewed-local-archive-inspection-pending",
+      "notes": "The public page declares 600 × 800 px layered anime sprites, CC BY-SA 4.0, and numbered PNG layer folders. HMLF001 is a male bust/portrait-style base, not yet confirmed as full-body or independently articulated anatomy. The page lists base, warlock, shopkeeper, scarf, hair and vampire ZIPs for this character base. This record reflects page metadata only: the actual ZIPs have not been extracted and checked locally, and an end-to-end import/save/reopen test is still pending. The editor only accepts PNGs exactly 600 × 800 px to guard against misalignment.",
+      "sourcePageDimensions": "600x800",
+      "sourcePageReviewedAt": "2026-10-18",
+      "availablePackages": [
+        {
+          "file": "HMLF001_BASE_BODY.zip",
+          "displaySize": "358 kB",
+          "purpose": "Base body; page update log describes three skin tones and nine files"
+        },
+        {
+          "file": "HMLF001_WARLOCK.zip",
+          "displaySize": "3.9 MB",
+          "purpose": "Warlock design"
+        },
+        {
+          "file": "HMLF001_SHOPKEEPER.zip",
+          "displaySize": "2.3 MB",
+          "purpose": "Shopkeeper design"
+        },
+        {
+          "file": "HMLF001_HeavyScarf.zip",
+          "displaySize": "1.7 MB",
+          "purpose": "Scarf variations"
+        },
+        {
+          "file": "HMLF001_Kawamuru_Hair.zip",
+          "displaySize": "3.8 MB",
+          "purpose": "Hair variations"
+        },
+        {
+          "file": "HMLF001_VAMPIRE_CONFIG.zip",
+          "displaySize": "202 kB",
+          "purpose": "Vampire configuration"
+        }
+      ]
     },
     {
       "id": "universal-lpc-generator",
