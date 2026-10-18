@@ -22,8 +22,8 @@
     fbfffm001: {
       id: "fbfffm001",
       label: "FBFFFM001 — Fullbody Girl",
-      description: "Personaje anime de cuerpo completo. El ZIP base verificado contiene capas RGBA de 800 × 1200: variantes de cuerpo, bocas y cejas; no contiene cabeza, torso ni brazos recortados por separado.",
-      instructions: "Descarga y extrae el ZIP de cuerpo base de FBFFFM001. Selecciona una sola variante desde 00_BODYBASE. Después añade capas deseadas desde 01_MOUTHS o 03_BROWS; usa solo PNG del mismo conjunto y con 800 × 1200.",
+      description: "Personaje anime de cuerpo completo. Importa directamente el ZIP base verificado: contiene 27 PNG RGBA de 800 × 1200 (9 variantes de cuerpo, 5 bocas y 12 cejas). No contiene cabeza, torso ni brazos recortados por separado.",
+      instructions: "Pulsa “Importar ZIP original” y elige FBFFFM001_000_BASE_BODY.zip sin extraerlo. Selecciona una variante de 00_BODYBASE como base y añade las bocas de 01_MOUTHS o cejas de 03_BROWS que quieras. Los PNG deben ser de 800 × 1200.",
       width: 800, height: 1200,
       sourceUrl: "https://linxuelian.itch.io/customchar-fbfffm001-fullbodyfemale",
       author: "LinXueLian",
@@ -32,8 +32,8 @@
     hfff001: {
       id: "hfff001",
       label: "HFFF001 — Oujousama",
-      description: "Retrato anime de cuerpo completo en lienzo de 537 × 700. El ZIP de elementos básicos tiene variantes de cuerpo, maquillaje y boca; no contiene piezas anatómicas independientes.",
-      instructions: "Descarga y extrae HFFF001_OJOU_00_BASE_ESSENTIALS.zip. Selecciona una sola variante desde 00_BASE_BODY. Luego añade detalles de 01_FACE_AND_MAKEUP o 02_MOUTH; usa PNG de esta base con 537 × 700.",
+      description: "Sprite anime de lienzo 537 × 700. El ZIP base verificado contiene 16 PNG RGBA (5 variantes de cuerpo, 2 capas de maquillaje y 8 bocas); no contiene piezas anatómicas independientes.",
+      instructions: "Pulsa “Importar ZIP original” y elige HFFF001_OJOU_00_BASE_ESSENTIALS.zip sin extraerlo. Selecciona una variante de 00_BASE_BODY y añade los detalles de 01_FACE_AND_MAKEUP o 02_MOUTH. Los PNG deben ser de 537 × 700.",
       width: 537, height: 700,
       sourceUrl: "https://linxuelian.itch.io/charres-custom-hfff001-ega-ojousama",
       author: "LinXueLian",
@@ -295,7 +295,7 @@
     host.replaceChildren();
     clearButton.hidden = assetLibrary.length === 0;
     title.textContent = assetLibrary.length
-      ? "Biblioteca del ZIP · " + assetLibrary.length + " PNG"
+      ? "Biblioteca · " + assetLibraryZipName + " · " + assetLibrary.length + " PNG"
       : "Biblioteca del ZIP";
 
     if (!assetLibrary.length) {
