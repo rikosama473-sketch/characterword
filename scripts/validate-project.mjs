@@ -23,7 +23,9 @@ assert.ok(app.includes("const PARTS = ["), "app.js must define the parts list");
 assert.ok(html.includes('id="image-mode"'), "Import UI must provide cropped/aligned layer modes");
 assert.ok(html.includes('id="imported-layer-list"'), "Import UI must provide a per-part layer stack");
 assert.ok(html.includes('id="show-fallback"'), "Each body part must support a temporary sample-art underlay toggle");
-assert.ok(html.includes('id="asset-pack-select"'), "Editor must expose the two inspected anime pack profiles");
+assert.ok(html.includes('id="asset-pack-select"'), "Editor must expose the anime pack profile selector");
+assert.ok(html.includes('<option value="hmlf001">HMLF001 Anime Boy'), "Editor must expose the HMLF001 male base profile");
+assert.ok(app.includes('id: "hmlf001"'), "Editor must validate HMLF001 canvases separately");
 assert.ok(html.includes('id="asset-base-input"'), "Editor must allow selecting one full-canvas base PNG");
 assert.ok(html.includes('id="asset-overlay-input"'), "Editor must allow selecting aligned expression/detail overlays");
 assert.ok(html.includes('id="asset-zip-input"'), "Editor must allow importing original ZIP archives");
@@ -78,6 +80,7 @@ for (const feature of ["exportProject", "exportPng", "importPartImage", "sanitiz
 
 const fbRecord = catalog.sources.find((source) => source.id === "linxuelian-fbfffm001-fullbody-girl");
 const hfffRecord = catalog.sources.find((source) => source.id === "linxuelian-hfff001-oujousama");
+const hmlfRecord = catalog.sources.find((source) => source.id === "linxuelian-hmlf001-anime-boy");
 assert.ok(fbRecord && fbRecord.inspectedArchive, "Catalog must include the verified FBFFFM001 archive inspection");
 assert.equal(fbRecord.inspectedArchive.pngCount, 27, "FBFFFM001 base ZIP should list 27 PNGs");
 assert.equal(fbRecord.inspectedArchive.dimensions, "800x1200", "FBFFFM001 canvas dimensions must be recorded");
@@ -86,5 +89,8 @@ assert.ok(hfffRecord && hfffRecord.inspectedArchive, "Catalog must include the v
 assert.equal(hfffRecord.inspectedArchive.pngCount, 16, "HFFF001 base ZIP should list 16 PNGs");
 assert.equal(hfffRecord.inspectedArchive.dimensions, "537x700", "HFFF001 canvas dimensions must be recorded");
 assert.equal(hfffRecord.inspectedArchive.anatomicalPartsSeparated, false, "HFFF001 archive must not be labelled as articulated body parts");
+assert.ok(hmlfRecord, "Catalog must track the HMLF001 source");
+assert.equal(hmlfRecord.sourcePageDimensions, "600x800", "HMLF001 public-page canvas dimensions must be recorded");
+assert.equal(hmlfRecord.testedInCharacterWord, false, "HMLF001 round-trip must remain pending until tested");
 
 console.log("CharacterWord validation passed: " + partIds.length + " starter parts, " + catalog.sources.length + " sources, unique HTML ids, stacked layers, v1 migration, and project exports.");
